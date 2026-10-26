@@ -145,7 +145,7 @@ renderizar.resumo = function () {
 /* ---------------- CONTAS ---------------- */
 function barrasHorizontais(el, linhas, opt = {}) {
   /* linhas: [{rotulo, partes:[{v, cor, rot}]}] — barras empilhadas */
-  const W = larg(el), mE = opt.margemEsq ?? Math.min(170, W * .32), alt = opt.alt ?? 34, gap = opt.gap ?? 16;
+  const W = larg(el), mE = opt.margemEsq ?? Math.min(170, W * .4), alt = opt.alt ?? 34, gap = opt.gap ?? 16;
   const H = linhas.length * (alt + gap) + 26;
   const max = opt.max ?? d3.max(linhas, l => d3.sum(l.partes, p => p.v));
   const x = d3.scaleLinear().domain([0, max]).range([mE, W - 10]);
@@ -161,7 +161,7 @@ function barrasHorizontais(el, linhas, opt = {}) {
       const g = svg.append("g");
       g.append("rect").attr("x", x0).attr("y", y).attr("width", Math.max(0, x1 - x0 - 2)).attr("height", alt).attr("rx", 2).attr("fill", p.cor)
         .on("mousemove", ev => mostrarDica(p.dica || `<b>${p.rot}</b><br><span class="mono">${fInt(p.v)}</span>`, ev)).on("mouseleave", esconderDica);
-      if (x1 - x0 > 70 && p.rot) g.append("text").attr("x", x0 + 8).attr("y", y + alt / 2 + 4).attr("fill", "#fff")
+      if (p.rot && x1 - x0 > (p.curto || p.rot).length * 6.8 + 14) g.append("text").attr("x", x0 + 8).attr("y", y + alt / 2 + 4).attr("fill", "#fff")
         .style("font", "700 12px var(--f-texto)").style("pointer-events", "none").text(p.curto || p.rot);
     });
   });
@@ -175,7 +175,7 @@ renderizar.contas = function () {
   const dL = g["Lula"].diferenca, dF = g["Flávio Bolsonaro"].diferenca, O = g["Outros candidatos"].primeiro_turno, dV = g["Votos válidos"].diferenca;
   barrasHorizontais($("#g-identidade"), [
     { rotulo: "Ganho dos finalistas", partes: [{ v: dL, cor: C.lula, rot: "Lula +" + fMi(dL), curto: "Lula +" + fMi(dL) }, { v: dF, cor: C.dir, rot: "Flávio +" + fMi(dF), curto: "Flávio +" + fMi(dF) }] },
-    { rotulo: "De onde podem vir", partes: [{ v: O, cor: C.outros, rot: "Votos dos eliminados " + fMi(O), curto: "Eliminados " + fMi(O) }, { v: dV, cor: C.bn, rot: "Aumento de votos válidos " + fMi(dV), curto: "Novos válidos " + fMi(dV) }] },
+    { rotulo: "Origem possível", partes: [{ v: O, cor: C.outros, rot: "Votos dos eliminados " + fMi(O), curto: "Eliminados " + fMi(O) }, { v: dV, cor: C.bn, rot: "Aumento de votos válidos " + fMi(dV), curto: "Novos válidos " + fMi(dV) }] },
   ]);
   legenda($("#leg-identidade"), [[C.lula, "Lula"], [C.dir, "Flávio"], [C.outros, "Votos dos eliminados no 1º turno"], [C.bn, "Aumento dos votos válidos (menos brancos, nulos e abstenções)"]]);
 
@@ -216,8 +216,9 @@ renderizar.contas = function () {
         .attr("width", Math.max(1.5, Math.abs(x(val) - x(0)))).attr("fill", it.neg ? C.tinta3 : corCat(it.c.origem))
         .on("mousemove", ev => mostrarDica(`<b>${it.r}</b><br><span class="mono">${fInt(it.c.votos)}</span><br>intervalo de 95%: <span class="mono">${fInt(it.c.votos_ic95_inf)} a ${fInt(it.c.votos_ic95_sup)}</span><br>taxa: ${fPct(100 * it.c.taxa, 2)} do grupo de origem`, ev))
         .on("mouseleave", esconderDica);
-      svg.append("text").attr("class", "rot").attr("x", val >= 0 ? x(val) + 5 : x(val) - 5).attr("y", y + alt / 2 + 4)
-        .attr("text-anchor", val >= 0 ? "start" : "end").text(fSin(val / 1e6, 2) + " mi");
+      // perdas: valor escrito à direita da linha do zero, para não cobrir o nome da categoria
+      svg.append("text").attr("class", "rot").attr("x", val >= 0 ? x(val) + 5 : x(0) + 5).attr("y", y + alt / 2 + 4)
+        .attr("text-anchor", "start").text(fSin(val / 1e6, 2) + " mi");
     });
   });
   legenda($("#leg-decomp"), [[C.outros, "Eliminados"], [C.bn, "Brancos e nulos"], [C.abst, "Abstenção"], [C.lula, "Lula"], [C.dir, "Flávio"], [C.tinta3, "Perdas"]]);
@@ -534,17 +535,24 @@ function sankey() {
   ORIG.forEach((o, i) => {
     if (totO[i] * kk < 0.5) return;
     svg.append("rect").attr("x", xl).attr("y", posO[i]).attr("width", nw).attr("height", Math.max(1, totO[i] * kk)).attr("fill", corCat(o));
-    svg.append("text").attr("class", "rot-forte").attr("x", xl - 8).attr("y", posO[i] + totO[i] * kk / 2).attr("text-anchor", "end").text(nomeCat(o, anoTr));
-    svg.append("text").attr("class", "rot").attr("x", xl - 8).attr("y", posO[i] + totO[i] * kk / 2 + 14).attr("text-anchor", "end").text(fMi(totO[i], 1));
+    rotuloNo(svg, xl - 8, posO[i], totO[i] * kk, nomeCat(o, anoTr), fMi(totO[i], 1), "end");
   });
   DEST.forEach((d, j) => {
     if (totD[j] * kk < 0.5) return;
     svg.append("rect").attr("x", xr).attr("y", posD[j]).attr("width", nw).attr("height", Math.max(1, totD[j] * kk)).attr("fill", corCat(d));
-    svg.append("text").attr("class", "rot-forte").attr("x", xr + nw + 8).attr("y", posD[j] + totD[j] * kk / 2).text(nomeCat(d, anoTr));
-    svg.append("text").attr("class", "rot").attr("x", xr + nw + 8).attr("y", posD[j] + totD[j] * kk / 2 + 14).text(fMi(totD[j], 1));
+    rotuloNo(svg, xr + nw + 8, posD[j], totD[j] * kk, nomeCat(d, anoTr), fMi(totD[j], 1), "start");
   });
   svg.append("text").attr("class", "rot").attr("x", xl).attr("y", H - 2).text("1º turno");
   svg.append("text").attr("class", "rot").attr("x", xr + nw).attr("y", H - 2).attr("text-anchor", "end").text("2º turno");
+}
+function rotuloNo(svg, x, y0, h, nome, valor, ancora) {
+  // nós baixos: nome e valor na mesma linha, centrados no nó
+  if (h < 30) {
+    svg.append("text").attr("class", "rot-forte").attr("x", x).attr("y", y0 + h / 2 + 4).attr("text-anchor", ancora).text(`${nome} · ${valor}`);
+  } else {
+    svg.append("text").attr("class", "rot-forte").attr("x", x).attr("y", y0 + h / 2).attr("text-anchor", ancora).text(nome);
+    svg.append("text").attr("class", "rot").attr("x", x).attr("y", y0 + h / 2 + 14).attr("text-anchor", ancora).text(valor);
+  }
 }
 function matrizCalor() {
   const mm = matriz(anoTr, nivelTr), el = $("#g-matriz"), W = larg(el);

@@ -12,8 +12,8 @@ deste relatório foi estimado sem identificação: cada tabela diz se mostra
 ## I — Resumo executivo
 
 **Resultado oficial.** No 1º turno (04/10) Flávio Bolsonaro teve 56.104.503
-votos (47,04% dos válidos) e Lula 53.879.538 (45,16%). No 2º turno (25/10)
-Lula teve 64.256.232 (51,78%) e Flávio 59.826.041 (48,22%). Lula ganhou
+votos (47,03% dos válidos) e Lula 53.879.538 (45,16%). No 2º turno (25/10)
+Lula teve 64.256.232 (51,79%) e Flávio 59.826.041 (48,22%). Lula ganhou
 10.376.694 votos entre os turnos; Flávio ganhou 3.721.538.
 
 **Integridade dos dados.** Todos os totais calculados a partir dos arquivos

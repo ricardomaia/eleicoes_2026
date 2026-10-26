@@ -99,7 +99,7 @@ main .limite { padding-block: 26px 60px; }
 .painel > header .pergunta { color: var(--tinta-2); max-width: 75ch; font-size: 17px; }
 
 /* blocos */
-.bloco { background: var(--papel); border: 1px solid var(--linha); border-radius: var(--raio); padding: 18px; display: grid; gap: 12px; min-width: 0; }
+.bloco { background: var(--papel); border: 1px solid var(--linha); border-radius: var(--raio); padding: 18px; display: grid; gap: 12px; min-width: 0; align-content: start; }
 .bloco h3 { font-size: 20px; font-weight: 700; font-stretch: 90%; }
 .bloco .legenda-fig { font-size: 14px; color: var(--tinta-2); max-width: 80ch; }
 .simples { border-left: 4px solid var(--tinta); background: var(--papel); padding: 14px 18px; border-radius: 0 var(--raio) var(--raio) 0; display: grid; gap: 8px; }
@@ -208,7 +208,9 @@ select, input[type="search"] { font: 15px var(--f-texto); color: var(--tinta); b
 table { border-collapse: collapse; width: 100%; font-size: 14px; }
 th, td { padding: 7px 10px; border-bottom: 1px solid var(--linha); text-align: left; vertical-align: top; }
 th { font-weight: 700; color: var(--tinta-2); font-size: 13px; }
-td.num, th.num { text-align: right; white-space: nowrap; }
+td.num, th.num { text-align: right; }
+td.num { white-space: nowrap; }
+th { min-width: 7em; }
 tbody tr:hover { background: var(--fundo); }
 .pos { color: var(--ok); } .neg { color: var(--lula); }
 

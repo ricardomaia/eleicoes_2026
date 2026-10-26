@@ -86,10 +86,14 @@ function abrir(id, foco = false) {
     b.setAttribute("aria-selected", String(a === id)); b.tabIndex = a === id ? 0 : -1;
   });
   if (foco) $("#aba-" + id).focus();
+  $("#abas-select").value = id;
   try { history.replaceState(null, "", "#" + id); } catch (e) { /* sem histórico */ }
   if (renderizar[id]) { renderizar[id](); feitos.add(id); }
   esconderDica();
 }
+// seletor de seção para telas estreitas: mesmas opções e mesmos nomes das abas
+$("#abas-select").innerHTML = ABAS.map(a => `<option value="${a}">${$("#aba-" + a).textContent}</option>`).join("");
+$("#abas-select").addEventListener("change", e => { abrir(e.target.value); window.scrollTo({ top: 0 }); });
 document.querySelectorAll("#abas button").forEach(b => {
   b.addEventListener("click", () => abrir(b.getAttribute("aria-controls")));
   b.addEventListener("keydown", e => {
@@ -296,13 +300,23 @@ renderizar.mapa = function () {
     sel.value = varMapa;
     sel.addEventListener("change", () => { varMapa = sel.value; pintarMapa(); });
     $("#lista-mun").innerHTML = MUN.map(m => `<option value="${esc(m.nome)} (${m.uf})"></option>`).join("");
-    $("#busca-mun").addEventListener("change", e => {
-      const t = e.target.value.trim().toUpperCase();
-      const m = MUN.find(x => `${x.nome} (${x.uf})`.toUpperCase() === t) || MUN.find(x => x.nome.toUpperCase() === t);
-      if (!m) return;
+    // busca tolerante: ignora acentos, maiúsculas e espaços extras; aceita "Nome (UF)" ou só o nome
+    const norm = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, " ").trim().toUpperCase();
+    const buscar = valor => {
+      const t = norm(valor), msg = $("#busca-msg");
+      if (!t) { msg.textContent = ""; return; }
+      const exatos = MUN.filter(x => norm(`${x.nome} (${x.uf})`) === t || norm(x.nome) === t);
+      const achados = exatos.length ? exatos : MUN.filter(x => norm(x.nome).startsWith(t));
+      if (!achados.length) { msg.textContent = `Nenhum município começa com "${valor.trim()}". Confira a grafia.`; return; }
+      if (achados.length > 1 && !exatos.length) { msg.textContent = `${achados.length} municípios começam assim; escolha um na lista.`; return; }
+      if (achados.length > 1) { msg.textContent = `Há ${achados.length} municípios com esse nome (${achados.map(a => a.uf).join(", ")}); mostrando o de ${achados[0].uf}. Para outro, escolha na lista com a UF.`; }
+      else msg.textContent = "";
+      const m = achados[0];
       munFixo = m.id; d3.selectAll("#mapa-svg path.mun").classed("sel", function () { return this.dataset.id === m.id; });
       $("#ficha").innerHTML = fichaHTML(m);
-    });
+    };
+    $("#busca-mun").addEventListener("change", e => buscar(e.target.value));
+    $("#busca-mun").addEventListener("keydown", e => { if (e.key === "Enter") buscar(e.target.value); });
     const svg = d3.select("#g-mapa").append("svg").attr("id", "mapa-svg").attr("viewBox", `0 0 ${M.largura} ${M.altura}`)
       .attr("role", "img").attr("aria-label", "Mapa dos municípios do Brasil");
     const g = svg.append("g");
@@ -506,7 +520,9 @@ function sankey() {
   const mm = matriz(anoTr, nivelTr);
   const fluxos = mm.filter(f => !(soMudou && f.origem.split("_")[0] === f.destino.split("_")[0]));
   const el = $("#g-sankey"), W = larg(el), H = Math.min(560, Math.max(380, W * .5)), pad = 12, nw = 14;
-  const mE = Math.min(150, W * .26), mD = Math.min(150, W * .26);
+  const estreito = W < 600;  // celular: nomes abreviados e nome + valor numa linha
+  const mE = estreito ? W * .3 : Math.min(150, W * .26), mD = mE;
+  const nomeNo = (cod) => { const n = nomeCat(cod, anoTr); return estreito ? ({ "Brancos e nulos": "Br./nulos", "Abstenção": "Abst.", "Eliminados": "Elimin." })[n] || n : n; };
   const totO = ORIG.map(o => d3.sum(fluxos.filter(f => f.origem === o), f => f.votos));
   const totD = DEST.map(d => d3.sum(fluxos.filter(f => f.destino === d), f => f.votos));
   const tot = d3.sum(totO), k = (H - 20 - pad * (ORIG.length - 1)) / tot, kD = (H - 20 - pad * (DEST.length - 1)) / d3.sum(totD);
@@ -535,20 +551,21 @@ function sankey() {
   ORIG.forEach((o, i) => {
     if (totO[i] * kk < 0.5) return;
     svg.append("rect").attr("x", xl).attr("y", posO[i]).attr("width", nw).attr("height", Math.max(1, totO[i] * kk)).attr("fill", corCat(o));
-    rotuloNo(svg, xl - 8, posO[i], totO[i] * kk, nomeCat(o, anoTr), fMi(totO[i], 1), "end");
+    rotuloNo(svg, xl - 6, posO[i], estreito ? 0 : totO[i] * kk, nomeNo(o), fMi(totO[i], 1), "end", totO[i] * kk);
   });
   DEST.forEach((d, j) => {
     if (totD[j] * kk < 0.5) return;
     svg.append("rect").attr("x", xr).attr("y", posD[j]).attr("width", nw).attr("height", Math.max(1, totD[j] * kk)).attr("fill", corCat(d));
-    rotuloNo(svg, xr + nw + 8, posD[j], totD[j] * kk, nomeCat(d, anoTr), fMi(totD[j], 1), "start");
+    rotuloNo(svg, xr + nw + 6, posD[j], estreito ? 0 : totD[j] * kk, nomeNo(d), fMi(totD[j], 1), "start", totD[j] * kk);
   });
   svg.append("text").attr("class", "rot").attr("x", xl).attr("y", H - 2).text("1º turno");
   svg.append("text").attr("class", "rot").attr("x", xr + nw).attr("y", H - 2).attr("text-anchor", "end").text("2º turno");
 }
-function rotuloNo(svg, x, y0, h, nome, valor, ancora) {
-  // nós baixos: nome e valor na mesma linha, centrados no nó
+function rotuloNo(svg, x, y0, h, nome, valor, ancora, hReal = h) {
+  // nós baixos (ou tela estreita, h = 0): nome e valor na mesma linha, centrados no nó
   if (h < 30) {
-    svg.append("text").attr("class", "rot-forte").attr("x", x).attr("y", y0 + h / 2 + 4).attr("text-anchor", ancora).text(`${nome} · ${valor}`);
+    svg.append("text").attr("class", "rot-forte").attr("x", x).attr("y", y0 + hReal / 2 + 4).attr("text-anchor", ancora)
+      .style("font-size", h === 0 ? "11px" : null).text(`${nome} · ${valor}`);
   } else {
     svg.append("text").attr("class", "rot-forte").attr("x", x).attr("y", y0 + h / 2).attr("text-anchor", ancora).text(nome);
     svg.append("text").attr("class", "rot").attr("x", x).attr("y", y0 + h / 2 + 14).attr("text-anchor", ancora).text(valor);
@@ -556,21 +573,25 @@ function rotuloNo(svg, x, y0, h, nome, valor, ancora) {
 }
 function matrizCalor() {
   const mm = matriz(anoTr, nivelTr), el = $("#g-matriz"), W = larg(el);
-  const mE = 120, mT = 34, cw = (W - mE - 4) / 4, ch = 52, H = mT + ch * 5 + 4;
+  const estreito = W < 520;  // celular: nomes curtos; intervalo só na dica
+  const curto = c => estreito ? ({ "Brancos e nulos": "Br./nulos", "Abstenção": "Abst.", "Eliminados": "Elimin.", "J. Bolsonaro": "J. Bols." })[nomeCat(c, anoTr)] || nomeCat(c, anoTr) : nomeCat(c, anoTr);
+  const mE = estreito ? 70 : 120, mT = 34, cw = (W - mE - 4) / 4, ch = estreito ? 40 : 52, H = mT + ch * 5 + 4;
   const svg = d3.select(el).html("").append("svg").attr("viewBox", `0 0 ${W} ${H}`);
-  DEST.forEach((d, j) => svg.append("text").attr("class", "rot-forte").attr("x", mE + j * cw + cw / 2).attr("y", 14).attr("text-anchor", "middle").text(nomeCat(d, anoTr)));
+  DEST.forEach((d, j) => svg.append("text").attr("class", "rot-forte").attr("x", mE + j * cw + cw / 2).attr("y", 14).attr("text-anchor", "middle").text(curto(d)));
   svg.append("text").attr("class", "rot").attr("x", mE + 2 * cw).attr("y", 28).attr("text-anchor", "middle").text("2º turno →");
   ORIG.forEach((o, i) => {
-    svg.append("text").attr("class", "rot-forte").attr("x", mE - 8).attr("y", mT + i * ch + ch / 2 + 4).attr("text-anchor", "end").text(nomeCat(o, anoTr));
+    svg.append("text").attr("class", "rot-forte").attr("x", mE - 8).attr("y", mT + i * ch + ch / 2 + 4).attr("text-anchor", "end").text(curto(o));
     DEST.forEach((d, j) => {
       const c = mm.find(f => f.origem === o && f.destino === d);
       const a = Math.min(1, Math.sqrt(c.taxa));
       svg.append("rect").attr("x", mE + j * cw + 1).attr("y", mT + i * ch + 1).attr("width", cw - 2).attr("height", ch - 2).attr("rx", 3)
-        .attr("fill", corCat(d)).attr("fill-opacity", .08 + .85 * a);
+        .attr("fill", corCat(d)).attr("fill-opacity", .08 + .85 * a)
+        .on("mousemove", ev => mostrarDica(`<b>${nomeCat(o, anoTr)} (1º) → ${nomeCat(d, anoTr)} (2º)</b><br>${fPct(100 * c.taxa, 2)}<br>intervalo de 95%: ${fPct(100 * c.taxa_ic95_inf, 2)} a ${fPct(100 * c.taxa_ic95_sup, 2)}`, ev))
+        .on("mouseleave", esconderDica);
       const escuro = a > .6;
-      svg.append("text").attr("x", mE + j * cw + cw / 2).attr("y", mT + i * ch + ch / 2 - 1).attr("text-anchor", "middle")
-        .style("font", "500 14px var(--f-numero)").attr("fill", escuro && d !== "abst_2" ? "#fff" : C.tinta).text(fPct(100 * c.taxa, 1));
-      svg.append("text").attr("x", mE + j * cw + cw / 2).attr("y", mT + i * ch + ch / 2 + 14).attr("text-anchor", "middle")
+      svg.append("text").attr("x", mE + j * cw + cw / 2).attr("y", mT + i * ch + ch / 2 + (estreito ? 5 : -1)).attr("text-anchor", "middle").style("pointer-events", "none")
+        .style("font", `500 ${estreito ? 12 : 14}px var(--f-numero)`).attr("fill", escuro && d !== "abst_2" ? "#fff" : C.tinta).text(fPct(100 * c.taxa, 1));
+      if (!estreito) svg.append("text").style("pointer-events", "none").attr("x", mE + j * cw + cw / 2).attr("y", mT + i * ch + ch / 2 + 14).attr("text-anchor", "middle")
         .style("font", "11px var(--f-numero)").attr("fill", escuro && d !== "abst_2" ? "#fff" : C.tinta2).text(`${fNum(100 * c.taxa_ic95_inf, 1)}–${fNum(100 * c.taxa_ic95_sup, 1)}`);
     });
   });

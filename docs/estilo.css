@@ -69,7 +69,7 @@ p { margin: 0; }
 [hidden] { display: none !important; }
 
 .gutter { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-.limite { max-width: 1180px; margin: 0 auto; }
+.limite { max-width: 1440px; margin: 0 auto; }
 
 /* ---------- cabeçalho ---------- */
 .topo { background: var(--papel); border-bottom: 1px solid var(--linha); }
@@ -84,10 +84,19 @@ p { margin: 0; }
 
 /* ---------- abas ---------- */
 .abas-wrap { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--papel); border-bottom: 1px solid var(--linha); }
-.abas { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: thin; }
+/* Abas: quebram em mais de uma linha quando não cabem (nunca rolagem lateral).
+   Em telas estreitas são trocadas por um seletor de seção. */
+.abas { display: flex; flex-wrap: wrap; gap: 0 4px; }
 .abas button {
-  font: 600 14px/1 var(--f-texto); color: var(--tinta-2); background: none; border: 0; cursor: pointer;
-  padding: 14px 12px 12px; border-bottom: 3px solid transparent; white-space: nowrap;
+  font: 600 14px/1.2 var(--f-texto); color: var(--tinta-2); background: none; border: 0; cursor: pointer;
+  padding: 13px 10px 10px; border-bottom: 3px solid transparent; white-space: nowrap;
+}
+.abas-movel { display: none; align-items: center; gap: 10px; padding-block: 10px; }
+.abas-movel label { font-size: 13px; font-weight: 700; color: var(--tinta-2); text-transform: uppercase; letter-spacing: .06em; font-family: var(--f-numero); }
+.abas-movel select { flex: 1; min-width: 0; font-weight: 700; padding: 9px 10px; }
+@media (max-width: 720px) {
+  .abas { display: none; }
+  .abas-movel { display: flex; }
 }
 .abas button:hover { color: var(--tinta); }
 .abas button[aria-selected="true"] { color: var(--tinta); border-bottom-color: var(--realce); }
@@ -106,7 +115,7 @@ main .limite { padding-block: 26px 60px; }
 .simples h3 { font-size: 13px; font-family: var(--f-numero); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); font-weight: 500; }
 .simples p, .simples li { max-width: 75ch; }
 .simples ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
-.grade-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: 22px; }
+.grade-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 22px; }
 .grade-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; }
 .cab-bloco { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; }
 
@@ -167,7 +176,12 @@ details.tecnico > div { display: grid; gap: 8px; margin-top: 8px; max-width: 85c
 .seg button { font: 600 13px/1 var(--f-texto); padding: 8px 11px; background: var(--papel); color: var(--tinta-2); border: 0; border-left: 1px solid var(--linha-forte); cursor: pointer; }
 .seg button:first-child { border-left: 0; }
 .seg button[aria-pressed="true"] { background: var(--tinta); color: var(--papel); }
-select, input[type="search"] { font: 15px var(--f-texto); color: var(--tinta); background: var(--papel); border: 1px solid var(--linha-forte); border-radius: 6px; padding: 7px 9px; max-width: 100%; }
+select, input[type="search"] { font: 15px var(--f-texto); color: var(--tinta); background: var(--papel); border: 1px solid var(--linha-forte); border-radius: 6px; padding: 7px 9px; max-width: 100%; min-width: 0; }
+/* Um <select> assume a largura da opção mais longa; aqui ele encolhe com o espaço disponível */
+.controles select { flex: 1 1 260px; width: 100%; max-width: 640px; text-overflow: ellipsis; }
+.controles input[type="search"] { flex: 1 1 200px; max-width: 320px; }
+.controles > * { max-width: 100%; }
+.busca-msg { flex-basis: 100%; }
 
 /* gráficos */
 .grafico { width: 100%; min-width: 0; position: relative; }
@@ -191,7 +205,8 @@ select, input[type="search"] { font: 15px var(--f-texto); color: var(--tinta); b
 .dica .mono { font-size: 12px; }
 
 /* mapa */
-.mapa-layout { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+.mapa-layout { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr); gap: 22px; align-items: start; }
+.busca-msg { font-size: 13px; color: var(--tinta-2); }
 @media (max-width: 860px) { .mapa-layout { grid-template-columns: minmax(0, 1fr); } }
 #mapa-svg path.mun { stroke: none; }
 #mapa-svg path.mun:hover { stroke: var(--tinta); stroke-width: 1.2; }

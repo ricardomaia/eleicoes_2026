@@ -91,7 +91,16 @@ e `04_bayes_diagnosticos.json`.
   passa a usá-la automaticamente (basta baixar de novo o arquivo e rodar
   `executar_tudo.py --sem-download`).
 
-## Licença dos dados
+## Licença
 
-Dados do TSE e do IBGE: dados públicos (TSE: Creative Commons Atribuição).
-Os arquivos de `dados_derivados/` podem ser redistribuídos com citação das fontes.
+Este repositório (relatório, código, tabelas, figuras e painel) está sob a
+licença [Creative Commons Atribuição 4.0 Internacional (CC BY 4.0)](LICENSE):
+qualquer pessoa pode copiar, adaptar e redistribuir o material, inclusive
+para fins comerciais, desde que dê crédito ao autor, indique o link para este
+repositório e informe se fez alterações.
+
+Sugestão de citação: Maia, R. *Auditoria estatística da transferência de votos
+entre os turnos da eleição presidencial de 2026*. 2026.
+<https://github.com/ricardomaia/eleicoes_2026>.
+
+Os dados de origem são do TSE (Portal de Dados Abertos, CC BY) e do IBGE.

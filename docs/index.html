@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="estilo.css?v=3">
+<link rel="stylesheet" href="estilo.css?v=6">
 </head>
 <body>
 
@@ -33,6 +33,10 @@
     <button role="tab" id="aba-anomalias" aria-controls="anomalias" aria-selected="false">Pontos fora da curva</button>
     <button role="tab" id="aba-historico" aria-controls="historico" aria-selected="false">2018 · 2022 · 2026</button>
     <button role="tab" id="aba-fontes" aria-controls="fontes" aria-selected="false">Fontes e limites</button>
+  </div>
+  <div class="limite abas-movel">
+    <label for="abas-select">Seção</label>
+    <select id="abas-select"></select>
   </div>
 </nav>
 
@@ -127,8 +131,9 @@
       <label for="sel-var">Mostrar</label>
       <select id="sel-var"></select>
       <label for="busca-mun">Procurar município</label>
-      <input type="search" id="busca-mun" list="lista-mun" placeholder="ex.: Campinas" autocomplete="off">
+      <input type="search" id="busca-mun" list="lista-mun" placeholder="ex.: São José dos Campos" autocomplete="off">
       <datalist id="lista-mun"></datalist>
+      <span class="busca-msg" id="busca-msg" role="status" aria-live="polite"></span>
     </div>
     <div class="mapa-layout">
       <div>
@@ -427,13 +432,14 @@
 <footer class="rodape gutter">
   <div class="limite">
     <p>Análise estatística independente feita com dados públicos do Tribunal Superior Eleitoral e do IBGE. Não é uma publicação oficial do TSE.</p>
+    <p>Conteúdo sob licença <a href="https://creativecommons.org/licenses/by/4.0/deed.pt-br">Creative Commons Atribuição 4.0 (CC BY 4.0)</a>: pode ser copiado, adaptado e redistribuído, inclusive para fins comerciais, desde que com crédito ao autor e link para o repositório. Dados de origem: TSE (CC BY) e IBGE.</p>
     <p>Legenda de natureza dos números: <span class="natureza oficial">Dado oficial</span> contagem publicada, sem modelo · <span class="natureza estimativa">Estimativa</span> resultado de modelo estatístico · <span class="natureza simulacao">Simulação</span> cenários hipotéticos.</p>
   </div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-<script src="dados.js?v=3"></script>
-<script src="mapa.js?v=3"></script>
-<script src="app.js?v=3"></script>
+<script src="dados.js?v=6"></script>
+<script src="mapa.js?v=6"></script>
+<script src="app.js?v=6"></script>
 </body>
 </html>

@@ -1,0 +1,61 @@
+{
+  "ano": 2026,
+  "fonte_t2_candidatos": "amostra de BUs (sistema de divulgação)",
+  "bu_amostra_n": 50821,
+  "bu_divergencias": {
+    "aptos": 0,
+    "comparecimento": 0,
+    "brancos": 0,
+    "nulos": 0,
+    "validos(a+b)": 0
+  },
+  "secoes_t1": 499248,
+  "secoes_t2": 499248,
+  "juncao": {
+    "both": 499248,
+    "left_only": 0,
+    "right_only": 0
+  },
+  "t1_comp_igual_soma_votos_csv": 499248,
+  "t1_comp_diferente_soma_votos_csv": 0,
+  "t1_abst_tse_diferente_aptos_menos_comp": 41,
+  "secoes_nos_dois_turnos": 499248,
+  "secoes_aptos_diferentes_entre_turnos": 55722,
+  "soma_abs_dif_aptos": 74692,
+  "secoes_nao_instaladas_t1": 41,
+  "secoes_nao_instaladas_t2": 41,
+  "secoes_anuladas_t1": 0,
+  "secoes_anuladas_t2": 0,
+  "duplicatas_chave": 0,
+  "totais_t1": {
+    "aptos": 158745502,
+    "comp": 125275835,
+    "validos": 119300788,
+    "bn": 5975047,
+    "abst": 33469667,
+    "a": 53879538,
+    "b": 56104503,
+    "o": 9316747
+  },
+  "totais_t2": {
+    "aptos": 158745502,
+    "comp": 128236074,
+    "validos": 124082273,
+    "bn": 4153801,
+    "abst": 30509428,
+    "a": 6518511,
+    "b": 6105530
+  },
+  "municipios_juncao_json": {
+    "both": 5757,
+    "left_only": 0,
+    "right_only": 0
+  },
+  "municipios_div_json_vs_detalhe": {
+    "aptos": 0,
+    "comparecimento": 0,
+    "validos": 0,
+    "brancos": 0,
+    "nulos": 0
+  }
+}

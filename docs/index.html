@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Transferência de Votos 2026</title>
+<meta name="description" content="Análise estatística independente, com dados oficiais do TSE, de como os votos mudaram entre o 1º e o 2º turno da eleição presidencial de 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<header class="topo gutter">
+  <div class="limite">
+    <div class="rotulo-sup"><span>Eleição presidencial 2026</span><span>1º turno 04/10 · 2º turno 25/10</span><span>Dados oficiais do TSE</span></div>
+    <h1>Como os votos mudaram entre o 1º e o 2º turno</h1>
+    <p class="sub">Flávio Bolsonaro terminou o 1º turno na frente. Lula venceu o 2º turno. Este painel mostra, com os dados oficiais seção por seção, de onde vieram os votos a mais de cada candidato, o que a matemática garante, o que os modelos estatísticos estimam e o que não dá para saber.</p>
+    <p class="aviso-indep">Análise independente, sem vínculo com o TSE ou com partidos. Código e dados abertos: <a href="https://github.com/ricardomaia/eleicoes_2026">github.com/ricardomaia/eleicoes_2026</a>. Atualizado em <span id="gerado-em"></span>.</p>
+  </div>
+</header>
+
+<nav class="abas-wrap gutter" aria-label="Seções do painel">
+  <div class="limite abas" role="tablist" id="abas">
+    <button role="tab" id="aba-resumo" aria-controls="resumo" aria-selected="true">Resumo</button>
+    <button role="tab" id="aba-contas" aria-controls="contas" aria-selected="false">As contas</button>
+    <button role="tab" id="aba-mapa" aria-controls="mapa" aria-selected="false">Mapa</button>
+    <button role="tab" id="aba-comparecimento" aria-controls="comparecimento" aria-selected="false">Comparecimento</button>
+    <button role="tab" id="aba-transferencias" aria-controls="transferencias" aria-selected="false">Para onde foram os votos</button>
+    <button role="tab" id="aba-migracao" aria-controls="migracao" aria-selected="false">Flávio → Lula?</button>
+    <button role="tab" id="aba-legislativo" aria-controls="legislativo" aria-selected="false">Câmara e Senado</button>
+    <button role="tab" id="aba-anomalias" aria-controls="anomalias" aria-selected="false">Pontos fora da curva</button>
+    <button role="tab" id="aba-historico" aria-controls="historico" aria-selected="false">2018 · 2022 · 2026</button>
+    <button role="tab" id="aba-fontes" aria-controls="fontes" aria-selected="false">Fontes e limites</button>
+  </div>
+</nav>
+
+<div class="dica" id="dica" role="tooltip"></div>
+
+<main class="gutter">
+<div class="limite">
+
+<!-- ======================= RESUMO ======================= -->
+<section class="painel" id="resumo" role="tabpanel" aria-labelledby="aba-resumo">
+  <div class="bloco">
+    <div class="placar" id="placar"></div>
+    <p class="nota">Percentuais sobre os votos válidos (sem brancos e nulos). Os números 13 e 22 são os números dos candidatos na urna. <span class="natureza oficial">Dado oficial</span></p>
+  </div>
+
+  <div class="simples">
+    <h3>Em poucas palavras</h3>
+    <ul>
+      <li>Lula ganhou <b>10,4 milhões</b> de votos do 1º para o 2º turno. Flávio ganhou <b>3,7 milhões</b>.</li>
+      <li>Os candidatos que saíram da disputa tinham <b>9,3 milhões</b> de votos. Ou seja, mesmo que todos eles tivessem ido para Lula, faltaria 1,1 milhão. Esses votos vieram, necessariamente, de pessoas que no 1º turno votaram em Flávio, votaram em branco ou nulo, ou não foram votar.</li>
+      <li>Os modelos estatísticos indicam que quase todos (cerca de 98%) os eleitores de cada finalista repetiram o voto. O que mais mudou foi o comportamento de quem tinha votado em branco, nulo ou não tinha ido votar: muitos voltaram no 2º turno e, segundo as estimativas, votaram principalmente em Lula.</li>
+      <li>Os arquivos oficiais conferem entre si em todas as seções verificadas. Não foi encontrada nenhuma inconsistência nos registros.</li>
+    </ul>
+  </div>
+
+  <div class="achados" id="achados"></div>
+
+  <div class="bloco">
+    <div class="cab-bloco"><h3>As sete perguntas da investigação</h3><span class="nota">Clique em "ver" para ir à aba com os dados</span></div>
+    <div class="perguntas" id="perguntas"></div>
+    <details class="tecnico"><summary>O que significa cada situação</summary><div>
+      <p><span class="pill ok">Sustentada</span> os dados disponíveis apoiam a afirmação.</p>
+      <p><span class="pill parcial">Parcialmente sustentada</span> os dados apoiam uma parte, ou apoiam com ressalvas importantes.</p>
+      <p><span class="pill nao">Não sustentada</span> os dados contradizem a afirmação.</p>
+      <p><span class="pill indet">Indeterminada</span> com os dados disponíveis não é possível decidir.</p>
+      <p>Essas situações descrevem as hipóteses da pesquisa; não são avaliações de candidatos ou partidos.</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- ======================= CONTAS ======================= -->
+<section class="painel" id="contas" role="tabpanel" aria-labelledby="aba-contas" hidden>
+  <header><h2>As contas do 1º para o 2º turno</h2><p class="pergunta">Antes de qualquer modelo: o que os números oficiais mostram, e o que a aritmética sozinha permite afirmar.</p></header>
+  <div class="simples"><h3>Em poucas palavras</h3>
+    <p>Todo eleitor apto aparece uma vez em cada turno: votou em alguém, votou em branco ou nulo, ou não foi votar. Por isso as contas fecham exatamente. O que os dois candidatos ganharam juntos (14,1 milhões) é igual aos votos dos candidatos eliminados (9,3 milhões) mais o aumento de votos válidos (4,8 milhões). A aritmética, porém, não diz quem trocou de lado: ela é compatível tanto com nenhum eleitor de Flávio indo para Lula quanto com muitos.</p>
+  </div>
+  <div class="grade-2">
+    <div class="bloco">
+      <div class="cab-bloco"><h3>Resultado nos dois turnos</h3><span class="natureza oficial">Dado oficial</span></div>
+      <div class="tabela-wrap"><table id="tab-reconc"></table></div>
+      <p class="nota">Abstenção calculada como aptos − comparecimento. O TSE publica 33.469.244 no 1º turno porque exclui os 423 aptos de 41 seções não instaladas. Os aptos incluem 39 registros duplicados por transferência temporária, segundo nota do TSE.</p>
+    </div>
+    <div class="bloco">
+      <div class="cab-bloco"><h3>A conta que sempre fecha</h3><span class="natureza oficial">Dado oficial</span></div>
+      <p class="legenda-fig">À esquerda, o que os finalistas ganharam. À direita, de onde esses votos podem ter vindo no total. As duas barras têm exatamente o mesmo tamanho.</p>
+      <div class="grafico" id="g-identidade"></div>
+      <div class="legenda" id="leg-identidade"></div>
+    </div>
+  </div>
+  <div class="grade-2">
+    <div class="bloco">
+      <div class="cab-bloco"><h3>O que a matemática garante</h3><span class="natureza oficial">Cálculo exato</span></div>
+      <p class="legenda-fig">Quantidades mínimas que precisam ter acontecido, calculadas em cada lugar e somadas. Quanto menor o lugar (seção em vez de país), mais a conta revela.</p>
+      <div class="tabela-wrap"><table id="tab-minimos"></table></div>
+      <details class="tecnico"><summary>Como esses mínimos são calculados</summary><div>
+        <p>Em cada unidade (país, UF, município ou seção), se Lula teve no 2º turno mais votos do que a soma dos seus votos do 1º turno com todos os votos dos eliminados, a diferença tem de ter vindo de outro grupo. Somando essa diferença unidade por unidade, obtém-se um mínimo nacional. O mesmo raciocínio dá os mínimos de novos votos válidos.</p>
+        <p>Para a troca direta Flávio → Lula, o mínimo em cada unidade é máx(0, votos de Flávio no 1T + votos de Lula no 2T − aptos). Ele só é positivo onde Flávio teve muitos votos no 1º turno e Lula teve muitos no 2º; isso aconteceu em apenas 2 das 50.821 seções da amostra (4 eleitores no total).</p>
+      </div></details>
+    </div>
+    <div class="bloco">
+      <div class="cab-bloco"><h3>De onde vieram os votos de cada um no 2º turno</h3><span class="natureza estimativa">Estimativa · Modelo A</span></div>
+      <p class="legenda-fig">Divisão estimada dos votos do 2º turno pela escolha das mesmas pessoas no 1º turno. Passe o mouse para ver o intervalo de incerteza.</p>
+      <div class="grafico" id="g-decomp"></div>
+      <div class="legenda" id="leg-decomp"></div>
+    </div>
+  </div>
+  <div class="bloco">
+    <div class="cab-bloco"><h3>Quanto a aritmética deixa em aberto</h3><span class="natureza oficial">Cálculo exato</span></div>
+    <p class="legenda-fig">Faixa de valores possíveis para a parcela de eleitores de um finalista que votou no outro, usando só a aritmética de cada município. A faixa é larga demais para decidir; por isso são necessários os modelos das outras abas.</p>
+    <div class="grafico" id="g-limites"></div>
+  </div>
+</section>
+
+<!-- ======================= MAPA ======================= -->
+<section class="painel" id="mapa" role="tabpanel" aria-labelledby="aba-mapa" hidden>
+  <header><h2>Mapa por município</h2><p class="pergunta">Onde cada candidato cresceu, onde aumentaram os votos válidos e onde estavam os eleitores dos candidatos eliminados.</p></header>
+  <div class="simples"><h3>Em poucas palavras</h3>
+    <p>A margem de Lula sobre Flávio aumentou em quase todos os municípios do país, não só em algumas regiões. Valores "por 100 aptos" comparam lugares de tamanhos diferentes: +5 significa 5 votos a mais para cada 100 eleitores do município.</p>
+  </div>
+  <div class="bloco">
+    <div class="controles">
+      <label for="sel-var">Mostrar</label>
+      <select id="sel-var"></select>
+      <label for="busca-mun">Procurar município</label>
+      <input type="search" id="busca-mun" list="lista-mun" placeholder="ex.: Campinas" autocomplete="off">
+      <datalist id="lista-mun"></datalist>
+    </div>
+    <div class="mapa-layout">
+      <div>
+        <div class="grafico" id="g-mapa"></div>
+        <div id="mapa-legenda" class="grafico"></div>
+        <p class="nota" id="mapa-nota"></p>
+      </div>
+      <div class="ficha" id="ficha">
+        <p class="nota">Passe o mouse ou toque em um município para ver os números. Clique para fixar.</p>
+      </div>
+    </div>
+  </div>
+  <div class="bloco">
+    <div class="cab-bloco"><h3>Estados ordenados</h3><span class="natureza oficial">Dado oficial</span></div>
+    <div class="controles"><label for="sel-uf">Ordenar por</label><select id="sel-uf"></select></div>
+    <div class="grafico" id="g-ufs"></div>
+    <p class="nota">● = estado com 2º turno também para governador (AC, DF e TO). A falta de disputa local tende a reduzir o comparecimento no 2º turno, como se vê no Amapá e em Roraima.</p>
+  </div>
+</section>
+
+<!-- ======================= COMPARECIMENTO ======================= -->
+<section class="painel" id="comparecimento" role="tabpanel" aria-labelledby="aba-comparecimento" hidden>
+  <header><h2>Comparecimento, brancos e nulos</h2><p class="pergunta">Os votos válidos a mais apareceram principalmente onde Lula já era forte? E essas mudanças acompanham o crescimento de Lula?</p></header>
+  <div class="simples"><h3>Em poucas palavras</h3>
+    <ul>
+      <li>Em 2026, os votos válidos aumentaram em todos os tipos de lugar, um pouco mais onde Lula liderava. Nesses lugares, a diferença veio sobretudo da queda de votos brancos e nulos; o comparecimento aumentou de forma parecida em toda parte.</li>
+      <li>Em 2022 e 2018 foi o contrário: os válidos a mais apareceram sobretudo onde o candidato de direita liderava.</li>
+      <li>Municípios onde os votos válidos mais aumentaram foram, em geral, os que deram mais votos a mais para Lula. Isso mostra uma relação entre os números dos lugares; não prova que as mesmas pessoas que voltaram a votar escolheram Lula.</li>
+    </ul>
+  </div>
+  <div class="controles"><span class="nota">Eleição</span><div class="seg" id="seg-ano-comp"></div></div>
+  <div class="grade-2">
+    <div class="bloco">
+      <div class="cab-bloco"><h3>Quem tem os eleitores × quem recebeu os válidos a mais</h3><span class="natureza oficial">Dado oficial</span></div>
+      <p class="legenda-fig">Seções agrupadas pela vantagem no 1º turno. Barra clara: parte dos eleitores do país naquele grupo. Barra escura: parte do aumento de votos válidos que aconteceu naquele grupo.</p>
+      <div class="grafico" id="g-faixas"></div>
+    </div>
+    <div class="bloco">
+      <div class="cab-bloco"><h3>Variações por 100 eleitores</h3><span class="natureza oficial">Dado oficial</span></div>
+      <p class="legenda-fig">Para cada grupo: quanto mudaram os votos válidos, o comparecimento e os brancos e nulos, a cada 100 eleitores aptos.</p>
+      <div class="grafico" id="g-faixas2"></div>
+      <div class="legenda" id="leg-faixas2"></div>
+    </div>
+  </div>
+  <div class="bloco">
+    <div class="cab-bloco"><h3>Municípios: uma variação contra a outra</h3><span class="natureza oficial">Dado oficial · 2026</span></div>
+    <div class="controles"><label for="sel-disp">Comparar</label><select id="sel-disp"></select></div>
+    <p class="legenda-fig" id="disp-legenda"></p>
+    <div class="grafico" id="g-disp"></div>
+    <p class="nota">Cada ponto é um município; o tamanho segue o número de eleitores; a cor indica quem liderava no 1º turno (vermelho: Lula; azul: Flávio). A reta é a tendência ponderada pelo eleitorado. Eixos cortados nos percentis 0,5 e 99,5.</p>
+  </div>
+  <div class="bloco">
+    <div class="cab-bloco"><h3>Brancos e nulos por região, nas três eleições</h3><span class="natureza oficial">Dado oficial</span></div>
+    <p class="legenda-fig">Percentual de brancos e nulos sobre quem compareceu, no 1º e no 2º turno. Em 2026 caíram em todas as regiões; em 2022 subiram em quase todas.</p>
+    <div class="grafico" id="g-bn"></div>
+  </div>
+</section>
+
+<!-- ======================= TRANSFERÊNCIAS ======================= -->
+<section class="painel" id="transferencias" role="tabpanel" aria-labelledby="aba-transferencias" hidden>
+  <header><h2>Para onde foram os votos</h2><p class="pergunta">Quantos eleitores de cada grupo do 1º turno foram para cada opção do 2º turno? (H1, H2 e H3)</p></header>
+  <div class="simples"><h3>Em poucas palavras</h3>
+    <p>O voto é secreto, então ninguém sabe o que cada eleitor fez. O que se pode fazer é comparar milhares de seções: se, onde havia mais eleitores de um grupo no 1º turno, um candidato cresceu mais no 2º, isso sugere para onde aquele grupo foi. Esse método se chama <b>inferência ecológica</b>. Ele dá estimativas com margem de erro e depende de hipóteses (ver "Fontes e limites"). Diferentes versões do método, testadas aqui, chegam a resultados parecidos.</p>
+  </div>
+  <div class="controles">
+    <span class="nota">Eleição</span><div class="seg" id="seg-ano-tr"></div>
+    <span class="nota">Unidade</span><div class="seg" id="seg-nivel-tr"></div>
+    <label><input type="checkbox" id="chk-mudou"> mostrar só quem mudou de opção</label>
+  </div>
+  <div class="bloco">
+    <div class="cab-bloco"><h3>Fluxo de eleitores entre os turnos</h3><span class="natureza estimativa">Estimativa · Modelo A</span></div>
+    <p class="legenda-fig">À esquerda, a escolha no 1º turno; à direita, no 2º. A largura de cada faixa é o número estimado de eleitores. Passe o mouse sobre uma faixa.</p>
+    <div class="grafico" id="g-sankey"></div>
+  </div>
+  <div class="grade-2">
+    <div class="bloco">
+      <div class="cab-bloco"><h3>Taxas de transição</h3><span class="natureza estimativa">Estimativa · Modelo A</span></div>
+      <p class="legenda-fig">Cada linha soma 100%: como se dividiram os eleitores de cada grupo do 1º turno. Entre colchetes, o intervalo de 95%.</p>
+      <div class="grafico" id="g-matriz"></div>
+    </div>
+    <div class="bloco">
+      <div class="cab-bloco"><h3>Eleitores dos candidatos eliminados</h3><span class="natureza estimativa">Estimativa · Modelo A · 2026</span></div>
+      <p class="legenda-fig">Destino estimado no 2º turno dos eleitores de cada candidato que não foi ao 2º turno.</p>
+      <div class="grafico" id="g-elim"></div>
+      <div class="legenda" id="leg-elim"></div>
+    </div>
+  </div>
+  <div class="bloco">
+    <div class="cab-bloco"><h3>Os modelos concordam?</h3><span class="natureza estimativa">Estimativa · Modelos A e B · 2026</span></div>
+    <div class="controles"><label for="sel-celula">Taxa</label><select id="sel-celula"></select></div>
+    <p class="legenda-fig">A mesma taxa calculada de nove maneiras: o Modelo A em seções e em municípios; o Modelo A com quatro divisões diferentes do país; e o Modelo B (bayesiano) com três suposições iniciais diferentes, uma delas propositalmente centrada em 15% de troca entre os finalistas.</p>
+    <div class="grafico" id="g-modelos"></div>
+    <details class="tecnico"><summary>Os modelos em detalhe</summary><div>
+      <p><b>Modelo A.</b> Para cada estado, procura a tabela de taxas (todas entre 0% e 100%, cada linha somando 100%) que melhor reproduz os votos do 2º turno de todas as seções, a partir da composição do 1º turno de cada seção. Ajuste por quase-verossimilhança multinomial (algoritmo EM). Incerteza por reamostragem de municípios (200 repetições). Usa uma amostra aleatória de 50.821 seções (10% de cada estado) com o boletim de urna do 2º turno.</p>
+      <p><b>Divisões alternativas.</b> Uma tabela por estado (principal); por região × faixa de vantagem; por estado × nível de urbanização; e uma tabela própria para cada município grande. A última usa só diferenças dentro de cada município.</p>
+      <p><b>Modelo B.</b> Bayesiano hierárquico: as taxas variam por estado, por urbanização e pela vantagem do 1º turno no município. Três distribuições a priori: neutra, "fidelidade alta" e "troca alta" (15%). Se os resultados mudassem muito com a prior, os dados não estariam decidindo. Diagnósticos: sem divergências; R-hat máximo 1,011, 1,019 e 1,042.</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- ======================= MIGRAÇÃO ======================= -->
+<section class="painel" id="migracao" role="tabpanel" aria-labelledby="aba-migracao" hidden>
+  <header><h2>Eleitores de Flávio foram para Lula?</h2><p class="pergunta">Teste específico: os resultados são compatíveis com nenhuma, ou com pouca, troca direta entre os finalistas?</p></header>
+  <div class="simples"><h3>Em poucas palavras</h3>
+    <ul>
+      <li>Para cada limite (0%, 1%, 2%, 5%, 10%), o modelo é obrigado a não passar daquela taxa de troca, e mede-se quanto pior ele fica em reproduzir os votos das seções. Se fica muito pior, aquele limite é incompatível com os dados.</li>
+      <li>Em todo o país, fora do Amapá, a hipótese "nenhum eleitor de Flávio votou em Lula" é compatível com os dados. Por município, ela é compatível em todos os estados.</li>
+      <li>No Amapá, a incompatibilidade está em Macapá e Santana. Com todas as 1.914 seções do estado, o modelo estima ali cerca de 8% de troca (aproximadamente 12,7 mil votos). O mesmo ajuste estima também que muitos eleitores de Lula deixaram de votar, o que indica que dados agregados não conseguem separar troca de lado de abstenção diferente entre os dois grupos.</li>
+      <li>No sentido contrário (eleitores de Lula indo para Flávio), nenhum limite é rejeitado.</li>
+    </ul>
+  </div>
+  <div class="bloco">
+    <div class="controles">
+      <span class="nota">Sentido</span><div class="seg" id="seg-sentido"></div>
+      <span class="nota">Limite máximo de troca</span><div class="seg" id="seg-teto"></div>
+    </div>
+    <div class="grade-3" id="cartoes-teste"></div>
+  </div>
+  <div class="bloco">
+    <div class="cab-bloco"><h3>Estados: quanto o limite piora o ajuste</h3><span class="natureza estimativa">Estimativa · Modelo A · 2026 · seções</span></div>
+    <p class="legenda-fig">Estatística F de cada estado (quanto maior, mais o limite atrapalha). Linha tracejada: rejeição a 5% em um estado isolado. Linha contínua: rejeição a 5% corrigida para 27 testes (Bonferroni).</p>
+    <div class="grafico" id="g-teste-uf"></div>
+  </div>
+  <div class="grade-2">
+    <div class="bloco">
+      <div class="cab-bloco"><h3>Amapá com todas as seções</h3><span class="natureza estimativa">Estimativa · Modelo A</span></div>
+      <div class="tabela-wrap"><table id="tab-amapa"></table></div>
+      <p class="nota">Boletins de urna das 1.914 seções conferidos com o detalhe por seção do TSE: nenhuma divergência. Só AC, DF e TO tiveram 2º turno para governador; no Amapá o comparecimento caiu 8 pontos e, no interior, até 24 pontos.</p>
+    </div>
+    <div class="bloco">
+      <div class="cab-bloco"><h3>Simulações: quatro cenários</h3><span class="natureza simulacao">Simulação · Modelo C</span></div>
+      <p class="legenda-fig">20.000 tabelas de transição sorteadas por cenário, ajustadas para reproduzir exatamente os totais oficiais e depois comparadas com os 5.757 municípios. Menor erro = melhor.</p>
+      <div class="controles"><span class="nota">Mostrar</span><div class="seg" id="seg-mc"></div></div>
+      <div class="grafico" id="g-mc"></div>
+      <div class="legenda" id="leg-mc"></div>
+      <details class="tecnico"><summary>Os quatro cenários</summary><div id="mc-defs"></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= LEGISLATIVO ======================= -->
+<section class="painel" id="legislativo" role="tabpanel" aria-labelledby="aba-legislativo" hidden>
+  <header><h2>Câmara, Senado e presidente</h2><p class="pergunta">O PL foi bem para deputado e senador. Como Lula pode ter vencido onde o PL teve muitos votos? (H4)</p></header>
+  <div class="simples"><h3>Em poucas palavras</h3>
+    <p>No Brasil é comum votar em um partido para deputado e num candidato de outro campo para presidente. Em 2026, Flávio teve cerca do dobro dos votos que o PL teve para deputado; em 2022, Jair Bolsonaro teve 2,6 vezes os votos do PL, e em 2018, quase 4 vezes os do PSL. Ou seja, em 2026 o voto para presidente e o voto no partido do candidato estiveram mais alinhados que antes. Estima-se que cerca de 5% de quem votou no PL para deputado votou em Lula no 2º turno.</p>
+  </div>
+  <div class="grade-2">
+    <div class="bloco">
+      <div class="cab-bloco"><h3>Votos e cadeiras por partido</h3><span class="natureza oficial">Dado oficial</span></div>
+      <div class="controles"><div class="seg" id="seg-casa"></div></div>
+      <div class="grafico" id="g-cadeiras"></div>
+      <div class="legenda"><span><i style="background:var(--linha-forte)"></i>% dos votos</span><span><i style="background:var(--tinta-2)"></i>% das cadeiras</span></div>
+    </div>
+    <div class="bloco">
+      <div class="cab-bloco"><h3>Candidato de direita × seu partido</h3><span class="natureza oficial">Dado oficial</span></div>
+      <p class="legenda-fig">Votos do candidato de direita para presidente (1º turno) e do seu partido para deputado federal, em % dos válidos.</p>
+      <div class="grafico" id="g-razao"></div>
+    </div>
+  </div>
+  <div class="bloco">
+    <div class="cab-bloco"><h3>Como votaram para presidente os eleitores de cada partido</h3><span class="natureza estimativa">Estimativa · inferência ecológica</span></div>
+    <div class="controles"><div class="seg" id="seg-split"></div></div>
+    <p class="legenda-fig">Grupos pelo voto para deputado federal no 1º turno. "Brancos/nulos/não votou p/ deputado" inclui eleitores em trânsito fora do seu estado, que só votam para presidente.</p>
+    <div class="grafico" id="g-split"></div>
+    <div class="legenda" id="leg-split"></div>
+  </div>
+  <div class="bloco">
+    <div class="cab-bloco"><h3>Seção por seção: PL para deputado × voto para presidente</h3><span class="natureza oficial">Dado oficial · 1º turno</span></div>
+    <div class="controles"><div class="seg" id="seg-hex"></div></div>
+    <p class="legenda-fig" id="hex-legenda"></p>
+    <div class="grafico" id="g-hex"></div>
+  </div>
+</section>
+
+<!-- ======================= ANOMALIAS ======================= -->
+<section class="painel" id="anomalias" role="tabpanel" aria-labelledby="aba-anomalias" hidden>
+  <header><h2>Pontos fora da curva</h2><p class="pergunta">Há lugares em que o resultado ficou muito longe do que o modelo esperava? Isso é mais comum em 2026 do que em 2022 e 2018? (H5)</p></header>
+  <div class="simples"><h3>Em poucas palavras</h3>
+    <ul>
+      <li>Para cada município, compara-se o voto real de Lula no 2º turno com o que o modelo esperava, levando em conta o tamanho do lugar. Diferenças grandes são "pontos fora da curva".</li>
+      <li>Em 2026, 12 municípios ficaram muito fora do esperado depois de descontar o acaso de testar milhares de lugares ao mesmo tempo. Em 2022 foram 26; em 2018, 11. Em 10 dos 12 de 2026, Lula teve <b>menos</b> votos do que o esperado; quase todos são cidades pequenas onde o comparecimento caiu muito.</li>
+      <li>O modelo da urna eletrônica não fez diferença no resultado dentro do mesmo município.</li>
+      <li>Um ponto fora da curva não é prova de irregularidade: em geral reflete algo local que o modelo não considera.</li>
+    </ul>
+  </div>
+  <div class="grade-2">
+    <div class="bloco">
+      <div class="cab-bloco"><h3>Distribuição dos desvios por município</h3><span class="natureza estimativa">Estimativa · Modelo D</span></div>
+      <p class="legenda-fig">Desvio padronizado: 0 = exatamente o esperado; além de ±3 é raro. As três eleições têm formas parecidas.</p>
+      <div class="grafico" id="g-hist-z"></div>
+      <div class="legenda" id="leg-hist-z"></div>
+    </div>
+    <div class="bloco">
+      <div class="cab-bloco"><h3>Comparação com 2022 e 2018</h3><span class="natureza estimativa">Estimativa · Modelo D</span></div>
+      <div class="tabela-wrap"><table id="tab-dist"></table></div>
+      <p class="nota">I de Moran mede se desvios parecidos ficam próximos no mapa (0 = sem agrupamento). Agrupamentos aparecem nas três eleições e indicam fatores regionais que o modelo não inclui.</p>
+    </div>
+  </div>
+  <div class="bloco">
+    <div class="cab-bloco"><h3>Municípios sinalizados em 2026</h3><span class="natureza estimativa">Estimativa · Modelo D</span></div>
+    <div class="tabela-wrap"><table id="tab-sinal"></table></div>
+    <p class="nota">Sinalizado = desvio que continua relevante depois da correção para múltiplas comparações (Benjamini-Hochberg, q &lt; 0,05). <a href="#mapa" id="link-mapa-z">Ver os desvios no mapa</a>.</p>
+  </div>
+  <div class="grade-2">
+    <div class="bloco">
+      <div class="cab-bloco"><h3>Modelo da urna</h3><span class="natureza estimativa">Estimativa · Modelo D</span></div>
+      <p class="legenda-fig">Diferença média do desvio de seções com cada modelo de urna em relação ao modelo mais antigo, comparando só seções do mesmo município. Faixas que cruzam o zero: nenhuma diferença detectável.</p>
+      <div class="grafico" id="g-urna"></div>
+    </div>
+    <div class="bloco">
+      <div class="cab-bloco"><h3>Seções com grande variação de comparecimento</h3><span class="natureza oficial">Dado oficial · 2026 · todas as seções</span></div>
+      <div class="tabela-wrap"><table id="tab-extremos"></table></div>
+      <p class="nota">Parte dessas seções teve mudança no número de eleitores aptos entre os turnos (transferência temporária de eleitores).</p>
+    </div>
+  </div>
+  <details class="tecnico bloco"><summary>Por que não foi usada a Lei de Benford</summary><div>
+    <p>A Lei de Benford descreve a frequência do primeiro dígito em certos conjuntos de números. Em contagens de votos por seção, essa frequência depende do tamanho das seções (limitado por lei a cerca de 400 a 500 eleitores) e da votação de cada candidato. Por isso, desvios aparecem também em eleições sem nenhuma irregularidade, e o teste não serve sozinho como evidência (Deckert, Myagkov e Ordeshook, 2011).</p>
+  </div></details>
+</section>
+
+<!-- ======================= HISTÓRICO ======================= -->
+<section class="painel" id="historico" role="tabpanel" aria-labelledby="aba-historico" hidden>
+  <header><h2>2018, 2022 e 2026 lado a lado</h2><p class="pergunta">O que foi parecido e o que foi diferente em 2026?</p></header>
+  <div class="simples"><h3>Em poucas palavras</h3>
+    <p>Nas três eleições, quase todos os eleitores dos dois finalistas repetiram o voto, e a troca direta entre eles foi próxima de zero. A diferença de 2026 está em quem não tinha votado validamente no 1º turno: os votos válidos aumentaram muito mais do que em 2018 e 2022, e os brancos e nulos caíram em vez de subir. 2026 foi também a única das três eleições em que o finalista que estava atrás no 1º turno venceu.</p>
+  </div>
+  <div class="bloco">
+    <div class="cab-bloco"><h3>Indicadores por 100 eleitores aptos</h3><span class="natureza oficial">Dado oficial</span></div>
+    <div class="grafico grade-3" id="g-hist-multi"></div>
+  </div>
+  <div class="bloco">
+    <div class="cab-bloco"><h3>Taxas de transição estimadas nas três eleições</h3><span class="natureza estimativa">Estimativa · Modelo A · seções</span></div>
+    <div class="grafico" id="g-hist-taxas"></div>
+    <p class="nota">Finalistas: 2026 Lula e Flávio Bolsonaro; 2022 Lula e Jair Bolsonaro; 2018 Haddad e Jair Bolsonaro. Vermelho = finalista do PT; azul = finalista de direita.</p>
+  </div>
+  <div class="bloco"><div class="tabela-wrap"><table id="tab-hist"></table></div></div>
+</section>
+
+<!-- ======================= FONTES ======================= -->
+<section class="painel" id="fontes" role="tabpanel" aria-labelledby="aba-fontes" hidden>
+  <header><h2>Fontes, verificações e limites</h2><p class="pergunta">De onde vêm os dados, como foram conferidos e o que esta análise não consegue responder.</p></header>
+  <div class="bloco">
+    <h3>Limites desta análise</h3>
+    <ol class="lista-lim">
+      <li><b>O voto é secreto.</b> Não existe registro de como cada pessoa votou nos dois turnos. Todas as "taxas de transição" são estimativas feitas comparando lugares, não pessoas.</li>
+      <li><b>As estimativas dependem de uma suposição.</b> Os modelos supõem que, dentro de cada estado (ou de cada grupo usado), os eleitores de um mesmo grupo se comportaram de forma parecida em todas as seções. Se isso não for verdade, as estimativas podem estar erradas, e as margens de erro mostradas não incluem esse tipo de erro.</li>
+      <li><b>Mais de uma explicação pode servir.</b> Dados agregados às vezes não distinguem "eleitores trocaram de candidato" de "eleitores de um candidato deixaram de votar mais do que os do outro". O caso do Amapá mostra isso.</li>
+      <li><b>Dados do 2º turno ainda incompletos por seção.</b> Em 26/10/2026 o TSE ainda não tinha publicado a votação por candidato em cada seção do 2º turno. Foram usados os boletins de urna de uma amostra aleatória de 50.821 seções (10% de cada estado) e de todas as 1.914 seções do Amapá; por município, o resultado completo do sistema de divulgação do TSE.</li>
+      <li><b>Resultado ainda sujeito a ajustes.</b> O 2º turno veio do sistema oficial de divulgação (totalização final); o relatório oficial consolidado ainda não havia sido publicado.</li>
+      <li><b>Modelo bayesiano reduzido.</b> Por custo de processamento, rodou com 4.000 seções; uma das três versões teve indicador de convergência (R-hat 1,042) um pouco acima do ideal.</li>
+      <li><b>Classificação de partidos.</b> O agrupamento em esquerda, centro e direita é uma escolha desta análise; os resultados principais usam o PL e a federação do PT separadamente.</li>
+      <li><b>Uma anomalia estatística não é prova de fraude.</b> Ela indica que algo local não foi captado pelo modelo; a explicação pode ser comportamento eleitoral, erro de modelagem ou problema de dados. Nesta análise não foi encontrada inconsistência nos dados.</li>
+    </ol>
+  </div>
+  <div class="grade-2">
+    <div class="bloco">
+      <h3>Conferências feitas</h3>
+      <div class="tabela-wrap"><table id="tab-conf"></table></div>
+      <ul class="lista-lim">
+        <li>50.821 boletins de urna da amostra e 1.914 do Amapá × detalhe por seção do TSE: nenhuma divergência em aptos, comparecimento, brancos, nulos e válidos.</li>
+        <li>5.757 municípios do sistema de divulgação × detalhe por seção: nenhuma divergência.</li>
+        <li>Todas as identidades (válidos + brancos + nulos = comparecimento; comparecimento + abstenção = aptos) conferem em cada uma das 499.248 seções.</li>
+        <li>11 testes automatizados, incluindo a recuperação de uma tabela de transição conhecida em dados simulados.</li>
+      </ul>
+    </div>
+    <div class="bloco">
+      <h3>Glossário</h3>
+      <dl class="glossario">
+        <dt>Aptos</dt><dd>Eleitores que podiam votar naquela seção.</dd>
+        <dt>Comparecimento e abstenção</dt><dd>Quem foi votar e quem não foi. Somados, dão os aptos.</dd>
+        <dt>Votos válidos</dt><dd>Votos dados a candidatos. Brancos e nulos não entram.</dd>
+        <dt>Seção</dt><dd>A menor unidade de votação: uma urna, com até cerca de 500 eleitores. Em 2026 foram 499.248.</dd>
+        <dt>Boletim de urna (BU)</dt><dd>O resultado impresso e publicado de cada urna ao fim da votação.</dd>
+        <dt>Inferência ecológica</dt><dd>Estimar o comportamento de grupos de eleitores a partir de resultados de muitos lugares, sem dados individuais.</dd>
+        <dt>Intervalo de 95%</dt><dd>Faixa de valores compatíveis com os dados, dado o modelo. Não inclui erros do próprio modelo.</dd>
+        <dt>Valor-p</dt><dd>Probabilidade de um desvio tão grande quanto o observado, se a hipótese testada fosse verdadeira. Abaixo de 0,05, costuma-se considerar a hipótese incompatível.</dd>
+        <dt>Correção para múltiplas comparações</dt><dd>Ajuste que evita tratar como relevante um desvio que aparece só porque milhares de lugares foram testados.</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="bloco">
+    <h3>Arquivos baixados</h3>
+    <p class="legenda-fig">Endereço, data de acesso, tamanho e código SHA-256 de cada arquivo usado. O código SHA-256 permite a qualquer pessoa verificar que está analisando exatamente o mesmo arquivo.</p>
+    <div class="tabela-wrap"><table id="tab-fontes"></table></div>
+  </div>
+  <div class="bloco">
+    <h3>Como reproduzir</h3>
+    <p>Todo o código está em <a href="https://github.com/ricardomaia/eleicoes_2026">github.com/ricardomaia/eleicoes_2026</a>. O relatório técnico completo está em <a href="https://github.com/ricardomaia/eleicoes_2026/blob/main/RELATORIO.md">RELATORIO.md</a>. Com Python 3.14 e as bibliotecas de <code>requirements.txt</code>, o comando <code>python src/executar_tudo.py</code> baixa os dados do TSE e do IBGE, refaz todas as análises e roda os testes.</p>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer class="rodape gutter">
+  <div class="limite">
+    <p>Análise estatística independente feita com dados públicos do Tribunal Superior Eleitoral e do IBGE. Não é uma publicação oficial do TSE.</p>
+    <p>Legenda de natureza dos números: <span class="natureza oficial">Dado oficial</span> contagem publicada, sem modelo · <span class="natureza estimativa">Estimativa</span> resultado de modelo estatístico · <span class="natureza simulacao">Simulação</span> cenários hipotéticos.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="dados.js"></script>
+<script src="mapa.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

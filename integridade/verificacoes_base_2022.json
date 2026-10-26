@@ -1,0 +1,41 @@
+{
+  "ano": 2022,
+  "fonte_t2_candidatos": "votacao_secao (completo)",
+  "secoes_t1": 472075,
+  "secoes_t2": 472075,
+  "juncao": {
+    "both": 472075,
+    "left_only": 0,
+    "right_only": 0
+  },
+  "t1_comp_igual_soma_votos_csv": 472075,
+  "t1_comp_diferente_soma_votos_csv": 0,
+  "t1_abst_tse_diferente_aptos_menos_comp": 47,
+  "secoes_nos_dois_turnos": 472075,
+  "secoes_aptos_diferentes_entre_turnos": 49710,
+  "soma_abs_dif_aptos": 72306,
+  "secoes_nao_instaladas_t1": 47,
+  "secoes_nao_instaladas_t2": 47,
+  "secoes_anuladas_t1": 4,
+  "secoes_anuladas_t2": 1,
+  "duplicatas_chave": 0,
+  "totais_t1": {
+    "aptos": 156454011,
+    "comp": 123682372,
+    "validos": 118229719,
+    "bn": 5452653,
+    "abst": 32771639,
+    "a": 57259504,
+    "b": 51072345,
+    "o": 9897870
+  },
+  "totais_t2": {
+    "aptos": 156454011,
+    "comp": 124252796,
+    "validos": 118552353,
+    "bn": 5700443,
+    "abst": 32201215,
+    "a": 60345999,
+    "b": 58206354
+  }
+}

@@ -1,0 +1,161 @@
+ano,estratificacao,estratos_usados,origem,destino,taxa,finalista_PT,finalista_direita
+2026,UF,27,a_1,a_2,0.9852110686050394,Lula,Flávio
+2026,UF,27,a_1,b_2,5.61284725125544e-06,Lula,Flávio
+2026,UF,27,a_1,bn_2,0.0034690931811212043,Lula,Flávio
+2026,UF,27,a_1,abst_2,0.011314225366588148,Lula,Flávio
+2026,UF,27,b_1,a_2,0.0019707001145152087,Lula,Flávio
+2026,UF,27,b_1,b_2,0.9841391609552118,Lula,Flávio
+2026,UF,27,b_1,bn_2,0.004787072542982333,Lula,Flávio
+2026,UF,27,b_1,abst_2,0.009103066387290642,Lula,Flávio
+2026,UF,27,o_1,a_2,0.4235085588574317,Lula,Flávio
+2026,UF,27,o_1,b_2,0.38966581514851867,Lula,Flávio
+2026,UF,27,o_1,bn_2,0.13448953561706758,Lula,Flávio
+2026,UF,27,o_1,abst_2,0.05233609037698189,Lula,Flávio
+2026,UF,27,bn_1,a_2,0.6093878815527733,Lula,Flávio
+2026,UF,27,bn_1,b_2,0.014861882061464732,Lula,Flávio
+2026,UF,27,bn_1,bn_2,0.3702469664154824,Lula,Flávio
+2026,UF,27,bn_1,abst_2,0.005503269970279611,Lula,Flávio
+2026,UF,27,abst_1,a_2,0.10281990649916323,Lula,Flávio
+2026,UF,27,abst_1,b_2,0.027341815270431297,Lula,Flávio
+2026,UF,27,abst_1,bn_2,0.007063449554298522,Lula,Flávio
+2026,UF,27,abst_1,abst_2,0.8627748286761069,Lula,Flávio
+2026,região × faixa de margem,15,a_1,a_2,0.9869338280741635,Lula,Flávio
+2026,região × faixa de margem,15,a_1,b_2,1.1716883911731678e-05,Lula,Flávio
+2026,região × faixa de margem,15,a_1,bn_2,0.003979640977722624,Lula,Flávio
+2026,região × faixa de margem,15,a_1,abst_2,0.009074814064202283,Lula,Flávio
+2026,região × faixa de margem,15,b_1,a_2,0.00024461115317787885,Lula,Flávio
+2026,região × faixa de margem,15,b_1,b_2,0.9775878853815952,Lula,Flávio
+2026,região × faixa de margem,15,b_1,bn_2,0.0061035795714606865,Lula,Flávio
+2026,região × faixa de margem,15,b_1,abst_2,0.016063923893766173,Lula,Flávio
+2026,região × faixa de margem,15,o_1,a_2,0.42670563955571494,Lula,Flávio
+2026,região × faixa de margem,15,o_1,b_2,0.41066621533307923,Lula,Flávio
+2026,região × faixa de margem,15,o_1,bn_2,0.12972713438847716,Lula,Flávio
+2026,região × faixa de margem,15,o_1,abst_2,0.0329010107227286,Lula,Flávio
+2026,região × faixa de margem,15,bn_1,a_2,0.6006052008120387,Lula,Flávio
+2026,região × faixa de margem,15,bn_1,b_2,0.02679328342725522,Lula,Flávio
+2026,região × faixa de margem,15,bn_1,bn_2,0.3639240059679636,Lula,Flávio
+2026,região × faixa de margem,15,bn_1,abst_2,0.008677509792742578,Lula,Flávio
+2026,região × faixa de margem,15,abst_1,a_2,0.10248811758687851,Lula,Flávio
+2026,região × faixa de margem,15,abst_1,b_2,0.029682070317158367,Lula,Flávio
+2026,região × faixa de margem,15,abst_1,bn_2,0.006379851346983194,Lula,Flávio
+2026,região × faixa de margem,15,abst_1,abst_2,0.86144996074898,Lula,Flávio
+2026,UF × tercil de urbanização,77,a_1,a_2,0.9888092956943293,Lula,Flávio
+2026,UF × tercil de urbanização,77,a_1,b_2,8.008156869095869e-05,Lula,Flávio
+2026,UF × tercil de urbanização,77,a_1,bn_2,0.003204670111712365,Lula,Flávio
+2026,UF × tercil de urbanização,77,a_1,abst_2,0.007905952625267332,Lula,Flávio
+2026,UF × tercil de urbanização,77,b_1,a_2,0.0015676080408023566,Lula,Flávio
+2026,UF × tercil de urbanização,77,b_1,b_2,0.9806866550217834,Lula,Flávio
+2026,UF × tercil de urbanização,77,b_1,bn_2,0.004822793673601121,Lula,Flávio
+2026,UF × tercil de urbanização,77,b_1,abst_2,0.012922943263813137,Lula,Flávio
+2026,UF × tercil de urbanização,77,o_1,a_2,0.40323608739760536,Lula,Flávio
+2026,UF × tercil de urbanização,77,o_1,b_2,0.39141680674070906,Lula,Flávio
+2026,UF × tercil de urbanização,77,o_1,bn_2,0.13642384238995434,Lula,Flávio
+2026,UF × tercil de urbanização,77,o_1,abst_2,0.06892326347173111,Lula,Flávio
+2026,UF × tercil de urbanização,77,bn_1,a_2,0.590876914379305,Lula,Flávio
+2026,UF × tercil de urbanização,77,bn_1,b_2,0.02909418937523044,Lula,Flávio
+2026,UF × tercil de urbanização,77,bn_1,bn_2,0.3693220190349392,Lula,Flávio
+2026,UF × tercil de urbanização,77,bn_1,abst_2,0.01070687721052532,Lula,Flávio
+2026,UF × tercil de urbanização,77,abst_1,a_2,0.1068466572984483,Lula,Flávio
+2026,UF × tercil de urbanização,77,abst_1,b_2,0.029750109401963164,Lula,Flávio
+2026,UF × tercil de urbanização,77,abst_1,bn_2,0.007057939755463952,Lula,Flávio
+2026,UF × tercil de urbanização,77,abst_1,abst_2,0.8563452935441246,Lula,Flávio
+2026,município grande ou UF,135,a_1,a_2,0.9853562880534503,Lula,Flávio
+2026,município grande ou UF,135,a_1,b_2,0.0001909199499907593,Lula,Flávio
+2026,município grande ou UF,135,a_1,bn_2,0.004169276487154633,Lula,Flávio
+2026,município grande ou UF,135,a_1,abst_2,0.01028351550940439,Lula,Flávio
+2026,município grande ou UF,135,b_1,a_2,0.0031042589453031725,Lula,Flávio
+2026,município grande ou UF,135,b_1,b_2,0.9805692110259544,Lula,Flávio
+2026,município grande ou UF,135,b_1,bn_2,0.0054946923528403505,Lula,Flávio
+2026,município grande ou UF,135,b_1,abst_2,0.010831837675902057,Lula,Flávio
+2026,município grande ou UF,135,o_1,a_2,0.40874738551976836,Lula,Flávio
+2026,município grande ou UF,135,o_1,b_2,0.38811173361463813,Lula,Flávio
+2026,município grande ou UF,135,o_1,bn_2,0.12982750019161593,Lula,Flávio
+2026,município grande ou UF,135,o_1,abst_2,0.07331338067397762,Lula,Flávio
+2026,município grande ou UF,135,bn_1,a_2,0.57134632396264,Lula,Flávio
+2026,município grande ou UF,135,bn_1,b_2,0.04236931545553416,Lula,Flávio
+2026,município grande ou UF,135,bn_1,bn_2,0.36354516954342353,Lula,Flávio
+2026,município grande ou UF,135,bn_1,abst_2,0.022739191038402433,Lula,Flávio
+2026,município grande ou UF,135,abst_1,a_2,0.11180286328769475,Lula,Flávio
+2026,município grande ou UF,135,abst_1,b_2,0.028628867690655025,Lula,Flávio
+2026,município grande ou UF,135,abst_1,bn_2,0.0071644675164577575,Lula,Flávio
+2026,município grande ou UF,135,abst_1,abst_2,0.8524038015051925,Lula,Flávio
+2022,UF,27,a_1,a_2,0.9602616341751324,Lula,Jair Bolsonaro
+2022,UF,27,a_1,b_2,3.4093406362767893e-07,Lula,Jair Bolsonaro
+2022,UF,27,a_1,bn_2,0.011470072924116507,Lula,Jair Bolsonaro
+2022,UF,27,a_1,abst_2,0.028267951966687327,Lula,Jair Bolsonaro
+2022,UF,27,b_1,a_2,3.4240975880688735e-05,Lula,Jair Bolsonaro
+2022,UF,27,b_1,b_2,0.9970188221129732,Lula,Jair Bolsonaro
+2022,UF,27,b_1,bn_2,0.0021116878676937616,Lula,Jair Bolsonaro
+2022,UF,27,b_1,abst_2,0.0008352490434523751,Lula,Jair Bolsonaro
+2022,UF,27,o_1,a_2,0.3558324114789709,Lula,Jair Bolsonaro
+2022,UF,27,o_1,b_2,0.44934760223582576,Lula,Jair Bolsonaro
+2022,UF,27,o_1,bn_2,0.1720143710767739,Lula,Jair Bolsonaro
+2022,UF,27,o_1,abst_2,0.02280561520842951,Lula,Jair Bolsonaro
+2022,UF,27,bn_1,a_2,0.16136078836696927,Lula,Jair Bolsonaro
+2022,UF,27,bn_1,b_2,0.2659414084990246,Lula,Jair Bolsonaro
+2022,UF,27,bn_1,bn_2,0.5478804004738957,Lula,Jair Bolsonaro
+2022,UF,27,bn_1,abst_2,0.024817402660110434,Lula,Jair Bolsonaro
+2022,UF,27,abst_1,a_2,0.03155397447899219,Lula,Jair Bolsonaro
+2022,UF,27,abst_1,b_2,0.038259090263335044,Lula,Jair Bolsonaro
+2022,UF,27,abst_1,bn_2,0.007652173854765393,Lula,Jair Bolsonaro
+2022,UF,27,abst_1,abst_2,0.9225347614029075,Lula,Jair Bolsonaro
+2022,região × faixa de margem,15,a_1,a_2,0.9626841609582641,Lula,Jair Bolsonaro
+2022,região × faixa de margem,15,a_1,b_2,0.0026038878324335405,Lula,Jair Bolsonaro
+2022,região × faixa de margem,15,a_1,bn_2,0.008936555557169056,Lula,Jair Bolsonaro
+2022,região × faixa de margem,15,a_1,abst_2,0.02577539565213321,Lula,Jair Bolsonaro
+2022,região × faixa de margem,15,b_1,a_2,1.854553998103333e-09,Lula,Jair Bolsonaro
+2022,região × faixa de margem,15,b_1,b_2,0.9949850956268352,Lula,Jair Bolsonaro
+2022,região × faixa de margem,15,b_1,bn_2,0.001967982681307273,Lula,Jair Bolsonaro
+2022,região × faixa de margem,15,b_1,abst_2,0.003046919837303483,Lula,Jair Bolsonaro
+2022,região × faixa de margem,15,o_1,a_2,0.36217058477047476,Lula,Jair Bolsonaro
+2022,região × faixa de margem,15,o_1,b_2,0.4376943797193011,Lula,Jair Bolsonaro
+2022,região × faixa de margem,15,o_1,bn_2,0.16867999681242665,Lula,Jair Bolsonaro
+2022,região × faixa de margem,15,o_1,abst_2,0.031455038697797526,Lula,Jair Bolsonaro
+2022,região × faixa de margem,15,bn_1,a_2,0.11398474388647814,Lula,Jair Bolsonaro
+2022,região × faixa de margem,15,bn_1,b_2,0.2737311907683179,Lula,Jair Bolsonaro
+2022,região × faixa de margem,15,bn_1,bn_2,0.5963161169942895,Lula,Jair Bolsonaro
+2022,região × faixa de margem,15,bn_1,abst_2,0.01596794835091447,Lula,Jair Bolsonaro
+2022,região × faixa de margem,15,abst_1,a_2,0.032496536463846704,Lula,Jair Bolsonaro
+2022,região × faixa de margem,15,abst_1,b_2,0.038904209555052346,Lula,Jair Bolsonaro
+2022,região × faixa de margem,15,abst_1,bn_2,0.004670522540613217,Lula,Jair Bolsonaro
+2022,região × faixa de margem,15,abst_1,abst_2,0.9239287314404877,Lula,Jair Bolsonaro
+2022,UF × tercil de urbanização,78,a_1,a_2,0.960688448234802,Lula,Jair Bolsonaro
+2022,UF × tercil de urbanização,78,a_1,b_2,0.0005611189071842674,Lula,Jair Bolsonaro
+2022,UF × tercil de urbanização,78,a_1,bn_2,0.012071494640555066,Lula,Jair Bolsonaro
+2022,UF × tercil de urbanização,78,a_1,abst_2,0.02667893821745867,Lula,Jair Bolsonaro
+2022,UF × tercil de urbanização,78,b_1,a_2,1.9468798060197276e-06,Lula,Jair Bolsonaro
+2022,UF × tercil de urbanização,78,b_1,b_2,0.9955219446725071,Lula,Jair Bolsonaro
+2022,UF × tercil de urbanização,78,b_1,bn_2,0.0026776639912295744,Lula,Jair Bolsonaro
+2022,UF × tercil de urbanização,78,b_1,abst_2,0.001798444456457184,Lula,Jair Bolsonaro
+2022,UF × tercil de urbanização,78,o_1,a_2,0.36159595977170406,Lula,Jair Bolsonaro
+2022,UF × tercil de urbanização,78,o_1,b_2,0.4302265982605482,Lula,Jair Bolsonaro
+2022,UF × tercil de urbanização,78,o_1,bn_2,0.1685444907400877,Lula,Jair Bolsonaro
+2022,UF × tercil de urbanização,78,o_1,abst_2,0.039632951227660036,Lula,Jair Bolsonaro
+2022,UF × tercil de urbanização,78,bn_1,a_2,0.15991677674348323,Lula,Jair Bolsonaro
+2022,UF × tercil de urbanização,78,bn_1,b_2,0.26937422784516063,Lula,Jair Bolsonaro
+2022,UF × tercil de urbanização,78,bn_1,bn_2,0.5411400239695638,Lula,Jair Bolsonaro
+2022,UF × tercil de urbanização,78,bn_1,abst_2,0.029568971441792206,Lula,Jair Bolsonaro
+2022,UF × tercil de urbanização,78,abst_1,a_2,0.028925033645129338,Lula,Jair Bolsonaro
+2022,UF × tercil de urbanização,78,abst_1,b_2,0.04571967688623225,Lula,Jair Bolsonaro
+2022,UF × tercil de urbanização,78,abst_1,bn_2,0.007880943141460255,Lula,Jair Bolsonaro
+2022,UF × tercil de urbanização,78,abst_1,abst_2,0.9174743463271783,Lula,Jair Bolsonaro
+2022,município grande ou UF,128,a_1,a_2,0.9559237775263244,Lula,Jair Bolsonaro
+2022,município grande ou UF,128,a_1,b_2,0.0034369237344067023,Lula,Jair Bolsonaro
+2022,município grande ou UF,128,a_1,bn_2,0.012608414790571294,Lula,Jair Bolsonaro
+2022,município grande ou UF,128,a_1,abst_2,0.028030883948697616,Lula,Jair Bolsonaro
+2022,município grande ou UF,128,b_1,a_2,0.0008186048927082523,Lula,Jair Bolsonaro
+2022,município grande ou UF,128,b_1,b_2,0.991689458187456,Lula,Jair Bolsonaro
+2022,município grande ou UF,128,b_1,bn_2,0.003949627551937033,Lula,Jair Bolsonaro
+2022,município grande ou UF,128,b_1,abst_2,0.0035423093678987796,Lula,Jair Bolsonaro
+2022,município grande ou UF,128,o_1,a_2,0.33870095836790637,Lula,Jair Bolsonaro
+2022,município grande ou UF,128,o_1,b_2,0.4585654461671081,Lula,Jair Bolsonaro
+2022,município grande ou UF,128,o_1,bn_2,0.162788710763353,Lula,Jair Bolsonaro
+2022,município grande ou UF,128,o_1,abst_2,0.039944884701632696,Lula,Jair Bolsonaro
+2022,município grande ou UF,128,bn_1,a_2,0.1833725909337706,Lula,Jair Bolsonaro
+2022,município grande ou UF,128,bn_1,b_2,0.25278951235583114,Lula,Jair Bolsonaro
+2022,município grande ou UF,128,bn_1,bn_2,0.5315261379320804,Lula,Jair Bolsonaro
+2022,município grande ou UF,128,bn_1,abst_2,0.03231175877831789,Lula,Jair Bolsonaro
+2022,município grande ou UF,128,abst_1,a_2,0.039066705328740056,Lula,Jair Bolsonaro
+2022,município grande ou UF,128,abst_1,b_2,0.041058479366007726,Lula,Jair Bolsonaro
+2022,município grande ou UF,128,abst_1,bn_2,0.00830126190004793,Lula,Jair Bolsonaro
+2022,município grande ou UF,128,abst_1,abst_2,0.9115735534052043,Lula,Jair Bolsonaro

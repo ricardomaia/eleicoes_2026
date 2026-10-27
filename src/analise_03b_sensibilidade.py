@@ -78,7 +78,9 @@ def main():
         sec = pd.read_parquet(INTERIM / f"secoes_{ano}.parquet")
         mun = pd.read_parquet(INTERIM / f"municipios_{ano}.parquet")
         sec = sec[sec.uf != "ZZ"]
-        if ano == 2026:
+        if ano == 2026 and sec.a_2.notna().mean() > 0.99:  # votacao_secao do 2T publicado: todas as seções
+            am = sec[sec.a_2.notna() & (sec.aptos_1 > 0) & (sec.instalada_2 != "Não")]
+        elif ano == 2026:
             am = sec[sec.na_amostra_bu.fillna(False).astype(bool)]
         else:
             am = amostra_historica(sec, ano)

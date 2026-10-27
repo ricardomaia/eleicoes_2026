@@ -1,0 +1,245 @@
+{
+  "n_por_lote": 5000,
+  "n_lotes": 4,
+  "semente": 20261025,
+  "dev_ref_matriz_nacional_unica": 0.0033570245379513585,
+  "limiar_bom_ajuste": 0.0036927269917464947,
+  "B_ref": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.99516,
+      0.00483,
+      1e-05
+    ],
+    [
+      0.45151,
+      0.43925,
+      0.10924,
+      0.0
+    ],
+    [
+      0.56196,
+      0.0,
+      0.43804,
+      0.0
+    ],
+    [
+      0.07747,
+      8e-05,
+      0.00728,
+      0.91518
+    ]
+  ],
+  "familias": {
+    "C1_fidelidade_alta_transf_outros": {
+      "descricao": "Fidelidade ~95% aos finalistas; trocas diretas ~1%; outros candidatos repartidos livremente; brancos/nulos e abstenção com pouca mobilização",
+      "linhas": [
+        [
+          [
+            0.95,
+            0.01,
+            0.01,
+            0.03
+          ],
+          400
+        ],
+        [
+          [
+            0.01,
+            0.95,
+            0.01,
+            0.03
+          ],
+          400
+        ],
+        [
+          [
+            0.4,
+            0.4,
+            0.1,
+            0.1
+          ],
+          4
+        ],
+        [
+          [
+            0.1,
+            0.1,
+            0.7,
+            0.1
+          ],
+          50
+        ],
+        [
+          [
+            0.02,
+            0.02,
+            0.01,
+            0.95
+          ],
+          300
+        ]
+      ],
+      "regional_conc": null
+    },
+    "C2_fidelidade_alta_mobilizacao": {
+      "descricao": "Fidelidade ~95%; trocas diretas ~1%; outros repartidos livremente; mobilização de brancos/nulos e de abstencionistas com divisão livre entre os finalistas",
+      "linhas": [
+        [
+          [
+            0.95,
+            0.01,
+            0.01,
+            0.03
+          ],
+          400
+        ],
+        [
+          [
+            0.01,
+            0.95,
+            0.01,
+            0.03
+          ],
+          400
+        ],
+        [
+          [
+            0.4,
+            0.4,
+            0.1,
+            0.1
+          ],
+          4
+        ],
+        [
+          [
+            0.25,
+            0.25,
+            0.35,
+            0.15
+          ],
+          4
+        ],
+        [
+          [
+            0.06,
+            0.06,
+            0.01,
+            0.87
+          ],
+          20
+        ]
+      ],
+      "regional_conc": null
+    },
+    "C3_transferencias_moderadas": {
+      "descricao": "Trocas diretas moderadas (~6%) nos dois sentidos; demais linhas largas",
+      "linhas": [
+        [
+          [
+            0.86,
+            0.06,
+            0.02,
+            0.06
+          ],
+          100
+        ],
+        [
+          [
+            0.06,
+            0.86,
+            0.02,
+            0.06
+          ],
+          100
+        ],
+        [
+          [
+            0.4,
+            0.4,
+            0.1,
+            0.1
+          ],
+          4
+        ],
+        [
+          [
+            0.25,
+            0.25,
+            0.35,
+            0.15
+          ],
+          4
+        ],
+        [
+          [
+            0.06,
+            0.06,
+            0.01,
+            0.87
+          ],
+          20
+        ]
+      ],
+      "regional_conc": null
+    },
+    "C4_heterogeneidade_regional": {
+      "descricao": "Média nacional como em C3 com trocas diretas incertas (0–15%); cada região sorteia sua própria matriz em torno dela (concentração 30)",
+      "linhas": [
+        [
+          [
+            0.88,
+            0.05,
+            0.02,
+            0.05
+          ],
+          20
+        ],
+        [
+          [
+            0.05,
+            0.88,
+            0.02,
+            0.05
+          ],
+          20
+        ],
+        [
+          [
+            0.4,
+            0.4,
+            0.1,
+            0.1
+          ],
+          4
+        ],
+        [
+          [
+            0.25,
+            0.25,
+            0.35,
+            0.15
+          ],
+          4
+        ],
+        [
+          [
+            0.06,
+            0.06,
+            0.01,
+            0.87
+          ],
+          20
+        ]
+      ],
+      "regional_conc": 30
+    }
+  }
+}

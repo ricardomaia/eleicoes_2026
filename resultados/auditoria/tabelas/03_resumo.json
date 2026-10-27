@@ -1,0 +1,25 @@
+{
+  "multi_start": {
+    "amplitude_ll_max": 2.684490463929251,
+    "amplitude_FL_max": 0.015491692080653931,
+    "uf_amplitude_FL_max": "PI"
+  },
+  "phi": {
+    "mediana_multinomial": 1.1024988316537137,
+    "mediana_transicao_independente": 4.971131135370566
+  },
+  "bootstrap_FL": {
+    "taxa": 0.0019707001145152087,
+    "ic95_percentil_inf_municipio": 0.0012545155356189217,
+    "ic95_percentil_sup_municipio": 0.0032206821322066743,
+    "ic95_basico_inf_municipio": 0.000720718096823743,
+    "ic95_basico_sup_municipio": 0.0026868846934114954,
+    "ep_boot_municipio": 0.0004938346797405174,
+    "ic95_percentil_inf_secao": 0.0015543375771906569,
+    "ic95_percentil_sup_secao": 0.0027381227371512675,
+    "ic95_basico_inf_secao": 0.0012032774918791498,
+    "ic95_basico_sup_secao": 0.0023870626518397607,
+    "ep_boot_secao": 0.0002965606936566037,
+    "efeito_desenho": 2.7729113963920153
+  }
+}

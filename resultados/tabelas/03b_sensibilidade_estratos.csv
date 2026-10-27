@@ -1,84 +1,84 @@
 ano,estratificacao,estratos_usados,origem,destino,taxa,finalista_PT,finalista_direita
-2026,UF,27,a_1,a_2,0.9852110686050394,Lula,Flávio
-2026,UF,27,a_1,b_2,5.61284725125544e-06,Lula,Flávio
-2026,UF,27,a_1,bn_2,0.0034690931811212043,Lula,Flávio
-2026,UF,27,a_1,abst_2,0.011314225366588148,Lula,Flávio
-2026,UF,27,b_1,a_2,0.0019707001145152087,Lula,Flávio
-2026,UF,27,b_1,b_2,0.9841391609552118,Lula,Flávio
-2026,UF,27,b_1,bn_2,0.004787072542982333,Lula,Flávio
-2026,UF,27,b_1,abst_2,0.009103066387290642,Lula,Flávio
-2026,UF,27,o_1,a_2,0.4235085588574317,Lula,Flávio
-2026,UF,27,o_1,b_2,0.38966581514851867,Lula,Flávio
-2026,UF,27,o_1,bn_2,0.13448953561706758,Lula,Flávio
-2026,UF,27,o_1,abst_2,0.05233609037698189,Lula,Flávio
-2026,UF,27,bn_1,a_2,0.6093878815527733,Lula,Flávio
-2026,UF,27,bn_1,b_2,0.014861882061464732,Lula,Flávio
-2026,UF,27,bn_1,bn_2,0.3702469664154824,Lula,Flávio
-2026,UF,27,bn_1,abst_2,0.005503269970279611,Lula,Flávio
-2026,UF,27,abst_1,a_2,0.10281990649916323,Lula,Flávio
-2026,UF,27,abst_1,b_2,0.027341815270431297,Lula,Flávio
-2026,UF,27,abst_1,bn_2,0.007063449554298522,Lula,Flávio
-2026,UF,27,abst_1,abst_2,0.8627748286761069,Lula,Flávio
-2026,região × faixa de margem,15,a_1,a_2,0.9869338280741635,Lula,Flávio
-2026,região × faixa de margem,15,a_1,b_2,1.1716883911731678e-05,Lula,Flávio
-2026,região × faixa de margem,15,a_1,bn_2,0.003979640977722624,Lula,Flávio
-2026,região × faixa de margem,15,a_1,abst_2,0.009074814064202283,Lula,Flávio
-2026,região × faixa de margem,15,b_1,a_2,0.00024461115317787885,Lula,Flávio
-2026,região × faixa de margem,15,b_1,b_2,0.9775878853815952,Lula,Flávio
-2026,região × faixa de margem,15,b_1,bn_2,0.0061035795714606865,Lula,Flávio
-2026,região × faixa de margem,15,b_1,abst_2,0.016063923893766173,Lula,Flávio
-2026,região × faixa de margem,15,o_1,a_2,0.42670563955571494,Lula,Flávio
-2026,região × faixa de margem,15,o_1,b_2,0.41066621533307923,Lula,Flávio
-2026,região × faixa de margem,15,o_1,bn_2,0.12972713438847716,Lula,Flávio
-2026,região × faixa de margem,15,o_1,abst_2,0.0329010107227286,Lula,Flávio
-2026,região × faixa de margem,15,bn_1,a_2,0.6006052008120387,Lula,Flávio
-2026,região × faixa de margem,15,bn_1,b_2,0.02679328342725522,Lula,Flávio
-2026,região × faixa de margem,15,bn_1,bn_2,0.3639240059679636,Lula,Flávio
-2026,região × faixa de margem,15,bn_1,abst_2,0.008677509792742578,Lula,Flávio
-2026,região × faixa de margem,15,abst_1,a_2,0.10248811758687851,Lula,Flávio
-2026,região × faixa de margem,15,abst_1,b_2,0.029682070317158367,Lula,Flávio
-2026,região × faixa de margem,15,abst_1,bn_2,0.006379851346983194,Lula,Flávio
-2026,região × faixa de margem,15,abst_1,abst_2,0.86144996074898,Lula,Flávio
-2026,UF × tercil de urbanização,77,a_1,a_2,0.9888092956943293,Lula,Flávio
-2026,UF × tercil de urbanização,77,a_1,b_2,8.008156869095869e-05,Lula,Flávio
-2026,UF × tercil de urbanização,77,a_1,bn_2,0.003204670111712365,Lula,Flávio
-2026,UF × tercil de urbanização,77,a_1,abst_2,0.007905952625267332,Lula,Flávio
-2026,UF × tercil de urbanização,77,b_1,a_2,0.0015676080408023566,Lula,Flávio
-2026,UF × tercil de urbanização,77,b_1,b_2,0.9806866550217834,Lula,Flávio
-2026,UF × tercil de urbanização,77,b_1,bn_2,0.004822793673601121,Lula,Flávio
-2026,UF × tercil de urbanização,77,b_1,abst_2,0.012922943263813137,Lula,Flávio
-2026,UF × tercil de urbanização,77,o_1,a_2,0.40323608739760536,Lula,Flávio
-2026,UF × tercil de urbanização,77,o_1,b_2,0.39141680674070906,Lula,Flávio
-2026,UF × tercil de urbanização,77,o_1,bn_2,0.13642384238995434,Lula,Flávio
-2026,UF × tercil de urbanização,77,o_1,abst_2,0.06892326347173111,Lula,Flávio
-2026,UF × tercil de urbanização,77,bn_1,a_2,0.590876914379305,Lula,Flávio
-2026,UF × tercil de urbanização,77,bn_1,b_2,0.02909418937523044,Lula,Flávio
-2026,UF × tercil de urbanização,77,bn_1,bn_2,0.3693220190349392,Lula,Flávio
-2026,UF × tercil de urbanização,77,bn_1,abst_2,0.01070687721052532,Lula,Flávio
-2026,UF × tercil de urbanização,77,abst_1,a_2,0.1068466572984483,Lula,Flávio
-2026,UF × tercil de urbanização,77,abst_1,b_2,0.029750109401963164,Lula,Flávio
-2026,UF × tercil de urbanização,77,abst_1,bn_2,0.007057939755463952,Lula,Flávio
-2026,UF × tercil de urbanização,77,abst_1,abst_2,0.8563452935441246,Lula,Flávio
-2026,município grande ou UF,135,a_1,a_2,0.9853562880534503,Lula,Flávio
-2026,município grande ou UF,135,a_1,b_2,0.0001909199499907593,Lula,Flávio
-2026,município grande ou UF,135,a_1,bn_2,0.004169276487154633,Lula,Flávio
-2026,município grande ou UF,135,a_1,abst_2,0.01028351550940439,Lula,Flávio
-2026,município grande ou UF,135,b_1,a_2,0.0031042589453031725,Lula,Flávio
-2026,município grande ou UF,135,b_1,b_2,0.9805692110259544,Lula,Flávio
-2026,município grande ou UF,135,b_1,bn_2,0.0054946923528403505,Lula,Flávio
-2026,município grande ou UF,135,b_1,abst_2,0.010831837675902057,Lula,Flávio
-2026,município grande ou UF,135,o_1,a_2,0.40874738551976836,Lula,Flávio
-2026,município grande ou UF,135,o_1,b_2,0.38811173361463813,Lula,Flávio
-2026,município grande ou UF,135,o_1,bn_2,0.12982750019161593,Lula,Flávio
-2026,município grande ou UF,135,o_1,abst_2,0.07331338067397762,Lula,Flávio
-2026,município grande ou UF,135,bn_1,a_2,0.57134632396264,Lula,Flávio
-2026,município grande ou UF,135,bn_1,b_2,0.04236931545553416,Lula,Flávio
-2026,município grande ou UF,135,bn_1,bn_2,0.36354516954342353,Lula,Flávio
-2026,município grande ou UF,135,bn_1,abst_2,0.022739191038402433,Lula,Flávio
-2026,município grande ou UF,135,abst_1,a_2,0.11180286328769475,Lula,Flávio
-2026,município grande ou UF,135,abst_1,b_2,0.028628867690655025,Lula,Flávio
-2026,município grande ou UF,135,abst_1,bn_2,0.0071644675164577575,Lula,Flávio
-2026,município grande ou UF,135,abst_1,abst_2,0.8524038015051925,Lula,Flávio
+2026,UF,27,a_1,a_2,0.9848935719091901,Lula,Flávio
+2026,UF,27,a_1,b_2,3.392730537177396e-06,Lula,Flávio
+2026,UF,27,a_1,bn_2,0.003356764653852811,Lula,Flávio
+2026,UF,27,a_1,abst_2,0.011746270706419802,Lula,Flávio
+2026,UF,27,b_1,a_2,0.0020108729017312608,Lula,Flávio
+2026,UF,27,b_1,b_2,0.9843682600260196,Lula,Flávio
+2026,UF,27,b_1,bn_2,0.005335614891731426,Lula,Flávio
+2026,UF,27,b_1,abst_2,0.008285252180517563,Lula,Flávio
+2026,UF,27,o_1,a_2,0.4256535887479127,Lula,Flávio
+2026,UF,27,o_1,b_2,0.3884521762010785,Lula,Flávio
+2026,UF,27,o_1,bn_2,0.13411551129100338,Lula,Flávio
+2026,UF,27,o_1,abst_2,0.05177872376000542,Lula,Flávio
+2026,UF,27,bn_1,a_2,0.607775782464415,Lula,Flávio
+2026,UF,27,bn_1,b_2,0.014879964970821908,Lula,Flávio
+2026,UF,27,bn_1,bn_2,0.37082526192100873,Lula,Flávio
+2026,UF,27,bn_1,abst_2,0.006518990643754308,Lula,Flávio
+2026,UF,27,abst_1,a_2,0.10320207095406221,Lula,Flávio
+2026,UF,27,abst_1,b_2,0.026548677108931145,Lula,Flávio
+2026,UF,27,abst_1,bn_2,0.006436037951664898,Lula,Flávio
+2026,UF,27,abst_1,abst_2,0.8638132139853418,Lula,Flávio
+2026,região × faixa de margem,15,a_1,a_2,0.9862159648419526,Lula,Flávio
+2026,região × faixa de margem,15,a_1,b_2,3.846312191939967e-06,Lula,Flávio
+2026,região × faixa de margem,15,a_1,bn_2,0.0042307724204837995,Lula,Flávio
+2026,região × faixa de margem,15,a_1,abst_2,0.00954941642537165,Lula,Flávio
+2026,região × faixa de margem,15,b_1,a_2,0.00026471090800605856,Lula,Flávio
+2026,região × faixa de margem,15,b_1,b_2,0.9795753592991703,Lula,Flávio
+2026,região × faixa de margem,15,b_1,bn_2,0.006105629478770501,Lula,Flávio
+2026,região × faixa de margem,15,b_1,abst_2,0.014054300314052977,Lula,Flávio
+2026,região × faixa de margem,15,o_1,a_2,0.42906991013691514,Lula,Flávio
+2026,região × faixa de margem,15,o_1,b_2,0.4115222625162587,Lula,Flávio
+2026,região × faixa de margem,15,o_1,bn_2,0.13031567273246214,Lula,Flávio
+2026,região × faixa de margem,15,o_1,abst_2,0.029092154614364055,Lula,Flávio
+2026,região × faixa de margem,15,bn_1,a_2,0.6049880065747079,Lula,Flávio
+2026,região × faixa de margem,15,bn_1,b_2,0.02037924177481538,Lula,Flávio
+2026,região × faixa de margem,15,bn_1,bn_2,0.363226040290948,Lula,Flávio
+2026,região × faixa de margem,15,bn_1,abst_2,0.011406711359528584,Lula,Flávio
+2026,região × faixa de margem,15,abst_1,a_2,0.10357533709637626,Lula,Flávio
+2026,região × faixa de margem,15,abst_1,b_2,0.027570014283120226,Lula,Flávio
+2026,região × faixa de margem,15,abst_1,bn_2,0.006034382203183754,Lula,Flávio
+2026,região × faixa de margem,15,abst_1,abst_2,0.8628202664173197,Lula,Flávio
+2026,UF × tercil de urbanização,79,a_1,a_2,0.9888987515026599,Lula,Flávio
+2026,UF × tercil de urbanização,79,a_1,b_2,6.031541386178695e-06,Lula,Flávio
+2026,UF × tercil de urbanização,79,a_1,bn_2,0.0030516392339698566,Lula,Flávio
+2026,UF × tercil de urbanização,79,a_1,abst_2,0.008043577721984038,Lula,Flávio
+2026,UF × tercil de urbanização,79,b_1,a_2,0.0011115539703008919,Lula,Flávio
+2026,UF × tercil de urbanização,79,b_1,b_2,0.981663984911978,Lula,Flávio
+2026,UF × tercil de urbanização,79,b_1,bn_2,0.005456583281155542,Lula,Flávio
+2026,UF × tercil de urbanização,79,b_1,abst_2,0.01176787783656554,Lula,Flávio
+2026,UF × tercil de urbanização,79,o_1,a_2,0.40245762216509406,Lula,Flávio
+2026,UF × tercil de urbanização,79,o_1,b_2,0.3905865872931427,Lula,Flávio
+2026,UF × tercil de urbanização,79,o_1,bn_2,0.13529937057021368,Lula,Flávio
+2026,UF × tercil de urbanização,79,o_1,abst_2,0.0716564199715496,Lula,Flávio
+2026,UF × tercil de urbanização,79,bn_1,a_2,0.590483585943704,Lula,Flávio
+2026,UF × tercil de urbanização,79,bn_1,b_2,0.027732165816153856,Lula,Flávio
+2026,UF × tercil de urbanização,79,bn_1,bn_2,0.37094310120049107,Lula,Flávio
+2026,UF × tercil de urbanização,79,bn_1,abst_2,0.010841147039651224,Lula,Flávio
+2026,UF × tercil de urbanização,79,abst_1,a_2,0.10792314308574728,Lula,Flávio
+2026,UF × tercil de urbanização,79,abst_1,b_2,0.028048030264590948,Lula,Flávio
+2026,UF × tercil de urbanização,79,abst_1,bn_2,0.006363441328538374,Lula,Flávio
+2026,UF × tercil de urbanização,79,abst_1,abst_2,0.8576653853211235,Lula,Flávio
+2026,município grande ou UF,1597,a_1,a_2,0.983464764178639,Lula,Flávio
+2026,município grande ou UF,1597,a_1,b_2,0.0006489000560155431,Lula,Flávio
+2026,município grande ou UF,1597,a_1,bn_2,0.004448733470943718,Lula,Flávio
+2026,município grande ou UF,1597,a_1,abst_2,0.011437602294401668,Lula,Flávio
+2026,município grande ou UF,1597,b_1,a_2,0.0045528486804902206,Lula,Flávio
+2026,município grande ou UF,1597,b_1,b_2,0.9737771058636061,Lula,Flávio
+2026,município grande ou UF,1597,b_1,bn_2,0.006108406703932931,Lula,Flávio
+2026,município grande ou UF,1597,b_1,abst_2,0.015561638751970763,Lula,Flávio
+2026,município grande ou UF,1597,o_1,a_2,0.3780185059077943,Lula,Flávio
+2026,município grande ou UF,1597,o_1,b_2,0.40002701971336707,Lula,Flávio
+2026,município grande ou UF,1597,o_1,bn_2,0.12943367403018105,Lula,Flávio
+2026,município grande ou UF,1597,o_1,abst_2,0.09252080034865756,Lula,Flávio
+2026,município grande ou UF,1597,bn_1,a_2,0.5555761813616475,Lula,Flávio
+2026,município grande ou UF,1597,bn_1,b_2,0.056895841186421665,Lula,Flávio
+2026,município grande ou UF,1597,bn_1,bn_2,0.35633014883014263,Lula,Flávio
+2026,município grande ou UF,1597,bn_1,abst_2,0.031197828621787993,Lula,Flávio
+2026,município grande ou UF,1597,abst_1,a_2,0.1247402792589795,Lula,Flávio
+2026,município grande ou UF,1597,abst_1,b_2,0.032648219042308545,Lula,Flávio
+2026,município grande ou UF,1597,abst_1,bn_2,0.007188103581102983,Lula,Flávio
+2026,município grande ou UF,1597,abst_1,abst_2,0.835423398117609,Lula,Flávio
 2022,UF,27,a_1,a_2,0.9602616341751324,Lula,Jair Bolsonaro
 2022,UF,27,a_1,b_2,3.4093406362767893e-07,Lula,Jair Bolsonaro
 2022,UF,27,a_1,bn_2,0.011470072924116507,Lula,Jair Bolsonaro

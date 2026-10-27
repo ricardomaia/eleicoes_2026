@@ -1,0 +1,17 @@
+{
+  "corr_pl_dep_flavio1": 0.5279566396812195,
+  "corr_pl_dep_lula1": -0.5286363175807881,
+  "corr_fe_dep_lula1": 0.3233020388029559,
+  "corr_dir_dep_flavio1": 0.5190215744685679,
+  "pct_nacional_pl_dep": 22.636887764399496,
+  "pct_nacional_flavio1": 47.03761218404258,
+  "pct_nacional_fe_dep": 15.312675003423497,
+  "pct_nacional_lula1": 45.15608426218308,
+  "pct_nacional_direita_dep": 46.95342630182391,
+  "pct_nacional_dir_estrita_dep": 45.77288917050005,
+  "pct_nacional_centro_dep": 26.743009340883177,
+  "pct_nacional_esquerda_dep": 26.303564357292913,
+  "pct_nacional_pl_senado": 28.082288062130107,
+  "secoes_com_legislativo": 497897,
+  "secoes_dep_total_diferente_comparecimento": 17233
+}

@@ -1,6 +1,21 @@
 # Transferência de votos entre os turnos da eleição presidencial de 2026
 
-**Relatório de auditoria estatística — versão de 26/10/2026**
+**Relatório de auditoria estatística — versão de 26/10/2026, com a revisão
+metodológica de 27/10/2026 (seção IX-A)**
+
+> **Aviso da revisão (27/10/2026).** Uma auditoria metodológica posterior
+> ([`AUDITORIA_METODOLOGICA.md`](AUDITORIA_METODOLOGICA.md)) reproduziu
+> exatamente todos os cálculos deste relatório e confirmou os resultados
+> aritméticos e de integridade. Ela concluiu, porém, que as taxas de
+> transição estimadas (seções I e IV) dependem de uma hipótese — taxas iguais
+> em todas as seções da UF — que os próprios dados contradizem, e que a
+> migração Flávio→Lula **não é identificada** pelos dados agregados: a
+> estimativa de 0,20% é o valor que o estimador devolve quando a solução sem
+> restrições é negativa (−2,5%), e o conjunto de valores compatíveis com os
+> dados vai de 0 a cerca de 11% sob fidelidade mínima de 90%. As conclusões
+> reformuladas estão na seção IX-A; o texto das seções I a IX foi mantido
+> como publicado, para rastreabilidade, e deve ser lido com as ressalvas
+> dessa seção.
 
 Investigação pedida em [`prompt.txt`](prompt.txt). Painel interativo para o público geral: <https://ricardomaia.github.io/eleicoes_2026/>. Dados oficiais do TSE e do IBGE; código
 e dados derivados nesta pasta (ver `README.md` para reprodução). Nenhum número
@@ -499,11 +514,17 @@ cada candidato, de modo que desvios ocorrem em eleições sem irregularidade
    quase o mesmo ajuste (visto no AP: migração × abstenção diferencial). A
    aritmética sozinha permite migração Flávio→Lula de 0% a 81%.
 3. **Dados do 2º turno por candidato e por seção.** Em 26/10/2026 o TSE ainda
-   não tinha publicado o arquivo `votacao_secao` do 2º turno. Usou-se uma
-   amostra aleatória de 50.821 BUs (10%; todas as seções no AP) e, por
-   município, o resultado completo do sistema de divulgação. Os limites
-   aritméticos por seção e o Modelo A por seção valem para a amostra; o
-   pipeline passa a usar o arquivo completo quando for publicado.
+   não tinha publicado o arquivo `votacao_secao` do 2º turno. A versão de
+   26/10 deste relatório usou uma amostra aleatória de 50.821 BUs (10%; todas
+   as seções no AP) e, por município, o resultado completo do sistema de
+   divulgação. Em 27/10/2026 o arquivo completo (versão de 26/10 17h42 UTC,
+   499.205 seções, SHA-256 `c928321f…`, ver `README.md`) foi obtido e as
+   tabelas de `resultados/tabelas/` e o painel foram recalculados com todas
+   as seções; os 50.821 BUs conferem com o arquivo sem divergência. As
+   tabelas da versão com a amostra estão em `resultados/versao_amostra_bu/`.
+   Os números citados no texto das seções I a IX são os da versão com a
+   amostra; as diferenças com a versão completa estão na seção 4.11 de
+   `AUDITORIA_METODOLOGICA.md`.
 4. **Fonte do 2º turno.** O sistema de divulgação é oficial (totalização final
    "tf: s"), mas os arquivos consolidados do Portal de Dados Abertos e o
    relatório PDF do 2º turno ainda não existiam; podem ocorrer ajustes
@@ -519,6 +540,35 @@ cada candidato, de modo que desvios ocorrem em eleições sem irregularidade
    entrada/saída de cadastro (≈ 0,05% do eleitorado); a explicação para as
    17.233 seções com menos votos para deputado do que comparecimento não foi
    verificada com o cadastro de trânsito.
+9. **Versões dos arquivos por UF no CDN do TSE.** Os arquivos
+   `votacao_secao_2026_<UF>.zip` (usados na seção V, para deputado federal e
+   senador) foram baixados em 26/10/2026 entre 20h35 e 21h22 UTC, com data,
+   tamanho e SHA-256 registrados no manifesto. Numa nova consulta ao CDN em
+   26/10/2026 por volta de 00h10 UTC do dia 27 (21h10 em Brasília), o servidor
+   informava, para o mesmo endereço, versões diferentes das baixadas:
+   - 16 UFs (AC, AL, AP, DF, ES, GO, MG, MS, MT, PB, RN, RO, RR, SC, SE, TO)
+     com `Last-Modified` de 26/10/2026 17h38–17h41 UTC; para AL, AP, ES, MG,
+     RN, SC e SE o manifesto registra a versão anterior, de 06/10, porque o
+     download ocorreu antes da troca de versão no servidor que atendeu;
+   - PR, SP e PA no sentido inverso: o manifesto registra versões de 26/10
+     (PR 152.428.338 bytes, SP 808.337.068 bytes), e o CDN passou a informar
+     versões de 06/10 (PR 146.080.760 bytes, SP 767.459.830 bytes; PA com o
+     mesmo tamanho, 90.146.357 bytes, mas data de 06/10).
+   O padrão é compatível com servidores de borda do CDN com cópias diferentes
+   do mesmo arquivo. Conteúdo verificado: as versões de 26/10 acrescentam o
+   2º turno apenas para governador (cargo 3) nas UFs com 2º turno estadual
+   (conferido em AC e DF); a votação para presidente não consta dos arquivos
+   por UF em nenhuma versão, e a versão de 26/10 do AP (baixada de novo para
+   conferência, SHA-256
+   `3b9996b97dccca0f37bdb042eef1c478eae071508e6c52c6913ac2991cf3dca3`) só
+   tem 1º turno. Consequências: (a) os resultados da seção V dependem da
+   versão registrada no manifesto, e quem reproduzir o estudo pode receber
+   outra versão do mesmo endereço; o SHA-256 do manifesto é o que identifica
+   o arquivo efetivamente usado; (b) os totais nacionais de 1º turno para
+   deputado federal desta versão (seção V) devem ser conferidos com a versão
+   consolidada quando o TSE estabilizar os arquivos; (c) o arquivo nacional
+   `votacao_secao_2026_BR.zip`, fonte do 1º turno presidencial, não mudou
+   (versão de 06/10 nas duas consultas, 161.616.519 bytes).
 
 ---
 
@@ -620,6 +670,98 @@ classificações de candidatos ou partidos.
 
 ---
 
+## IX-A — Conclusões reformuladas após a auditoria metodológica (27/10/2026)
+
+Esta seção substitui, para fins de interpretação, as conclusões das seções
+I e IX. Métodos, tabelas e números completos em
+[`AUDITORIA_METODOLOGICA.md`](AUDITORIA_METODOLOGICA.md) e
+`resultados/auditoria/`. As quatro categorias seguem a seção 16 do prompt
+da auditoria.
+
+### A. Fatos diretamente observados (sem pressuposto comportamental)
+
+A tabela nacional reconciliada (seção II), as variações de comparecimento,
+válidos e brancos/nulos por seção, município e UF (seção III), os votos
+legislativos (seção V), a igualdade entre as três publicações do TSE e as
+mudanças de versão dos arquivos por UF no CDN (seção VIII, item 9).
+
+### B. Consequências matemáticas necessárias
+
+- Pelo menos 1,06 milhão (nacional) a 1,84 milhão (soma por município) de
+  votos de Lula no 2º turno não vieram nem de Lula nem dos candidatos
+  eliminados; pelo menos 5,04 milhões de votos válidos do 2º turno não
+  vieram de válidos do 1º.
+- A migração direta entre finalistas não é obrigatória em nenhum município e
+  em 50.819 das 50.821 seções da amostra.
+- Sob a hipótese de que pelo menos 90% dos eleitores de cada finalista o
+  mantiveram, a migração Flávio→Lula fica entre 0 e 11,1% (até 6,2 milhões
+  de votos) e a Lula→Flávio entre 0 e 9,2%; com 95%, entre 0 e 9,0%. Essas
+  hipóteses são contrariadas em 3,8% e 8,3% das seções, respectivamente.
+  As conversões de eliminados e de brancos/nulos para Lula não são
+  restringidas por essas hipóteses (0 a 100%); a de abstencionistas, de 0 a
+  30–48%.
+- A correlação municipal de 0,78 entre Δválidos e ΔLula e o coeficiente de
+  0,67 a 0,71 decorrem da identidade ΔLula + ΔFlávio = eliminados +
+  Δválidos: com repartição do ganho independente de Δválidos, esperam-se
+  0,74 e 0,80. Onde os válidos cresceram mais, a fração do ganho que foi para
+  Lula foi menor (correlação −0,26).
+
+### C. Estimativas condicionais (dependem de modelo e de hipóteses explícitas)
+
+- **Sob taxas constantes dentro da UF** (Modelos A e B): fidelidade de 98 a
+  99% aos finalistas; Flávio→Lula de 0,1 a 0,3% (Modelo A, piso em zero) e de
+  0,2 a 0,8% (Modelo B, conforme a prior); brancos/nulos→Lula de 53% a 61% e
+  eliminados→Lula de 42% a 53%, conforme a unidade de agregação (seção,
+  zona, município); abstencionistas→Lula de 9% a 11%. **A hipótese é
+  contradita pelos dados**: o estimador sem restrições dá Lula→Lula = 1,016
+  e Flávio→Lula = −0,025 (negativo em 19 das 27 UFs), e a sobredispersão
+  medida com a variância correta é de 5 vezes (mediana por UF), não 1,1.
+- **Teste de migração mínima (seção 7)**: o p-valor conjunto por seção
+  contra o teto 0% passa de 8 × 10⁻¹¹ para 0,025 quando corrigido pela
+  correlação entre seções do mesmo município (efeito de desenho 2,8), e
+  para 0,90 quando a mesma amostra é agregada por zona. O teste não deve
+  ser lido como evidência forte contra a migração nula.
+- **Sob taxas que variam com o contexto** (modelos M1 e M2 da auditoria,
+  seção 4.4): com taxas dependentes da margem municipal, migração de 0,11%
+  (IC 95% por bootstrap de municípios de 0,08 a 0,26), brancos/nulos→Lula
+  60% e eliminados→Lula 41%; com a participação dos não votantes
+  dependente da preferência latente local, migração de 0,60% (0,49 a 0,78),
+  brancos/nulos→Lula **31%** e eliminados→Lula **59%**. Os três modelos
+  preveem os agregados fora da amostra com a mesma precisão (erro absoluto
+  médio de 1,7 ponto).
+- **Amapá**: 8 a 11% de migração Flávio→Lula em Macapá e Santana sob
+  constância e sob M1/M2; 3,0 a 3,5% sem as seções em que o comparecimento
+  mudou mais de 10 pontos; 1,0 a 1,3% sem as de mais de 5 pontos. O que o
+  ajuste troca por migração é a conversão quase total dos eleitores dos
+  eliminados, não a abstenção diferencial.
+
+### D. Hipóteses não identificadas (possíveis, não demonstradas nem descartadas)
+
+- Migração Flávio→Lula entre 0 e cerca de 10%, compensada por mobilização e
+  abstenção que variam com a composição local: em dados sintéticos com
+  essa estrutura, migrações de 5, 10 e 15% são estimadas em 0,24% com
+  intervalos que excluem a verdade em 100% das repetições, e a mesma
+  qualidade de ajuste e de previsão fora da amostra.
+- Qualquer repartição dos cerca de 7 milhões de votos de Lula que não vieram
+  dele nem dos eliminados entre brancos/nulos, abstencionistas e migração,
+  dentro dos limites de B.
+- No Amapá, migração local contra realinhamento dos eleitores dos eliminados
+  ou heterogeneidade equivalente a 0,1% do eleitorado.
+
+### Perguntas do prompt original, reformuladas
+
+| Pergunta | Estado após a auditoria |
+|---|---|
+| 1. Aumento de válidos por área | Sustentada como descrição (fato A); "inclinação para áreas de Lula" vem da queda de brancos/nulos (fato A). |
+| 2. Eliminados bastam? | Não bastam (consequência B). Quais transferências são compatíveis: qualquer uma dentro dos limites de B; a repartição 42%/39% é estimativa C sob hipótese contradita. |
+| 3. Explicável sem migração relevante? | **Indeterminada (não identificável)**: explicável com 0% e também com cerca de 10%, com a mesma qualidade de ajuste; a aritmética limita a cerca de 11% sob fidelidade de 90%. |
+| 4. Mobilização associada ao crescimento de Lula? | A associação entre agregados é aritmética (B); a origem individual dos votos é hipótese D; a queda de brancos/nulos maior onde Lula era forte é fato A. **Não sustentada como evidência de comportamento.** |
+| 5. Voto dividido | A divergência é fato A; a frequência de voto cruzado só é limitada (PL→Lula entre 0,7% e 88,6%), não estimada. **Parcialmente sustentada.** |
+| 6. Padrões atípicos | Resíduos de um modelo com hipótese rejeitada; nenhuma inconsistência de registros. **Indeterminada** quanto às causas. |
+| 7. Diferença histórica | Nos agregados oficiais, sim (fato A); nas taxas de transição, a comparação herda o mesmo viés. **Parcialmente sustentada.** |
+
+---
+
 ## Anexos
 
 ### Figuras (`resultados/figuras/`)
@@ -653,6 +795,14 @@ e ETag do servidor: `integridade/manifesto_downloads.csv`. Principais:
 - `https://resultados.tse.jus.br/oficial/ele2026/arquivo-urna/3221/dados/...` (BUs; 50.821 seções da amostra + 1.914 do AP)
 - Equivalentes de 2022 e 2018 (`votacao_secao_<ano>_BR`, `detalhe_votacao_secao_<ano>`, `votacao_partido_munzona_<ano>`)
 - IBGE: malha municipal (API de malhas v3) e SIDRA, tabelas 4709, 9923, 9543, 10295, 9605 (Censo 2022) e 5938 (PIB 2021)
+
+**Inconsistência de versões no CDN (26/10/2026).** Entre o download
+registrado no manifesto e uma nova consulta no mesmo dia, o CDN do TSE passou
+a informar, para os arquivos `votacao_secao_2026_<UF>.zip`, datas e tamanhos
+diferentes dos baixados, inclusive em sentido inverso (PR, SP e PA com versão
+mais antiga no servidor do que a baixada). Detalhes, UFs afetadas e
+consequências: seção VIII, item 9. O arquivo nacional de 1º turno e o
+`detalhe_votacao_secao_2026.zip` não mudaram.
 
 Verificações por base (seções duplicadas, ausentes, não instaladas,
 anuladas, aptos que mudaram entre turnos, conferência BU × detalhe):

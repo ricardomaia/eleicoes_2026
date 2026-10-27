@@ -1,0 +1,143 @@
+{
+  "reconciliacao": {
+    "primeiro_turno": {
+      "Lula": 53879538.0,
+      "Flávio Bolsonaro": 56104503.0,
+      "Outros candidatos": 9316747.0,
+      "Votos válidos": 119300788.0,
+      "Votos brancos": 2300798.0,
+      "Votos nulos (inclui nulos técnicos)": 3674249.0,
+      "Abstenções (aptos − comparecimento)": 33469667.0,
+      "Comparecimento": 125275835.0,
+      "Eleitores aptos": 158745502.0
+    },
+    "segundo_turno": {
+      "Lula": 64256232.0,
+      "Flávio Bolsonaro": 59826041.0,
+      "Outros candidatos": 0.0,
+      "Votos válidos": 124082273.0,
+      "Votos brancos": 1430496.0,
+      "Votos nulos (inclui nulos técnicos)": 2723305.0,
+      "Abstenções (aptos − comparecimento)": 30509428.0,
+      "Comparecimento": 128236074.0,
+      "Eleitores aptos": 158745502.0
+    },
+    "diferenca": {
+      "Lula": 10376694.0,
+      "Flávio Bolsonaro": 3721538.0,
+      "Outros candidatos": -9316747.0,
+      "Votos válidos": 4781485.0,
+      "Votos brancos": -870302.0,
+      "Votos nulos (inclui nulos técnicos)": -950944.0,
+      "Abstenções (aptos − comparecimento)": -2960239.0,
+      "Comparecimento": 2960239.0,
+      "Eleitores aptos": 0.0
+    },
+    "pct_aptos_t1": {
+      "Lula": 33.940828131306674,
+      "Flávio Bolsonaro": 35.34242059973454,
+      "Outros candidatos": 5.86898329881498,
+      "Votos válidos": 75.1522320298562,
+      "Votos brancos": 1.4493626408387936,
+      "Votos nulos (inclui nulos técnicos)": 2.3145531392757195,
+      "Abstenções (aptos − comparecimento)": 21.083852190029297,
+      "Comparecimento": 78.91614780997071,
+      "Eleitores aptos": 100.0
+    },
+    "pct_aptos_t2": {
+      "Lula": 40.47751349830372,
+      "Flávio Bolsonaro": 37.68676292950965,
+      "Outros candidatos": 0.0,
+      "Votos válidos": 78.16427642781336,
+      "Votos brancos": 0.9011253748783383,
+      "Votos nulos (inclui nulos técnicos)": 1.7155163237318056,
+      "Abstenções (aptos − comparecimento)": 19.21908187357649,
+      "Comparecimento": 80.78091812642351,
+      "Eleitores aptos": 100.0
+    },
+    "pct_validos_t1": {
+      "Lula": 45.1627679106361,
+      "Flávio Bolsonaro": 47.02777235637371,
+      "Outros candidatos": 7.809459732990196,
+      "Votos válidos": NaN,
+      "Votos brancos": NaN,
+      "Votos nulos (inclui nulos técnicos)": NaN,
+      "Abstenções (aptos − comparecimento)": NaN,
+      "Comparecimento": NaN,
+      "Eleitores aptos": NaN
+    },
+    "pct_validos_t2": {
+      "Lula": 51.7851828842626,
+      "Flávio Bolsonaro": 48.2148171157374,
+      "Outros candidatos": 0.0,
+      "Votos válidos": NaN,
+      "Votos brancos": NaN,
+      "Votos nulos (inclui nulos técnicos)": NaN,
+      "Abstenções (aptos − comparecimento)": NaN,
+      "Comparecimento": NaN,
+      "Eleitores aptos": NaN
+    }
+  },
+  "quantidades_minimas": [
+    {
+      "nivel": "nacional",
+      "unidades": 1,
+      "validos_2T_sem_origem_valida_1T": 4781485.0,
+      "comparecimento_2T_sem_origem_comparecimento_1T": 2960239.0,
+      "lula_2T_alem_de_lula1T_e_outros1T": 1059947.0,
+      "flavio_2T_alem_de_flavio1T_e_outros1T": 0.0,
+      "min_flavio1T_para_lula2T": 0.0,
+      "min_lula1T_para_flavio2T": 0.0,
+      "unidades_onde_F_para_L_zero_e_inviavel": 0.0,
+      "unidades_onde_L_para_F_zero_e_inviavel": 0.0
+    },
+    {
+      "nivel": "UF",
+      "unidades": 28,
+      "validos_2T_sem_origem_valida_1T": 4953208.0,
+      "comparecimento_2T_sem_origem_comparecimento_1T": 3231747.0,
+      "lula_2T_alem_de_lula1T_e_outros1T": 1643269.0,
+      "flavio_2T_alem_de_flavio1T_e_outros1T": 0.0,
+      "min_flavio1T_para_lula2T": 0.0,
+      "min_lula1T_para_flavio2T": 0.0,
+      "unidades_onde_F_para_L_zero_e_inviavel": 0.0,
+      "unidades_onde_L_para_F_zero_e_inviavel": 0.0
+    },
+    {
+      "nivel": "município",
+      "unidades": 5757,
+      "validos_2T_sem_origem_valida_1T": 5040414.0,
+      "comparecimento_2T_sem_origem_comparecimento_1T": 3339994.0,
+      "lula_2T_alem_de_lula1T_e_outros1T": 1837161.0,
+      "flavio_2T_alem_de_flavio1T_e_outros1T": 8085.0,
+      "min_flavio1T_para_lula2T": 0.0,
+      "min_lula1T_para_flavio2T": 0.0,
+      "unidades_onde_F_para_L_zero_e_inviavel": 0.0,
+      "unidades_onde_L_para_F_zero_e_inviavel": 0.0
+    },
+    {
+      "nivel": "seção (todas; sem divisão por candidato no 2T)",
+      "unidades": 499248,
+      "validos_2T_sem_origem_valida_1T": 5287816.0,
+      "comparecimento_2T_sem_origem_comparecimento_1T": 3622948.0,
+      "lula_2T_alem_de_lula1T_e_outros1T": NaN,
+      "flavio_2T_alem_de_flavio1T_e_outros1T": NaN,
+      "min_flavio1T_para_lula2T": NaN,
+      "min_lula1T_para_flavio2T": NaN,
+      "unidades_onde_F_para_L_zero_e_inviavel": NaN,
+      "unidades_onde_L_para_F_zero_e_inviavel": NaN
+    },
+    {
+      "nivel": "seção (amostra de BUs, sem expansão)",
+      "unidades": 50821,
+      "validos_2T_sem_origem_valida_1T": 541494.0,
+      "comparecimento_2T_sem_origem_comparecimento_1T": 373079.0,
+      "lula_2T_alem_de_lula1T_e_outros1T": 263686.0,
+      "flavio_2T_alem_de_flavio1T_e_outros1T": 13370.0,
+      "min_flavio1T_para_lula2T": 4.0,
+      "min_lula1T_para_flavio2T": 0.0,
+      "unidades_onde_F_para_L_zero_e_inviavel": 2.0,
+      "unidades_onde_L_para_F_zero_e_inviavel": 0.0
+    }
+  ]
+}

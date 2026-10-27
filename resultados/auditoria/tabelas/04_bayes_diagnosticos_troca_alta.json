@@ -1,0 +1,30 @@
+{
+  "prior": "troca_alta",
+  "tempo_s": 2732.690050125122,
+  "divergencias": 0,
+  "draws": 1000,
+  "tune": 1000,
+  "chains": 4,
+  "unidades": 4000,
+  "rhat_max": 1.007554891578802,
+  "n_param_rhat_gt_1_01": 0,
+  "ess_bulk_min": 519.4466884874339,
+  "ess_tail_min": 485.8210156674171,
+  "verificacao_preditiva": {
+    "cobertura_intervalo_90_lula_share": 0.967,
+    "p_preditivo_totais_amostra": {
+      "a_2": 0.27,
+      "b_2": 0.61,
+      "bn_2": 0.47,
+      "abst_2": 0.7
+    },
+    "dp_lula_share_obs": 0.14288085694815475,
+    "dp_lula_share_rep_media": 0.14285106090898197,
+    "p_preditivo_dp": 0.47
+  },
+  "corr_FL_x_L_abst": 0.10877127780638703,
+  "corr_FL_x_A_L": -0.16014962816604958,
+  "corr_FL_x_BN_L": -0.05729737134732798,
+  "corr_FL_x_F_abst": -0.0370828744182008,
+  "corr_BN_L_x_A_L": -0.20701029924640904
+}

@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="estilo.css?v=6">
+<link rel="stylesheet" href="estilo.css?v=7">
 </head>
 <body>
 
@@ -18,6 +18,7 @@
     <h1>Como os votos mudaram entre o 1º e o 2º turno</h1>
     <p class="sub">Flávio Bolsonaro terminou o 1º turno na frente. Lula venceu o 2º turno. Este painel mostra, com os dados oficiais seção por seção, de onde vieram os votos a mais de cada candidato, o que a matemática garante, o que os modelos estatísticos estimam e o que não dá para saber.</p>
     <p class="aviso-indep">Análise independente, sem vínculo com o TSE ou com partidos. Código e dados abertos: <a href="https://github.com/ricardomaia/eleicoes_2026">github.com/ricardomaia/eleicoes_2026</a>. Atualizado em <span id="gerado-em"></span>.</p>
+    <p class="aviso-indep"><strong>Revisão de 27/10/2026.</strong> Uma auditoria metodológica reproduziu todos os cálculos deste painel e confirmou as contas oficiais e os limites aritméticos. Mas concluiu que as taxas de transição estimadas (abas "Para onde foram os votos" e "Eleitores de Flávio foram para Lula?") dependem de uma hipótese que os próprios dados contradizem: a migração Flávio→Lula de 0,2% não é uma medida, é o piso em zero de um estimador cuja solução livre é negativa, e os dados agregados só permitem dizer que ela fica entre 0 e cerca de 11% se pelo menos 90% dos eleitores de cada finalista o mantiveram. A conversão de brancos, nulos e abstencionistas para Lula também não é determinada pelos dados: em dois modelos alternativos em que as taxas variam com o contexto local, a migração continua abaixo de 1%, mas a parcela de brancos e nulos convertida para Lula vai de 31% a 60% conforme o modelo. Detalhes e conclusões reformuladas em <a href="https://github.com/ricardomaia/eleicoes_2026/blob/main/AUDITORIA_METODOLOGICA.md">AUDITORIA_METODOLOGICA.md</a> e na seção IX-A do <a href="https://github.com/ricardomaia/eleicoes_2026/blob/main/RELATORIO.md">relatório</a>.</p>
   </div>
 </header>
 
@@ -227,7 +228,7 @@
     <p class="legenda-fig">A mesma taxa calculada de nove maneiras: o Modelo A em seções e em municípios; o Modelo A com quatro divisões diferentes do país; e o Modelo B (bayesiano) com três suposições iniciais diferentes, uma delas propositalmente centrada em 15% de troca entre os finalistas.</p>
     <div class="grafico" id="g-modelos"></div>
     <details class="tecnico"><summary>Os modelos em detalhe</summary><div>
-      <p><b>Modelo A.</b> Para cada estado, procura a tabela de taxas (todas entre 0% e 100%, cada linha somando 100%) que melhor reproduz os votos do 2º turno de todas as seções, a partir da composição do 1º turno de cada seção. Ajuste por quase-verossimilhança multinomial (algoritmo EM). Incerteza por reamostragem de municípios (200 repetições). Usa uma amostra aleatória de 50.821 seções (10% de cada estado) com o boletim de urna do 2º turno.</p>
+      <p><b>Modelo A.</b> Para cada estado, procura a tabela de taxas (todas entre 0% e 100%, cada linha somando 100%) que melhor reproduz os votos do 2º turno de todas as seções, a partir da composição do 1º turno de cada seção. Ajuste por quase-verossimilhança multinomial (algoritmo EM). Incerteza por reamostragem de municípios (200 repetições). Na versão de 26/10 usava uma amostra aleatória de 50.821 seções (10% de cada estado) com o boletim de urna do 2º turno; desde 27/10 usa todas as 499 mil seções, com a votação por seção do 2º turno publicada pelo TSE.</p>
       <p><b>Divisões alternativas.</b> Uma tabela por estado (principal); por região × faixa de vantagem; por estado × nível de urbanização; e uma tabela própria para cada município grande. A última usa só diferenças dentro de cada município.</p>
       <p><b>Modelo B.</b> Bayesiano hierárquico: as taxas variam por estado, por urbanização e pela vantagem do 1º turno no município. Três distribuições a priori: neutra, "fidelidade alta" e "troca alta" (15%). Se os resultados mudassem muito com a prior, os dados não estariam decidindo. Diagnósticos: sem divergências; R-hat máximo 1,011, 1,019 e 1,042.</p>
     </div></details>
@@ -382,7 +383,7 @@
       <li><b>O voto é secreto.</b> Não existe registro de como cada pessoa votou nos dois turnos. Todas as "taxas de transição" são estimativas feitas comparando lugares, não pessoas.</li>
       <li><b>As estimativas dependem de uma suposição.</b> Os modelos supõem que, dentro de cada estado (ou de cada grupo usado), os eleitores de um mesmo grupo se comportaram de forma parecida em todas as seções. Se isso não for verdade, as estimativas podem estar erradas, e as margens de erro mostradas não incluem esse tipo de erro.</li>
       <li><b>Mais de uma explicação pode servir.</b> Dados agregados às vezes não distinguem "eleitores trocaram de candidato" de "eleitores de um candidato deixaram de votar mais do que os do outro". O caso do Amapá mostra isso.</li>
-      <li><b>Dados do 2º turno ainda incompletos por seção.</b> Em 26/10/2026 o TSE ainda não tinha publicado a votação por candidato em cada seção do 2º turno. Foram usados os boletins de urna de uma amostra aleatória de 50.821 seções (10% de cada estado) e de todas as 1.914 seções do Amapá; por município, o resultado completo do sistema de divulgação do TSE.</li>
+      <li><b>Dados do 2º turno por seção.</b> Em 26/10/2026 o TSE ainda não tinha publicado a votação por candidato em cada seção do 2º turno, e a primeira versão deste painel usou os boletins de urna de uma amostra aleatória de 50.821 seções (10% de cada estado) e de todas as 1.914 seções do Amapá. O arquivo completo (499.205 seções) ficou disponível no CDN do TSE na madrugada de 27/10 e passou a ser usado; os 50.821 boletins conferem com ele sem nenhuma divergência, e a versão anterior dos resultados está guardada no repositório (pasta <code>resultados/versao_amostra_bu</code>).</li>
       <li><b>Resultado ainda sujeito a ajustes.</b> O 2º turno veio do sistema oficial de divulgação (totalização final); o relatório oficial consolidado ainda não havia sido publicado.</li>
       <li><b>Modelo bayesiano reduzido.</b> Por custo de processamento, rodou com 4.000 seções; uma das três versões teve indicador de convergência (R-hat 1,042) um pouco acima do ideal.</li>
       <li><b>Classificação de partidos.</b> O agrupamento em esquerda, centro e direita é uma escolha desta análise; os resultados principais usam o PL e a federação do PT separadamente.</li>
@@ -422,7 +423,7 @@
   </div>
   <div class="bloco">
     <h3>Como reproduzir</h3>
-    <p>Todo o código está em <a href="https://github.com/ricardomaia/eleicoes_2026">github.com/ricardomaia/eleicoes_2026</a>. O relatório técnico completo está em <a href="https://github.com/ricardomaia/eleicoes_2026/blob/main/RELATORIO.md">RELATORIO.md</a>. Com Python 3.14 e as bibliotecas de <code>requirements.txt</code>, o comando <code>python src/executar_tudo.py</code> baixa os dados do TSE e do IBGE, refaz todas as análises e roda os testes.</p>
+    <p>Todo o código está em <a href="https://github.com/ricardomaia/eleicoes_2026">github.com/ricardomaia/eleicoes_2026</a>. O relatório técnico completo está em <a href="https://github.com/ricardomaia/eleicoes_2026/blob/main/RELATORIO.md">RELATORIO.md</a>; a revisão estatística posterior, com experimentos adversariais e análise de identificabilidade, está em <a href="https://github.com/ricardomaia/eleicoes_2026/blob/main/AUDITORIA_METODOLOGICA.md">AUDITORIA_METODOLOGICA.md</a>. Com Python 3.14 e as bibliotecas de <code>requirements.txt</code>, o comando <code>python src/executar_tudo.py</code> baixa os dados do TSE e do IBGE, refaz todas as análises e roda os testes.</p>
   </div>
 </section>
 
@@ -438,8 +439,8 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-<script src="dados.js?v=6"></script>
-<script src="mapa.js?v=6"></script>
-<script src="app.js?v=6"></script>
+<script src="dados.js?v=7"></script>
+<script src="mapa.js?v=7"></script>
+<script src="app.js?v=7"></script>
 </body>
 </html>

@@ -1,0 +1,63 @@
+{
+  "diagnosticos": {
+    "neutra": {
+      "tempo_s": 1446.1483507156372,
+      "divergencias": 0,
+      "rhat_max": 1.0112009412724765,
+      "ess_bulk_min": 252.60704191022742,
+      "verificacao_preditiva": {
+        "cobertura_intervalo_90_lula_share": 0.967,
+        "p_preditivo_totais_amostra": {
+          "a_2": 0.17,
+          "b_2": 0.63,
+          "bn_2": 0.53,
+          "abst_2": 0.705
+        },
+        "dp_lula_share_obs": 0.14288085694815475,
+        "dp_lula_share_rep_media": 0.14303254212927566,
+        "p_preditivo_dp": 0.62
+      }
+    },
+    "fidelidade_alta": {
+      "tempo_s": 573.4121313095093,
+      "divergencias": 0,
+      "rhat_max": 1.0185016509929032,
+      "ess_bulk_min": 222.77375767210222,
+      "verificacao_preditiva": {
+        "cobertura_intervalo_90_lula_share": 0.96825,
+        "p_preditivo_totais_amostra": {
+          "a_2": 0.22,
+          "b_2": 0.69,
+          "bn_2": 0.515,
+          "abst_2": 0.685
+        },
+        "dp_lula_share_obs": 0.14288085694815475,
+        "dp_lula_share_rep_media": 0.1429418985169788,
+        "p_preditivo_dp": 0.52
+      }
+    },
+    "troca_alta": {
+      "tempo_s": 739.7945382595062,
+      "divergencias": 0,
+      "rhat_max": 1.0420239909342985,
+      "ess_bulk_min": 121.10566106006824,
+      "verificacao_preditiva": {
+        "cobertura_intervalo_90_lula_share": 0.964,
+        "p_preditivo_totais_amostra": {
+          "a_2": 0.26,
+          "b_2": 0.59,
+          "bn_2": 0.525,
+          "abst_2": 0.685
+        },
+        "dp_lula_share_obs": 0.14288085694815475,
+        "dp_lula_share_rep_media": 0.14287847871721712,
+        "p_preditivo_dp": 0.49
+      }
+    }
+  },
+  "unidades": 4000,
+  "draws": 400,
+  "tune": 600,
+  "chains": 4,
+  "semente": 20261025
+}

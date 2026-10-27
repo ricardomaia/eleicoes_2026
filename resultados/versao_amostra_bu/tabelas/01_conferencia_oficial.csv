@@ -1,0 +1,17 @@
+turno,indicador,oficial,calculado,diferenca,confere
+1,aptos,158745502,158745502.0,0.0,True
+1,comparecimento,125275835,125275835.0,0.0,True
+1,abstencao_tse,33469244,33469244.0,0.0,True
+1,aptos_secoes_nao_instaladas,423,423.0,0.0,True
+1,validos,119300788,119300788.0,0.0,True
+1,brancos,2300798,2300798.0,0.0,True
+1,nulos,3674249,3674249.0,0.0,True
+1,nulos_tecnicos,5246,5246.0,0.0,True
+1,lula,53879538,53879538.0,0.0,True
+1,flavio,56104503,56104503.0,0.0,True
+2,aptos,158745502,158745502.0,0.0,True
+2,comparecimento,128236074,128236074.0,0.0,True
+2,validos,124082273,124082273.0,0.0,True
+2,brancos,1430496,1430496.0,0.0,True
+2,nulos,2723305,2723305.0,0.0,True
+2,lula + flavio = validos,124082273,124082273.0,0.0,True

@@ -69,7 +69,12 @@ def unidades(ano: int):
     if ano == 2026:
         sec["demais_1"] = sec.zema_1 + sec.outros_peq_1
         mun["demais_1"] = mun.zema_1 + mun.outros_peq_1
-        am = sec[sec.na_amostra_bu.fillna(False).astype(bool)].copy()
+        if sec.a_2.notna().mean() > 0.99:
+            # votacao_secao do 2º turno publicado (26/10/2026, 17h42 UTC): todas as seções instaladas.
+            # Os resultados com a amostra de 50.821 BUs ficam em resultados/versao_amostra_bu/.
+            am = sec[sec.a_2.notna() & (sec.aptos_1 > 0) & (sec.instalada_2 != "Não")].copy()
+        else:
+            am = sec[sec.na_amostra_bu.fillna(False).astype(bool)].copy()
     else:
         am = amostra_historica(sec, ano)
     totais_uf = sec.groupby("uf")[[c for c in dict.fromkeys(ORIG_DET + ORIG_BASE) if c in sec]].sum()
@@ -79,50 +84,74 @@ def unidades(ano: int):
     return {"secao": am, "municipio": mun}, totais_uf
 
 
-def estimar(df: pd.DataFrame, origens, totais_uf, rng, n_boot=N_BOOT, tetos=True, ano=2026):
-    linhas_uf, boots_nac, testes = [], [], []
-    fluxo_nac = np.zeros((len(origens), len(DEST)))
-    contagem = df.groupby("uf").size()
-    for uf in sorted(df.uf.unique()):
+def _estimar_uf(args):
+    """Ajuste de uma UF (ou da sua região): matriz, bootstrap por município e testes de teto."""
+    uf, fonte, g, origens, tot, n_boot, tetos, semente = args
+    rng = np.random.default_rng(semente)
+    R, C, N, ok = preparar(g, origens, DEST)
+    X = R / N[:, None]
+    grupos = g.cd_mun.to_numpy()[ok]
+    B, ll, res = ajustar(X, C)
+    phi, gl = sobredispersao(B, X, C)
+    dev = deviance(B, X, C)
+    bs = bootstrap_conglomerados(X, C, grupos, B, n_boot, rng) if n_boot else None
+    linhas_uf, testes = [], []
+    for r, o in enumerate(origens):
+        for c, dd in enumerate(DEST):
+            linhas_uf.append({"uf": uf, "origem": o, "destino": dd, "taxa": B[r, c],
+                              "ic95_inf": np.percentile(bs[:, r, c], 2.5) if bs is not None else np.nan,
+                              "ic95_sup": np.percentile(bs[:, r, c], 97.5) if bs is not None else np.nan,
+                              "phi": phi, "unidades": len(g), "estimado_com": fonte,
+                              "convergiu": bool(res.success)})
+    if tetos:
+        iF, iL = origens.index("b_1"), origens.index("a_1")
+        for nome, (r, c) in {"direita_para_pt": (iF, 0), "pt_para_direita": (iL, 1)}.items():
+            for t in TETOS:
+                if B[r, c] <= t:
+                    Bc, devc = B, dev
+                else:
+                    Bc, _, _ = ajustar(X, C, B0=B, limites_celula={(r, c): (0.0, t)})
+                    devc = deviance(Bc, X, C)
+                    if devc < dev:  # o modelo livre contém o restrito: corrige o ótimo livre
+                        B, dev = Bc, devc
+                F, p = teste_restricao(dev, devc, phi, 1, gl)
+                testes.append({"uf": uf, "estimado_com": fonte, "hipotese": nome, "teto": t, "taxa_livre": B[r, c],
+                               "dev_livre": dev, "dev_restrito": devc, "aumento_dev": devc - dev,
+                               "phi": phi, "gl": gl, "F": F, "p": p,
+                               **{f"fluxo_{o}_{d}": tot[i] * Bc[i, j]
+                                  for i, o in enumerate(origens) for j, d in enumerate(DEST)}})
+    return uf, B, bs, linhas_uf, testes
+
+
+def estimar(df: pd.DataFrame, origens, totais_uf, rng, n_boot=N_BOOT, tetos=True, ano=2026, processos=8):
+    """As UFs são ajustadas em paralelo (desde 27/10/2026, quando o nível "seção" passou a ter todas
+    as 499 mil seções). Cada UF recebe uma semente própria sorteada, em ordem, do gerador recebido,
+    o que mantém a reprodutibilidade; a sequência de números aleatórios difere da execução de 26/10
+    (sequencial, um gerador para todas as UFs), cujos resultados estão em resultados/versao_amostra_bu/."""
+    ufs = sorted(df.uf.unique())
+    sementes = rng.integers(0, 2**31, size=len(ufs))
+    tarefas = []
+    for uf, sem in zip(ufs, sementes):
         g = df[df.uf == uf]
         fonte = uf
         if len(g) < MIN_UNIDADES:
             fonte = "região " + REGIAO[uf]
             g = df[df.uf.map(REGIAO) == REGIAO[uf]]
-        R, C, N, ok = preparar(g, origens, DEST)
-        X = R / N[:, None]
-        grupos = g.cd_mun.to_numpy()[ok]
-        B, ll, res = ajustar(X, C)
-        phi, gl = sobredispersao(B, X, C)
-        dev = deviance(B, X, C)
-        tot = totais_uf.loc[uf, origens].to_numpy(float)
+        tarefas.append((uf, fonte, g, origens, totais_uf.loc[uf, origens].to_numpy(float), n_boot, tetos, int(sem)))
+    if processos > 1 and len(tarefas) > 1:
+        from concurrent.futures import ProcessPoolExecutor
+        with ProcessPoolExecutor(min(processos, len(tarefas))) as ex:
+            res = list(ex.map(_estimar_uf, tarefas))
+    else:
+        res = [_estimar_uf(t) for t in tarefas]
+    linhas_uf, boots_nac, testes = [], [], []
+    fluxo_nac = np.zeros((len(origens), len(DEST)))
+    for (uf, B, bs, lu, ts), t in zip(res, tarefas):
+        tot = t[4]
         fluxo_nac += tot[:, None] * B
-        bs = bootstrap_conglomerados(X, C, grupos, B, n_boot, rng) if n_boot else None
         boots_nac.append(tot[None, :, None] * bs if bs is not None else None)
-        for r, o in enumerate(origens):
-            for c, dd in enumerate(DEST):
-                linhas_uf.append({"uf": uf, "origem": o, "destino": dd, "taxa": B[r, c],
-                                  "ic95_inf": np.percentile(bs[:, r, c], 2.5) if bs is not None else np.nan,
-                                  "ic95_sup": np.percentile(bs[:, r, c], 97.5) if bs is not None else np.nan,
-                                  "phi": phi, "unidades": len(g), "estimado_com": fonte,
-                                  "convergiu": bool(res.success)})
-        if tetos:
-            iF, iL = origens.index("b_1"), origens.index("a_1")
-            for nome, (r, c) in {"direita_para_pt": (iF, 0), "pt_para_direita": (iL, 1)}.items():
-                for t in TETOS:
-                    if B[r, c] <= t:
-                        Bc, devc = B, dev
-                    else:
-                        Bc, _, _ = ajustar(X, C, B0=B, limites_celula={(r, c): (0.0, t)})
-                        devc = deviance(Bc, X, C)
-                        if devc < dev:  # o modelo livre contém o restrito: corrige o ótimo livre
-                            B, dev = Bc, devc
-                    F, p = teste_restricao(dev, devc, phi, 1, gl)
-                    testes.append({"uf": uf, "estimado_com": fonte, "hipotese": nome, "teto": t, "taxa_livre": B[r, c],
-                                   "dev_livre": dev, "dev_restrito": devc, "aumento_dev": devc - dev,
-                                   "phi": phi, "gl": gl, "F": F, "p": p,
-                                   **{f"fluxo_{o}_{d}": tot[i] * Bc[i, j]
-                                      for i, o in enumerate(origens) for j, d in enumerate(DEST)}})
+        linhas_uf += lu
+        testes += ts
     tot_or = totais_uf[origens].sum().to_numpy(float)
     taxa_nac = fluxo_nac / tot_or[:, None]
     nac = []

@@ -140,7 +140,11 @@ def quantidades_minimas(sec, mun) -> pd.DataFrame:
     uf = mun.groupby("uf").sum(numeric_only=True)
     bloco(uf, "UF")
     bloco(mun, "município")
-    bloco(sec, "seção (todas; sem divisão por candidato no 2T)", com_candidatos=False)
+    t2_completo = sec.a_2.notna().mean() > 0.99  # votacao_secao do 2º turno publicado
+    if t2_completo:
+        bloco(sec[sec.a_2.notna()], "seção (todas; votacao_secao do 2T)")
+    else:
+        bloco(sec, "seção (todas; sem divisão por candidato no 2T)", com_candidatos=False)
     am = sec[sec.get("na_amostra_bu", False) == True]  # noqa: E712
     if len(am):
         bloco(am, "seção (amostra de BUs, sem expansão)")
@@ -167,9 +171,13 @@ def main() -> dict:
         t = tabela_limites(R, C, nl, nc, nome)
         t.to_csv(TABELAS / f"01_limites_{nome}.csv", index=False)
         tabs.append(t)
-    # Seção (todas): destino só como válidos / brancos+nulos / abstenção.
-    R, C, nl, nc = margens(sec.dropna(subset=["aptos_1", "aptos_2"]), LINHAS_DETALHADAS,
-                           ["validos_2", "bn_2", "abst_2"])
+    # Seção (todas): com a votação por candidato do 2º turno quando publicada (26/10/2026, 17h42 UTC);
+    # antes disso, destino só como válidos / brancos+nulos / abstenção.
+    if sec.a_2.notna().mean() > 0.99:
+        R, C, nl, nc = margens(sec.dropna(subset=["aptos_1", "aptos_2", "a_2"]), LINHAS_DETALHADAS, COLUNAS)
+    else:
+        R, C, nl, nc = margens(sec.dropna(subset=["aptos_1", "aptos_2"]), LINHAS_DETALHADAS,
+                               ["validos_2", "bn_2", "abst_2"])
     t = tabela_limites(R, C, nl, nc, "secao_todas")
     t.to_csv(TABELAS / "01_limites_secao_todas.csv", index=False)
     tabs.append(t)

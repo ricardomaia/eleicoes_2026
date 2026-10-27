@@ -141,6 +141,19 @@ def montar(ano: int) -> tuple[pd.DataFrame, dict]:
     if t2_no_csv:
         s2 = compor(ano, det, vot, 2)
         chk["fonte_t2_candidatos"] = "votacao_secao (completo)"
+        if ano == 2026:
+            # A amostra de BUs continua marcada (na_amostra_bu) para que as análises por amostra
+            # sejam reproduzíveis, e serve de conferência entre o BU e o arquivo por seção.
+            am = votos_t2_2026_amostra().rename(columns={"a_2": "bu_a", "b_2": "bu_b"})
+            s2 = s2.merge(am, on=CHAVE, how="left")
+            s2["na_amostra_bu"] = s2["bu_a"].notna()
+            m = s2[s2.na_amostra_bu]
+            chk["bu_amostra_n"] = int(len(m))
+            chk["bu_divergencias_vs_votacao_secao"] = {
+                "aptos": int((m.bu_aptos != m.aptos_2).sum()), "comparecimento": int((m.bu_comp != m.comp_2).sum()),
+                "brancos": int((m.bu_brancos != m.brancos_2).sum()), "nulos": int((m.bu_nulos != m.nulos_2).sum()),
+                "lula": int((m.bu_a != m.a_2).sum()), "flavio": int((m.bu_b != m.b_2).sum())}
+            s2 = s2.drop(columns=["bu_a", "bu_b"])
     else:
         d2 = det[det.turno == 2].drop(columns="turno")
         s2 = d2[CHAVE + ["aptos", "comp", "nominais", "brancos", "nulos", "anul_apu_sep",
@@ -213,6 +226,13 @@ def main(anos=(2026, 2022, 2018)) -> None:
             # 2º turno por candidato, por município: JSON do sistema de divulgação (completo)
             t2 = pd.read_parquet(INTERIM / "t2_municipios_2026.parquet")
             t2 = t2.assign(uf=t2.uf.str.upper(), cd_mun=t2.cd_mun_tse.astype(int))
+            if chk.get("fonte_t2_candidatos", "").startswith("votacao_secao"):
+                # conferência: soma por município do arquivo por seção × JSON do sistema de divulgação
+                c = mun[["uf", "cd_mun", "a_2", "b_2"]].merge(
+                    t2[["uf", "cd_mun", "lula", "flavio"]], on=["uf", "cd_mun"], how="inner")
+                chk["municipios_div_votacao_secao_vs_json"] = {"municipios": int(len(c)),
+                                                               "lula": int((c.a_2 != c.lula).sum()),
+                                                               "flavio": int((c.b_2 != c.flavio).sum())}
             mun = mun.drop(columns=[c for c in ("a_2", "b_2") if c in mun])
             mun = mun.merge(t2[["uf", "cd_mun", "cd_ibge", "capital", "lula", "flavio", "aptos",
                                 "comparecimento", "validos", "brancos", "nulos"]]

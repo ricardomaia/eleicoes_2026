@@ -1,13 +1,14 @@
 {
   "ano": 2026,
-  "fonte_t2_candidatos": "amostra de BUs (sistema de divulgação)",
+  "fonte_t2_candidatos": "votacao_secao (completo)",
   "bu_amostra_n": 50821,
-  "bu_divergencias": {
+  "bu_divergencias_vs_votacao_secao": {
     "aptos": 0,
     "comparecimento": 0,
     "brancos": 0,
     "nulos": 0,
-    "validos(a+b)": 0
+    "lula": 0,
+    "flavio": 0
   },
   "secoes_t1": 499248,
   "secoes_t2": 499248,
@@ -43,8 +44,13 @@
     "validos": 124082273,
     "bn": 4153801,
     "abst": 30509428,
-    "a": 6518511,
-    "b": 6105530
+    "a": 64256232,
+    "b": 59826041
+  },
+  "municipios_div_votacao_secao_vs_json": {
+    "municipios": 5757,
+    "lula": 0,
+    "flavio": 0
   },
   "municipios_juncao_json": {
     "both": 5757,

@@ -1,0 +1,21 @@
+{
+  "modelos": {
+    "M0": "constância (EM)",
+    "M1": "softmax(α + β·margem municipal padronizada)",
+    "M2": "preferência latente π_i = Lula1/(Lula1+Flávio1) nas linhas brancos/nulos e abstenção"
+  },
+  "dev_total": {
+    "M0": 1271369.0137023677,
+    "M1": 1231648.155268567,
+    "M2": 1307944.6953735068
+  },
+  "parametros_por_uf": {
+    "M0": 15,
+    "M1": 30,
+    "M2": 15
+  },
+  "n_boot": 0,
+  "margem_media": 0.0325776533640778,
+  "margem_dp": 0.3675639889608078,
+  "tempo_s": 1099.8447906970978
+}

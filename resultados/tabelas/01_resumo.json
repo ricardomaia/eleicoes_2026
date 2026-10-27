@@ -88,8 +88,8 @@
       "flavio_2T_alem_de_flavio1T_e_outros1T": 0.0,
       "min_flavio1T_para_lula2T": 0.0,
       "min_lula1T_para_flavio2T": 0.0,
-      "unidades_onde_F_para_L_zero_e_inviavel": 0.0,
-      "unidades_onde_L_para_F_zero_e_inviavel": 0.0
+      "unidades_onde_F_para_L_zero_e_inviavel": 0,
+      "unidades_onde_L_para_F_zero_e_inviavel": 0
     },
     {
       "nivel": "UF",
@@ -100,8 +100,8 @@
       "flavio_2T_alem_de_flavio1T_e_outros1T": 0.0,
       "min_flavio1T_para_lula2T": 0.0,
       "min_lula1T_para_flavio2T": 0.0,
-      "unidades_onde_F_para_L_zero_e_inviavel": 0.0,
-      "unidades_onde_L_para_F_zero_e_inviavel": 0.0
+      "unidades_onde_F_para_L_zero_e_inviavel": 0,
+      "unidades_onde_L_para_F_zero_e_inviavel": 0
     },
     {
       "nivel": "município",
@@ -112,20 +112,20 @@
       "flavio_2T_alem_de_flavio1T_e_outros1T": 8085.0,
       "min_flavio1T_para_lula2T": 0.0,
       "min_lula1T_para_flavio2T": 0.0,
-      "unidades_onde_F_para_L_zero_e_inviavel": 0.0,
-      "unidades_onde_L_para_F_zero_e_inviavel": 0.0
+      "unidades_onde_F_para_L_zero_e_inviavel": 0,
+      "unidades_onde_L_para_F_zero_e_inviavel": 0
     },
     {
-      "nivel": "seção (todas; sem divisão por candidato no 2T)",
+      "nivel": "seção (todas; votacao_secao do 2T)",
       "unidades": 499248,
       "validos_2T_sem_origem_valida_1T": 5287816.0,
       "comparecimento_2T_sem_origem_comparecimento_1T": 3622948.0,
-      "lula_2T_alem_de_lula1T_e_outros1T": NaN,
-      "flavio_2T_alem_de_flavio1T_e_outros1T": NaN,
-      "min_flavio1T_para_lula2T": NaN,
-      "min_lula1T_para_flavio2T": NaN,
-      "unidades_onde_F_para_L_zero_e_inviavel": NaN,
-      "unidades_onde_L_para_F_zero_e_inviavel": NaN
+      "lula_2T_alem_de_lula1T_e_outros1T": 2588877.0,
+      "flavio_2T_alem_de_flavio1T_e_outros1T": 120456.0,
+      "min_flavio1T_para_lula2T": 20.0,
+      "min_lula1T_para_flavio2T": 24.0,
+      "unidades_onde_F_para_L_zero_e_inviavel": 10,
+      "unidades_onde_L_para_F_zero_e_inviavel": 1
     },
     {
       "nivel": "seção (amostra de BUs, sem expansão)",
@@ -136,8 +136,8 @@
       "flavio_2T_alem_de_flavio1T_e_outros1T": 13370.0,
       "min_flavio1T_para_lula2T": 4.0,
       "min_lula1T_para_flavio2T": 0.0,
-      "unidades_onde_F_para_L_zero_e_inviavel": 2.0,
-      "unidades_onde_L_para_F_zero_e_inviavel": 0.0
+      "unidades_onde_F_para_L_zero_e_inviavel": 2,
+      "unidades_onde_L_para_F_zero_e_inviavel": 0
     }
   ]
 }

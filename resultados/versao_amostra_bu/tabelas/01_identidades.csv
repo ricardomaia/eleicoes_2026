@@ -1,0 +1,9 @@
+identidade,lado_esquerdo,lado_direito,confere
+T1: Lula + Flávio + outros = válidos,119300788.0,119300788.0,True
+T1: válidos + brancos + nulos = comparecimento,125275835.0,125275835.0,True
+T1: comparecimento + abstenção = aptos,158745502.0,158745502.0,True
+T2: Lula + Flávio = válidos,124082273.0,124082273.0,True
+T2: válidos + brancos + nulos = comparecimento,128236074.0,128236074.0,True
+T2: comparecimento + abstenção = aptos,158745502.0,158745502.0,True
+ΔLula + ΔFlávio = outros(T1) + Δválidos,14098232.0,14098232.0,True
+Δválidos = −Δ(brancos+nulos) − Δabstenção + Δaptos,4781485.0,4781485.0,True

@@ -184,7 +184,7 @@ renderizar.contas = function () {
   legenda($("#leg-identidade"), [[C.lula, "Lula"], [C.dir, "Flávio"], [C.outros, "Votos dos eliminados no 1º turno"], [C.bn, "Aumento dos votos válidos (menos brancos, nulos e abstenções)"]]);
 
   const QM = D.quantidades_minimas;
-  const rot = { "nacional": "Brasil (1 conta)", "UF": "Por estado (28)", "município": "Por município (5.757)", "seção (todas; sem divisão por candidato no 2T)": "Por seção (499.248)", "seção (amostra de BUs, sem expansão)": "Por seção, só a amostra (50.821)" };
+  const rot = { "nacional": "Brasil (1 conta)", "UF": "Por estado (28)", "município": "Por município (5.757)", "seção (todas; sem divisão por candidato no 2T)": "Por seção (499.248)", "seção (todas; votacao_secao do 2T)": "Por seção (499.248)", "seção (amostra de BUs, sem expansão)": "Por seção, só a amostra de BUs (50.821)" };
   tabela($("#tab-minimos"), ["Somando", "Votos de Lula que não vêm de Lula nem dos eliminados", "Válidos do 2º turno sem voto válido no 1º", "Troca mínima Flávio → Lula"],
     QM.map(q => [rot[q.nivel] || q.nivel, fInt(q.lula_2T_alem_de_lula1T_e_outros1T), fInt(q.validos_2T_sem_origem_valida_1T), q.min_flavio1T_para_lula2T == null ? "—" : fInt(q.min_flavio1T_para_lula2T)]),
     ["", "num", "num", "num"]);

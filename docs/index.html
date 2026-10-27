@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="estilo.css?v=7">
+<link rel="stylesheet" href="estilo.css?v=8">
 </head>
 <body>
 
@@ -48,6 +48,9 @@
 
 <!-- ======================= RESUMO ======================= -->
 <section class="painel" id="resumo" role="tabpanel" aria-labelledby="aba-resumo">
+  <div class="vista-troca"><span>Escolha a versão</span><div class="seg" id="vista-resumo" role="group" aria-label="Versão do resumo"></div></div>
+  <div id="resumo-estudo" class="estudo"></div>
+  <div id="resumo-completo" class="painel-sub" hidden>
   <div class="bloco">
     <div class="placar" id="placar"></div>
     <p class="nota">Percentuais sobre os votos válidos (sem brancos e nulos). Os números 13 e 22 são os números dos candidatos na urna. <span class="natureza oficial">Dado oficial</span></p>
@@ -75,6 +78,7 @@
       <p><span class="pill indet">Indeterminada</span> com os dados disponíveis não é possível decidir.</p>
       <p>Essas situações descrevem as hipóteses da pesquisa; não são avaliações de candidatos ou partidos.</p>
     </div></details>
+  </div>
   </div>
 </section>
 
@@ -439,8 +443,9 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-<script src="dados.js?v=7"></script>
-<script src="mapa.js?v=7"></script>
-<script src="app.js?v=7"></script>
+<script src="dados.js?v=8"></script>
+<script src="mapa.js?v=8"></script>
+<script src="estudo.js?v=8"></script>
+<script src="app.js?v=8"></script>
 </body>
 </html>

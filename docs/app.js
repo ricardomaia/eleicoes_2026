@@ -110,6 +110,7 @@ document.addEventListener("click", e => {
 /* ---------------- RESUMO ---------------- */
 renderizar.resumo = function () {
   $("#gerado-em").textContent = D.gerado_em;
+  esMontar(); esVista();   // explicação para estudantes (estudo.js)
   const R = Object.fromEntries(D.reconciliacao.map(r => [r.indicador, r]));
   const L = R["Lula"], F = R["Flávio Bolsonaro"], O = R["Outros candidatos"];
   const cand = (cl, n, nome) => `<span class="cand ${cl}"><span class="n">${n}</span>${nome}</span>`;

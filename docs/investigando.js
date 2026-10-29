@@ -191,8 +191,15 @@ const INV_LOCAIS_TEIXEIRA = [ // local de votação, votos de Lula, votos de Fl�
   [1554, 822, 493], [1147, 1533, 1157], [1325, 810, 413], [1520, 1366, 865], [1422, 1628, 1007], [1287, 1414, 614],
   [1376, 1869, 1015], [1414, 2429, 1451], [1350, 2191, 1166],
 ];
-const INV_HORARIO = [["0–1", 125624], ["1–2", 154492], ["2–5", 160346], ["5–10", 44053], ["10–15", 4288], ["15–30", 1482],
-  ["30–60", 526], ["60–100", 329], ["100–130", 6662], ["130 ou mais", 95]];
+const INV_HORARIO = [ // minutos depois das 17h (Brasília), seções, votos de Lula, votos de Flávio
+  ["0–1", 125624, 15001166, 15608268], ["1–2", 154492, 19373920, 18501023], ["2–5", 160346, 21254140, 18982974],
+  ["5–10", 44053, 6369063, 5001529], ["10–15", 4288, 657873, 451156], ["15–30", 1482, 220460, 158099],
+  ["30–60", 526, 79455, 55759], ["60–100", 329, 48186, 36177], ["100–130", 6662, 1037169, 848770], ["130 ou mais", 95, 14646, 10789]];
+const INV_GRUPOS_17H = [ // grupos de seções do Brasil: seções, votos de Lula, votos de Flávio
+  { rot: "AC, AM, MS, MT, RO e RR", sub: "fecharam às 15h ou 16h locais", n: 32026, lula: 2990337, flavio: 4433850, dossie: "“até 17h”" },
+  { rot: "Demais estados, no 1º minuto", sub: "fecharam entre 17h00 e 17h01", n: 118716, lula: 14374258, flavio: 14679213, dossie: "“até 17h”" },
+  { rot: "Demais seções", sub: "fecharam depois de 17h01", n: 347155, lula: 46691483, flavio: 40541481, dossie: "“depois das 17h”" },
+];
 const INV_VIZINHAS = [ // UF, seções abertas até perto das 19h, Lula no estado, Lula nessas seções, Lula nas demais seções das mesmas zonas
   ["BA", 985, 71.3, 72.3, 72.5], ["PE", 694, 69.2, 65.8, 65.8], ["SP", 1656, 46.2, 57.2, 54.1],
   ["RJ", 2998, 46.9, 45.7, 49.9], ["PB", 311, 67.5, 52.8, 57.7], ["MA", 3, 69.5, 83.3, 73.8]];
@@ -245,6 +252,35 @@ function invBarrasH(el, itens, rodape) {
     invDica(svg.append("path").attr("d", invBarra(x0, y, w, bh, neg ? "e" : "d")).attr("fill", it.cor), it.dica || it.txt);
   });
   if (rodape) svg.append("text").attr("class", "rot").attr("x", x(0)).attr("y", H - 8).attr("text-anchor", "middle").text(rodape);
+}
+
+/* para cada grupo, uma barra para Lula e outra para Flávio, a partir de zero */
+function invBarrasPares(el, grupos, fmt = invCompacto) {
+  const W = larg(el), estreito = W < 520, bh = 16, gap = 4;
+  const mE = estreito ? 6 : Math.min(250, W * .38), cab = estreito ? 30 : 0, passo = cab + 2 * bh + gap + 22;
+  const H = grupos.length * passo;
+  const vmax = d3.max(grupos, g => Math.max(g.lula, g.flavio));
+  const x = d3.scaleLinear().domain([0, vmax * (estreito ? 1.32 : 1.25)]).range([mE, W - 8]);
+  const svg = d3.select(el).html("").append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("role", "img");
+  grupos.forEach((g, i) => {
+    const y = i * passo + cab, dif = g.lula - g.flavio;
+    const quem = dif >= 0 ? `Lula +${fmt(dif)}` : `Flávio +${fmt(-dif)}`;
+    const dica = `<b>${esc(g.rot)}</b> · ${fInt(g.n)} seções<br>Lula: ${fInt(g.lula)}<br>Flávio: ${fInt(g.flavio)}<br>Diferença: ${quem}`;
+    if (estreito) {
+      svg.append("text").attr("class", "rot-forte").attr("x", mE).attr("y", y - 17).text(g.rot);
+      svg.append("text").attr("class", "rot").attr("x", mE).attr("y", y - 4).text(`${fInt(g.n)} seções · ${g.sub}`);
+    } else {
+      svg.append("text").attr("class", "rot-forte").attr("x", mE - 10).attr("y", y + 12).attr("text-anchor", "end").text(g.rot);
+      svg.append("text").attr("class", "rot").attr("x", mE - 10).attr("y", y + 26).attr("text-anchor", "end").text(`${fInt(g.n)} seções`);
+      svg.append("text").attr("class", "rot").attr("x", mE - 10).attr("y", y + 40).attr("text-anchor", "end").text(g.sub);
+    }
+    [["Lula", g.lula, C.lula, 0], ["Flávio", g.flavio, C.dir, bh + gap]].forEach(([nome, v, cor, dy]) => {
+      invDica(svg.append("path").attr("d", invBarra(x(0), y + dy, Math.max(2, x(v) - x(0)), bh, "d")).attr("fill", cor), dica);
+      svg.append("text").attr("class", "rot-medio").attr("x", x(v) + 6).attr("y", y + dy + 12).text(`${nome} ${fmt(v)}`);
+    });
+    svg.append("text").attr("class", "rot-forte").attr("x", x(0)).attr("y", y + 2 * bh + gap + 15).text(`Diferença: ${quem}`);
+  });
+  svg.append("line").attr("x1", x(0)).attr("x2", x(0)).attr("y1", cab).attr("y2", H - 22).attr("stroke", C.linhaF);
 }
 
 /* colunas agrupadas por categoria; series: [{nome, cor, valores}] */
@@ -321,20 +357,22 @@ const INV_GRAFICOS = {
     },
   },
   horario: {
-    titulo: "Quanto tempo depois das 17h (Brasília) cada seção fechou",
-    como: "Cada coluna conta as seções que fecharam naquela faixa de minutos depois das 17h, já convertido para o horário de Brasília. Nenhuma seção fechou antes das 17h: a mais rápida fechou 9 segundos depois. A pequena coluna perto de 120 minutos são as seções que ficaram abertas até as 19h.",
-    tabela: () => ({ cab: ["Minutos depois das 17h", "Seções"], linhas: INV_HORARIO.map(([f, n]) => [f, fInt(n)]) }),
-    desenhar: el => invColunas(el, INV_HORARIO.map(h => h[0]), [{ nome: "Seções", cor: C.realce, valores: INV_HORARIO.map(h => h[1]) }],
-      { y1: 180000, fmt: invCompacto, rotY: "seções", rotular: (i, s, estreito) => (estreito ? [2, 8] : [0, 1, 2, 8]).includes(i), dicaCat: c => `${c} minutos depois das 17h` }),
+    titulo: "Votos de Lula e de Flávio pela hora em que a seção fechou",
+    como: "As seções foram agrupadas pelo tempo que levaram para fechar depois das 17h, já no horário de Brasília. Em cada faixa, a coluna vermelha soma os votos de Lula nessas seções, e a azul, os de Flávio. Nenhuma seção fechou antes das 17h: a mais rápida fechou 9 segundos depois, e a maioria fechou nos primeiros 5 minutos, depois de atender quem estava na fila. Na primeira faixa Flávio tem mais votos porque é nela que estão as seções dos estados com fuso diferente de Brasília (gráfico seguinte). Perto de 120 minutos estão as seções que ficaram abertas até as 19h.",
+    legenda: () => [[C.lula, "Lula"], [C.dir, "Flávio"]],
+    tabela: () => ({ cab: ["Minutos depois das 17h", "Seções", "Votos de Lula", "Votos de Flávio"],
+      linhas: INV_HORARIO.map(([f, n, l, b]) => [f, fInt(n), fInt(l), fInt(b)]) }),
+    desenhar: el => invColunas(el, INV_HORARIO.map(h => h[0]), [
+      { nome: "Lula", cor: C.lula, valores: INV_HORARIO.map(h => h[2]) }, { nome: "Flávio", cor: C.dir, valores: INV_HORARIO.map(h => h[3]) }],
+      { y1: 24e6, fmt: invCompacto, fmtEixo: v => v ? fNum(v / 1e6, 0) + " mi" : "0", rotY: "votos", dicaCat: c => `Seções que fecharam ${c} minutos depois das 17h` }),
   },
   fuso: {
-    titulo: "De onde vem a vantagem de Flávio nas urnas “fechadas até as 17h”",
-    como: "O dossiê leu a hora local gravada no boletim. Nos estados com fuso diferente de Brasília, a urna fecha às 15h ou 16h locais, que são 17h em Brasília, e por isso essas seções aparecem como “fechadas antes das 17h”. A maior parte da vantagem de Flávio nesse grupo vem delas.",
-    tabela: () => ({ cab: ["Seções no grupo “até 17h00”", "Seções", "Vantagem de Flávio"], linhas: [["AC, AM, MS, MT, RO e RR (fuso diferente)", "32.026", "1.443.513"], ["Demais estados, fechadas no 1º minuto depois das 17h", "118.716", "304.955"]] }),
-    desenhar: el => invBarrasH(el, [
-      { rot: "AC, AM, MS, MT, RO e RR", sub: "32.026 seções · fuso diferente", v: 1443513, cor: C.dir, txt: "Flávio +1,44 mi" },
-      { rot: "Demais estados", sub: "118.716 seções · fecharam no 1º minuto", v: 304955, cor: C.dir, txt: "Flávio +0,30 mi" },
-    ]),
+    titulo: "As três partes da divisão “até 17h / depois das 17h”",
+    como: "O dossiê dividiu as seções pela hora local gravada no boletim. Separadas em três grupos, fica visível de onde vem cada número dele. As seções dos estados com fuso diferente de Brasília fecham às 15h ou 16h locais, que são 17h em Brasília, e dão a Flávio 1,44 milhão de votos a mais. As dos demais estados que fecharam no primeiro minuto ficam quase empatadas. As que fecharam depois do primeiro minuto, a maior parte do país, dão a Lula 6,15 milhões a mais. Os dois primeiros grupos formam as “urnas encerradas até as 17h” do dossiê; o terceiro, as “encerradas depois”.",
+    legenda: () => [[C.lula, "Lula"], [C.dir, "Flávio"]],
+    tabela: () => ({ cab: ["Grupo de seções", "No dossiê", "Seções", "Votos de Lula", "Votos de Flávio", "Diferença"],
+      linhas: INV_GRUPOS_17H.map(g => [g.rot, g.dossie, fInt(g.n), fInt(g.lula), fInt(g.flavio), (g.lula >= g.flavio ? "Lula +" : "Flávio +") + fInt(Math.abs(g.lula - g.flavio))]) }),
+    desenhar: el => invBarrasPares(el, INV_GRUPOS_17H),
   },
   margem: {
     titulo: "O tamanho da prorrogação diante da margem",
@@ -350,33 +388,42 @@ const INV_GRAFICOS = {
   },
   vizinhas: {
     titulo: "Seções abertas até perto das 19h e suas vizinhas",
-    como: "Em cada estado, o ponto cheio é a votação de Lula nas seções que ficaram abertas até perto das 19h; o ponto vazio, nas outras seções das mesmas zonas eleitorais, que fecharam no horário normal. Pontos próximos querem dizer que as seções votaram igual às vizinhas. “Abertas até perto das 19h” são as seções que fecharam 100 minutos ou mais depois das 17h (horário de Brasília); a contagem difere um pouco da do dossiê, que usa a hora local gravada no boletim.",
-    legenda: () => [[C.tinta, "Seções abertas até perto das 19h", "border-radius:50%"], [C.papel, "Demais seções das mesmas zonas", `border-radius:50%;box-shadow:inset 0 0 0 2px ${C.tinta2}`]],
+    como: "Para cada estado há duas barras com a divisão dos votos válidos entre Lula (vermelho) e Flávio (azul): a de cima é das seções que ficaram abertas até perto das 19h; a de baixo, das outras seções das mesmas zonas eleitorais, que fecharam no horário normal. Barras parecidas querem dizer que as seções votaram igual às vizinhas. A linha clara no meio marca 50%. “Abertas até perto das 19h” são as seções que fecharam 100 minutos ou mais depois das 17h (horário de Brasília); a contagem difere um pouco da do dossiê, que usa a hora local gravada no boletim.",
+    legenda: () => [[C.lula, "Lula"], [C.dir, "Flávio"]],
     tabela: () => ({ cab: ["UF", "Seções abertas até perto das 19h", "Lula no estado", "Lula nessas seções", "Lula nas vizinhas", "Diferença (p.p.)"],
       linhas: INV_VIZINHAS.map(([u, n, e, a, v]) => [u, fInt(n), invP(e), invP(a), invP(v), fSin(a - v, 1)]) }),
     desenhar: el => {
-      const W = larg(el), mE = Math.min(130, W * .28), mD = 70, passo = 38, H = INV_VIZINHAS.length * passo + 34;
-      const x = d3.scaleLinear().domain([40, 85]).range([mE, W - mD]);
+      const W = larg(el), estreito = W < 520, mE = estreito ? 150 : 190, mD = 64, bh = 16, gap = 4, passo = 2 * bh + gap + 18;
+      const H = INV_VIZINHAS.length * passo + 14;
+      const x = d3.scaleLinear().domain([0, 100]).range([mE, W - mD]);
       const svg = d3.select(el).html("").append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("role", "img");
-      svg.append("g").attr("class", "eixo").attr("transform", `translate(0,${H - 22})`).call(d3.axisBottom(x).ticks(5).tickFormat(t => t + "%")).call(g => g.select(".domain").attr("stroke", C.linhaF));
-      svg.append("line").attr("x1", x(50)).attr("x2", x(50)).attr("y1", 0).attr("y2", H - 22).attr("stroke", C.linha);
-      svg.append("text").attr("class", "rot").attr("x", W - 8).attr("y", 10).attr("text-anchor", "end").text("diferença");
+      svg.append("text").attr("class", "rot").attr("x", W - 8).attr("y", 10).attr("text-anchor", "end").text("Lula: dif.");
+      const dentro = (xx, y, txt, ancora) => svg.append("text").attr("x", xx).attr("y", y + 12).attr("text-anchor", ancora).attr("fill", "#fff")
+        .style("font-size", "11px").style("font-family", "var(--f-numero)").style("pointer-events", "none").text(txt);
       INV_VIZINHAS.forEach(([u, n, e, a, v], i) => {
-        const y = i * passo + 22, dica = `<b>${u}</b> · ${fInt(n)} seções<br>Abertas até perto das 19h: ${invP(a)}<br>Vizinhas da mesma zona: ${invP(v)}<br>Estado: ${invP(e)}`;
-        svg.append("text").attr("class", "rot-forte").attr("x", mE - 12).attr("y", y - 2).attr("text-anchor", "end").text(u);
-        svg.append("text").attr("class", "rot").attr("x", mE - 12).attr("y", y + 11).attr("text-anchor", "end").text(`${fInt(n)} seç${n === 1 ? "ão" : "ões"}`);
-        svg.append("line").attr("x1", x(Math.min(a, v))).attr("x2", x(Math.max(a, v))).attr("y1", y).attr("y2", y).attr("stroke", C.linhaF).attr("stroke-width", 2);
-        invDica(svg.append("circle").attr("cx", x(v)).attr("cy", y).attr("r", 6).attr("fill", C.papel).attr("stroke", C.tinta2).attr("stroke-width", 2), dica);
-        invDica(svg.append("circle").attr("cx", x(a)).attr("cy", y).attr("r", 6).attr("fill", C.tinta).attr("stroke", C.papel).attr("stroke-width", 2), dica);
-        svg.append("text").attr("class", "rot-medio").attr("x", W - 8).attr("y", y + 4).attr("text-anchor", "end").text(`${fSin(a - v, 1)} p.p.`);
+        const y = i * passo + 18;
+        const dica = `<b>${u}</b> · ${fInt(n)} seç${n === 1 ? "ão" : "ões"} abertas até perto das 19h<br>Nessas seções: Lula ${invP(a)}, Flávio ${invP(100 - a)}<br>Vizinhas da mesma zona: Lula ${invP(v)}, Flávio ${invP(100 - v)}<br>Estado: Lula ${invP(e)}`;
+        svg.append("text").attr("class", "rot-forte").attr("x", 4).attr("y", y + 12).text(u);
+        svg.append("text").attr("class", "rot").attr("x", 4).attr("y", y + 2 * bh + gap - 2).text(`${fInt(n)} seç${n === 1 ? "ão" : "ões"}`);
+        [[a, estreito ? "abertas" : "abertas até 19h", 0], [v, "vizinhas", bh + gap]].forEach(([pl, rot, dy]) => {
+          const yy = y + dy, xm = x(pl);
+          svg.append("text").attr("class", "rot").attr("x", mE - 6).attr("y", yy + 12).attr("text-anchor", "end").text(rot);
+          invDica(svg.append("path").attr("d", invBarra(x(0), yy, xm - x(0) - 1, bh, "e")).attr("fill", C.lula), dica);
+          invDica(svg.append("path").attr("d", invBarra(xm + 1, yy, x(100) - xm - 1, bh, "d")).attr("fill", C.dir), dica);
+          if (xm - x(0) > 34) dentro(x(0) + 5, yy, fNum(pl, 0) + "%", "start");
+          if (x(100) - xm > 34) dentro(x(100) - 5, yy, fNum(100 - pl, 0) + "%", "end");
+        });
+        svg.append("text").attr("class", "rot-medio").attr("x", W - 8).attr("y", y + bh + 6).attr("text-anchor", "end").text(`${fSin(a - v, 1)} p.p.`);
       });
+      svg.append("line").attr("x1", x(50)).attr("x2", x(50)).attr("y1", 12).attr("y2", H - 6).attr("stroke", C.papel).attr("stroke-width", 2);
     },
   },
   biometria: {
-    titulo: "Liberação por código e voto em Lula, por estado",
-    como: "Cada ponto é um estado. Para a direita, mais eleitores liberados por código (digital não reconhecida); para cima, mais votos em Lula. Se a liberação favorecesse Lula, os pontos subiriam da esquerda para a direita. RS e SC, onde Flávio venceu, estão entre os que mais liberaram. Em telas estreitas, só alguns estados têm nome; os demais aparecem ao passar o mouse e na tabela.",
-    tabela: () => ({ cab: ["UF", "Liberados por código (% do comparecimento)", "Lula (% dos válidos)"],
-      linhas: Object.entries(INV_BIOMETRIA_UF).sort((p, q) => q[1][0] - p[1][0]).map(([u, [l, v]]) => [u, invP(l, 2), invP(v)]) }),
+    titulo: "Liberação por código e votação de Lula e Flávio, por estado",
+    como: "Cada ponto é um estado. Para a direita, mais eleitores liberados por código (digital não reconhecida); para cima, mais votos em Lula. Pontos vermelhos são estados onde Lula venceu; azuis, onde Flávio venceu. Se a liberação favorecesse Lula, os pontos subiriam da esquerda para a direita e os vermelhos se concentrariam à direita. RS e SC, onde Flávio venceu, estão entre os que mais liberaram. Em telas estreitas, só alguns estados têm nome; os demais aparecem ao passar o mouse e na tabela.",
+    legenda: () => [[C.lula, "Estado onde Lula venceu", "border-radius:50%"], [C.dir, "Estado onde Flávio venceu", "border-radius:50%"]],
+    tabela: () => ({ cab: ["UF", "Liberados por código (% do comparecimento)", "Lula (% dos válidos)", "Flávio (% dos válidos)"],
+      linhas: Object.entries(INV_BIOMETRIA_UF).sort((p, q) => q[1][0] - p[1][0]).map(([u, [l, v]]) => [u, invP(l, 2), invP(v), invP(100 - v)]) }),
     desenhar: el => {
       const W = larg(el), H = 320, mE = 46, mB = 40, mT = 14;
       const x = d3.scaleLinear().domain([3.5, 9.5]).range([mE, W - 24]), y = d3.scaleLinear().domain([25, 80]).range([H - mB, mT]);
@@ -387,8 +434,8 @@ const INV_GRAFICOS = {
       svg.append("text").attr("class", "rot").attr("x", W - 24).attr("y", H - 6).attr("text-anchor", "end").text("eleitores liberados por código (% do comparecimento) →");
       svg.append("text").attr("class", "rot").attr("x", mE + 4).attr("y", mT + 10).text("↑ votos em Lula (% dos válidos)");
       Object.entries(INV_BIOMETRIA_UF).forEach(([u, [l, v]]) => {
-        invDica(svg.append("circle").attr("cx", x(l)).attr("cy", y(v)).attr("r", 5).attr("fill", C.tinta2).attr("stroke", C.papel).attr("stroke-width", 2),
-          `<b>${u}</b><br>Liberados por código: ${invP(l, 2)}<br>Lula: ${invP(v)}`);
+        invDica(svg.append("circle").attr("cx", x(l)).attr("cy", y(v)).attr("r", 5).attr("fill", v > 50 ? C.lula : C.dir).attr("stroke", C.papel).attr("stroke-width", 2),
+          `<b>${u}</b><br>Liberados por código: ${invP(l, 2)}<br>Lula: ${invP(v)} · Flávio: ${invP(100 - v)}`);
         if (W >= 520 || ["RS", "SC", "PI", "BA", "RR", "DF", "RJ", "SP"].includes(u)) svg.append("text").attr("class", "rot").attr("x", x(l) + 8).attr("y", y(v) + 4).text(u);
       });
     },

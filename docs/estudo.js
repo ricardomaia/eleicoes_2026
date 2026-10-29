@@ -248,7 +248,7 @@ function esMontar() {
   const corpos = [esPasso1(N), esPasso2(N), esPasso3(N), esPasso4(N), esPasso5(N), esPasso6(N)];
   raiz.innerHTML = `${ES_SIMBOLOS}
     <div class="es-cab">
-      <div class="es-cab-txt"><span class="es-selo">Para estudantes</span>
+      <div class="es-cab-txt"><span class="es-selo">Explicação Interativa</span>
         <h2>A eleição de 2026 em 6 passos</h2>
         <p>Flávio Bolsonaro ficou em 1º lugar no 1º turno, mas Lula venceu o 2º turno. De onde vieram os votos a mais? O que os números oficiais mostram, e o que eles não conseguem mostrar?</p></div>
       ${esUrna()}

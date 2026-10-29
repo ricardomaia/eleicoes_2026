@@ -79,7 +79,7 @@ p { margin: 0; }
   display: flex; flex-wrap: wrap; gap: 6px 16px;
 }
 .topo h1 { font-size: clamp(28px, 4.6vw, 46px); font-weight: 800; font-stretch: 78%; letter-spacing: -.01em; }
-.topo .sub { color: var(--tinta-2); max-width: 70ch; }
+.topo .sub { color: var(--tinta-2); }
 .aviso-indep { font-size: 13px; color: var(--tinta-3); }
 
 /* ---------- abas ---------- */
@@ -105,15 +105,14 @@ main .limite { padding-block: 26px 60px; }
 .painel { display: grid; gap: 22px; }
 .painel > header { display: grid; gap: 8px; }
 .painel > header h2 { font-size: clamp(24px, 3.4vw, 34px); font-weight: 750; font-stretch: 85%; }
-.painel > header .pergunta { color: var(--tinta-2); max-width: 75ch; font-size: 17px; }
+.painel > header .pergunta { color: var(--tinta-2); font-size: 17px; }
 
 /* blocos */
 .bloco { background: var(--papel); border: 1px solid var(--linha); border-radius: var(--raio); padding: 18px; display: grid; gap: 12px; min-width: 0; align-content: start; }
 .bloco h3 { font-size: 20px; font-weight: 700; font-stretch: 90%; }
-.bloco .legenda-fig { font-size: 14px; color: var(--tinta-2); max-width: 80ch; }
+.bloco .legenda-fig { font-size: 14px; color: var(--tinta-2); }
 .simples { border-left: 4px solid var(--tinta); background: var(--papel); padding: 14px 18px; border-radius: 0 var(--raio) var(--raio) 0; display: grid; gap: 8px; }
 .simples h3 { font-size: 13px; font-family: var(--f-numero); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); font-weight: 500; }
-.simples p, .simples li { max-width: 75ch; }
 .simples ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
 .grade-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 22px; }
 .grade-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; }
@@ -129,7 +128,7 @@ main .limite { padding-block: 26px 60px; }
 
 details.tecnico { border-top: 1px dashed var(--linha-forte); padding-top: 10px; font-size: 14px; color: var(--tinta-2); }
 details.tecnico summary { cursor: pointer; font-weight: 700; color: var(--tinta); }
-details.tecnico > div { display: grid; gap: 8px; margin-top: 8px; max-width: 85ch; }
+details.tecnico > div { display: grid; gap: 8px; margin-top: 8px; }
 
 /* candidatos (número da urna) */
 .cand { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; white-space: nowrap; }
@@ -165,7 +164,7 @@ details.tecnico > div { display: grid; gap: 8px; margin-top: 8px; max-width: 85c
 .perguntas article:first-child { border-top: 0; }
 .perguntas .idx { font-family: var(--f-numero); color: var(--tinta-3); font-size: 14px; padding-top: 2px; }
 .perguntas h4 { font-family: var(--f-texto); font-size: 16px; font-weight: 700; }
-.perguntas .resp { color: var(--tinta-2); font-size: 15px; max-width: 80ch; }
+.perguntas .resp { color: var(--tinta-2); font-size: 15px; }
 .perguntas .meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
 .perguntas .meta a { font-size: 14px; }
 
@@ -237,7 +236,6 @@ tbody tr:hover { background: var(--fundo); }
 .glossario dt { font-weight: 700; }
 .glossario dd { margin: 2px 0 0; color: var(--tinta-2); font-size: 15px; }
 .lista-lim { display: grid; gap: 10px; padding-left: 20px; margin: 0; }
-.lista-lim li { max-width: 85ch; }
 code { font-family: var(--f-numero); font-size: .9em; background: var(--fundo); padding: 1px 4px; border-radius: 3px; overflow-wrap: anywhere; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
@@ -259,7 +257,7 @@ code { font-family: var(--f-numero); font-size: .9em; background: var(--fundo); 
   background: var(--papel); border: 1px solid var(--linha); border-radius: 12px; padding: 20px 22px; }
 .es-cab-txt { display: grid; gap: 8px; }
 .es-cab h2 { font-size: clamp(26px, 4vw, 38px); font-weight: 800; font-stretch: 82%; }
-.es-cab p { color: var(--tinta-2); max-width: 62ch; }
+.es-cab p { color: var(--tinta-2); }
 .es-selo { justify-self: start; font: 700 12px/1 var(--f-numero); letter-spacing: .08em; text-transform: uppercase;
   color: var(--ok); background: var(--ok-fundo); padding: 6px 10px; border-radius: 999px; }
 .es-urna { width: clamp(110px, 18vw, 170px); height: auto; }
@@ -291,12 +289,11 @@ code { font-family: var(--f-numero); font-size: .9em; background: var(--fundo); 
 
 .es-passo { background: var(--papel); border: 1px solid var(--linha); border-radius: 12px; padding: clamp(16px, 3vw, 28px); display: grid; gap: 16px; min-width: 0; }
 .es-passo-n { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-3); }
-.es-lead { font-size: 18px; max-width: 64ch; }
-.es-obs { font-size: 15px; color: var(--tinta-2); max-width: 70ch; }
+.es-lead { font-size: 18px; }
+.es-obs { font-size: 15px; color: var(--tinta-2); }
 .es-caixa { background: var(--fundo); border-radius: 10px; padding: 16px 18px; display: grid; gap: 8px; border-left: 5px solid var(--indet); }
 .es-caixa ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
-.es-caixa li, .es-caixa p { max-width: 72ch; }
-.es-resposta { font-size: 17px; max-width: 70ch; padding: 12px 14px; border-radius: 10px; background: var(--fundo); }
+.es-resposta { font-size: 17px; padding: 12px 14px; border-radius: 10px; background: var(--fundo); }
 .es-resposta.destaque { background: var(--lula-claro); border-left: 5px solid var(--lula); }
 .es-sub { margin-top: 6px; }
 
@@ -427,8 +424,6 @@ code { font-family: var(--f-numero); font-size: .9em; background: var(--fundo); 
 .es-glossario dd { margin: 2px 0 0; color: var(--tinta-2); font-size: 15px; }
 
 /* ---------- Investigando: registro de denúncias (investigando.js) ---------- */
-/* nesta aba o texto ocupa toda a largura do bloco (as outras abas limitam a linha a 75–85 caracteres) */
-#investigando .simples p, #investigando .simples li, #investigando .lista-lim li { max-width: none; }
 .inv-casos { display: grid; gap: 40px; }
 .inv-caso { display: grid; gap: 16px; scroll-margin-top: 16px; }
 .inv-caso + .inv-caso { border-top: 2px solid var(--linha-forte); padding-top: 32px; }

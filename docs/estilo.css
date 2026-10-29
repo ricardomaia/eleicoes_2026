@@ -427,21 +427,26 @@ code { font-family: var(--f-numero); font-size: .9em; background: var(--fundo); 
 .es-glossario dd { margin: 2px 0 0; color: var(--tinta-2); font-size: 15px; }
 
 /* ---------- Investigando: registro de denúncias (investigando.js) ---------- */
+/* nesta aba o texto ocupa toda a largura do bloco (as outras abas limitam a linha a 75–85 caracteres) */
+#investigando .simples p, #investigando .simples li, #investigando .lista-lim li { max-width: none; }
 .inv-casos { display: grid; gap: 40px; }
 .inv-caso { display: grid; gap: 16px; scroll-margin-top: 16px; }
 .inv-caso + .inv-caso { border-top: 2px solid var(--linha-forte); padding-top: 32px; }
-.inv-caso p { max-width: 85ch; }
 .inv-indice ol { margin: 0; padding-left: 22px; display: grid; gap: 8px; }
-.inv-indice li { max-width: 85ch; }
 .inv-alegs { margin: 0; padding: 0; list-style: none; display: grid; gap: 0; }
 .inv-aleg { padding: 12px 0; border-top: 1px solid var(--linha); display: grid; gap: 6px; }
 .inv-aleg:first-child { border-top: 0; padding-top: 0; }
 .inv-aleg-cab { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 14px; }
-.inv-aleg-cab b { max-width: 75ch; }
+.inv-aleg-cab b { flex: 1 1 30ch; }
 .inv-aleg p { color: var(--tinta-2); font-size: 15px; }
 .inv-galeria { display: grid; grid-template-columns: repeat(auto-fill, minmax(88px, 1fr)); gap: 8px; }
 .inv-galeria img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border: 1px solid var(--linha); border-radius: 4px; display: block; }
 .inv-video { width: 100%; max-width: 300px; aspect-ratio: 9 / 16; background: #000; border-radius: 4px; }
 .inv-refs { font-size: 14px; display: grid; gap: 6px; }
 .inv-refs ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
-.inv-refs li { max-width: 85ch; overflow-wrap: anywhere; }
+.inv-refs li { overflow-wrap: anywhere; }
+.inv-fig { margin: 6px 0 4px; display: grid; gap: 8px; padding: 14px; border: 1px solid var(--linha); border-radius: var(--raio); background: var(--fundo); min-width: 0; }
+.inv-fig figcaption { display: grid; gap: 4px; }
+.inv-fig figcaption .nota { font-size: 14px; color: var(--tinta-2); }
+.inv-itens { margin: 0; padding-left: 20px; display: grid; gap: 8px; color: var(--tinta-2); font-size: 15px; }
+.inv-itens b { color: var(--tinta); }

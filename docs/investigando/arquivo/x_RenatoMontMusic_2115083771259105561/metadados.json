@@ -1,0 +1,56 @@
+{
+  "plataforma": "X",
+  "publicacao_principal": "2115083771259105561",
+  "arquivado_em_utc": "2026-10-29T03:39:07+00:00",
+  "video": {
+    "arquivo": "video_720x1280.mp4",
+    "duracao_s": 69.664,
+    "origem": "video.twimg.com (variante MP4 de maior resolução)",
+    "marca_dagua": "@VINICIUS_TEIXEIRA_BAHIA (Instagram) — autoria original do vídeo"
+  },
+  "capa": "capa_video.jpg",
+  "transcricao": "transcricao.txt",
+  "tweets": {
+    "2114748093723795614": {
+      "autor": "Carlos Jordy",
+      "conta": "@carlosjordy",
+      "publicado_em_utc": "2026-10-26T15:56:50.000Z",
+      "texto": "O vídeo mais didático que mostra como o resultado foi matematicamente improvável e politicamente impossível. E ainda querem que você acredite que foi tudo normal 🤡 https://t.co/jVaRv1XvDu",
+      "responde_a": null,
+      "url": "https://x.com/carlosjordy/status/2114748093723795614",
+      "arquivo": "tweet_2114748093723795614.json"
+    },
+    "2115083771259105561": {
+      "autor": "Renato Cabral Monteiro",
+      "conta": "@RenatoMontMusic",
+      "publicado_em_utc": "2026-10-27T14:10:42.000Z",
+      "texto": "@carlosjordy https://t.co/F57YHAjgnB",
+      "responde_a": "2114748093723795614",
+      "url": "https://x.com/RenatoMontMusic/status/2115083771259105561",
+      "arquivo": "tweet_2115083771259105561.json"
+    },
+    "2115450043239223523": {
+      "autor": "Ricardo Maia",
+      "conta": "@_ricardomaia",
+      "publicado_em_utc": "2026-10-28T14:26:08.000Z",
+      "texto": "@RenatoMontMusic @carlosjordy Os 3 boletins são do mesmo local de votação (nº 1392), um dos mais favoráveis a Flávio na cidade: lá ele teve 506 votos a mais que Lula. Em outros foi o contrário: no local 1350, Lula teve 1.025 a mais. Dos 45 locais da cidade, Lula venceu em 22 e Flávio em 23.",
+      "responde_a": "2115083771259105561",
+      "url": "https://x.com/_ricardomaia/status/2115450043239223523",
+      "arquivo": "tweet_2115450043239223523.json"
+    },
+    "2115450350194794761": {
+      "autor": "Ricardo Maia",
+      "conta": "@_ricardomaia",
+      "publicado_em_utc": "2026-10-28T14:27:21.000Z",
+      "texto": "@RenatoMontMusic @carlosjordy Sua análise sofreu de  viés de amostragem e falácia da evidência incompleta. Se os boletins foram escolhidos, de propósito ou não, porque favoreciam a conclusão desejada, isso é escolher a dedo só os dados que confirmam a tese e ignorar o resto.",
+      "responde_a": "2115083771259105561",
+      "url": "https://x.com/_ricardomaia/status/2115450350194794761",
+      "arquivo": "tweet_2115450350194794761.json"
+    }
+  },
+  "metodo_arquivamento": "Metadados pelo endpoint público de incorporação cdn.syndication.twimg.com/tweet-result; vídeo baixado da variante MP4 listada nesse endpoint.",
+  "quadro_boletins": {
+    "arquivo": "quadro_boletins.jpg",
+    "origem": "quadro em 0:04 de video_720x1280.mp4 (ffmpeg), usado como capa no painel; capa_video.jpg é a capa original publicada no X"
+  }
+}

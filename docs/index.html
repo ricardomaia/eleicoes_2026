@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="estilo.css?v=8">
+<link rel="stylesheet" href="estilo.css?v=9">
 </head>
 <body>
 
@@ -33,6 +33,7 @@
     <button role="tab" id="aba-legislativo" aria-controls="legislativo" aria-selected="false">Câmara e Senado</button>
     <button role="tab" id="aba-anomalias" aria-controls="anomalias" aria-selected="false">Pontos fora da curva</button>
     <button role="tab" id="aba-historico" aria-controls="historico" aria-selected="false">2018 · 2022 · 2026</button>
+    <button role="tab" id="aba-investigando" aria-controls="investigando" aria-selected="false">Investigando</button>
     <button role="tab" id="aba-fontes" aria-controls="fontes" aria-selected="false">Fontes e limites</button>
   </div>
   <div class="limite abas-movel">
@@ -378,6 +379,19 @@
     <p class="nota">Nesta aba os indicadores são calculados sem os votos do exterior, para comparar as três eleições na mesma base. Por isso podem diferir dos totais oficiais na segunda casa decimal (ex.: Lula 51,78% em vez de 51,79% no 2º turno de 2026).</p></div>
 </section>
 
+<!-- ======================= INVESTIGANDO ======================= -->
+<section class="painel" id="investigando" role="tabpanel" aria-labelledby="aba-investigando" hidden>
+  <header><h2>Investigando denúncias de fraude</h2><p class="pergunta">O que diz cada denúncia que circula sobre a eleição de 2026, o que os dados oficiais mostram e onde o argumento falha.</p></header>
+  <div class="simples"><h3>Como cada caso é registrado</h3>
+    <ul>
+      <li><b>Publicações:</b> link, autor e data e hora de publicação. Uma cópia de cada publicação (texto, imagens ou vídeo) fica guardada neste site, com código SHA-256, para o caso de o original ser apagado.</li>
+      <li><b>Alegações:</b> cada afirmação é conferida com os arquivos do TSE descritos em "Fontes e limites" e recebe um resultado: <span class="pill ok">Correto</span> <span class="pill parcial">Enganoso</span> (número correto, conclusão que não decorre dele) <span class="pill nao">Falso</span> <span class="pill indet">Não verificado</span>.</li>
+      <li><b>Falácias:</b> erros de raciocínio identificados segundo o <a href="https://fallacies.ca/">guia de falácias lógicas de Stephen Downes</a>, com a explicação de como cada uma aparece no texto. Apontar uma falácia mostra que o argumento não sustenta a conclusão; a conclusão é avaliada pelos dados.</li>
+    </ul>
+  </div>
+  <div id="inv-casos" class="inv-casos"></div>
+</section>
+
 <!-- ======================= FONTES ======================= -->
 <section class="painel" id="fontes" role="tabpanel" aria-labelledby="aba-fontes" hidden>
   <header><h2>Fontes, verificações e limites</h2><p class="pergunta">De onde vêm os dados, como foram conferidos e o que esta análise não consegue responder.</p></header>
@@ -443,9 +457,10 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-<script src="dados.js?v=8"></script>
-<script src="mapa.js?v=8"></script>
-<script src="estudo.js?v=8"></script>
-<script src="app.js?v=8"></script>
+<script src="dados.js?v=9"></script>
+<script src="mapa.js?v=9"></script>
+<script src="estudo.js?v=9"></script>
+<script src="investigando.js?v=9"></script>
+<script src="app.js?v=9"></script>
 </body>
 </html>

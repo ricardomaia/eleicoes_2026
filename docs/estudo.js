@@ -393,6 +393,6 @@ function esVista() {
     $("#resumo-completo").hidden = x === "estudo";
     try { localStorage.setItem("eleicoes2026-vista-resumo", x); } catch (e) { /* armazenamento indisponível */ }
   };
-  segmentado($("#vista-resumo"), [["estudo", "Explicação para estudantes"], ["completo", "Resumo completo"]], v, aplicar);
+  segmentado($("#vista-resumo"), [["estudo", "Explicação Interativa"], ["completo", "Resumo completo"]], v, aplicar);
   aplicar(v);
 }

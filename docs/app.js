@@ -74,7 +74,7 @@ function corCat(cod) {
 const matriz = (ano, nivel, origens = "base") => D.matrizes.filter(m => m.ano === ano && m.nivel === nivel && m.origens === origens);
 
 /* ---------------- abas ---------------- */
-const ABAS = ["resumo", "contas", "mapa", "comparecimento", "transferencias", "migracao", "legislativo", "anomalias", "historico", "fontes"];
+const ABAS = ["resumo", "contas", "mapa", "comparecimento", "transferencias", "migracao", "legislativo", "anomalias", "historico", "investigando", "fontes"];
 const renderizar = {}, feitos = new Set();
 let abaAtual = "resumo";
 function abrir(id, foco = false) {
@@ -839,6 +839,9 @@ renderizar.anomalias = function () {
     A.extremos_comparecimento.map(e => [`${e.limite_pp} p.p.`, fInt(e.secoes), fPct(e.pct, 2), fInt(e.das_quais_aptos_mudaram)]), ["", "num", "num", "num"]);
   $("#link-mapa-z").onclick = e => { e.preventDefault(); varMapa = "z"; abrir("mapa"); window.scrollTo({ top: 0 }); };
 };
+
+/* ---------------- INVESTIGANDO (investigando.js) ---------------- */
+renderizar.investigando = function () { invMontar(); };
 
 /* ---------------- HISTÓRICO ---------------- */
 renderizar.historico = function () {

@@ -1,0 +1,31 @@
+💥 DOSSIÊ APRESENTADO POR PERITOS INDEPENDENTES LEVANTA QUESTIONAMENTOS SOBRE LIBERAÇÕES DE BIOMETRIA NAS ELEIÇÕES 2026
+
+OS 4 PONTOS CRÍTICOS REVELADOS PELO RELATÓRIO:
+
+1) A INVERSÃO DAS 17H00 (DUAS ELEIÇÕES EM UM DIA)
+
+Até as 17h00 (Horário Regimental): Flávio Bolsonaro liderava com 52,39% dos votos válidos, abrindo uma vantagem de quase 1,8 milhão de votos nas urnas encerradas no prazo legal.
+
+Após as 17h00 (Prorrogação): Lula obteve uma explosão atípica de mais de 6,1 milhões de votos de vantagem nas urnas encerradas após o horário limite, revertendo o resultado nacional. 
+
+2) O COLAPSO DA BIOMETRIA (O DOBRO DA MARGEM)
+
+8.632.488 votos foram liberados manualmente pelos mesários por simples digitação do ano de nascimento (sem validação da digital). 
+
+A diferença final do pleito foi de 4.430.191 votos — o que significa que o volume de votos sem biometria foi QUASE O DOBRO da margem de vitória.
+
+3) ABERRAÇÕES DE UNANIMIDADE RURAL
+
+O candidato governista alcançou 100% dos votos válidos em 106 seções e mais de 90% dos votos em 6.899 seções (uma proporção de 18 para 1 se comparado ao candidato de oposição).
+
+Esses picos de votação se concentram em zonas rurais isoladas, com baixa fiscalização independente e altíssimas taxas de liberação manual sem biometria.
+
+4) APAGÃO DE TRANSPARÊNCIA
+
+Os microdados brutos do TSE para checagem independente de horários e biometria ficaram sob sigilo técnico por 72 horas após a proclamação oficial do resultado.
+
+SÍNTESE DO RELATÓRIO:
+
+“O resultado proclamado pelo sistema enfrenta fragilidades de integridade matemática, quebrou protocolos elementares de controle biométrico e foi viabilizado por decisões de exceção que alteraram os ritos no decorrer do pleito.”
+
+Fonte: Dados extraídos do Repositório de Dados Abertos do TSE (Boletins de Urna - BWeb) citados no Dossiê Pericial Independente (28/10/2026).

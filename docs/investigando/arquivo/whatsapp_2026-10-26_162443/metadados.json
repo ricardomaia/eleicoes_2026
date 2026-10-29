@@ -1,0 +1,50 @@
+{
+  "plataforma": "WhatsApp (vídeo encaminhado)",
+  "url": null,
+  "arquivo_original": "WhatsApp Video 2026-10-26 at 16.24.43.mp4",
+  "recebido_em": "2026-10-26T16:24:43-03:00 (data e hora do nome do arquivo gerado pelo WhatsApp)",
+  "autor": "Vereador Dr. Ranieri (identificado pela marca no vídeo); município não identificado",
+  "video": {
+    "arquivo": "video.mp4",
+    "duracao_s": 232.08,
+    "largura": 720,
+    "altura": 1280,
+    "tamanho_bytes": 37998545,
+    "sha256_original": "421fb6e2bc613c85d8c16b4a6af7119697d053e1d30daef12407599467562e4d"
+  },
+  "quadro_numeros": {
+    "arquivo": "quadro_numeros.jpg",
+    "origem": "quadro em 0:17 de video.mp4 (ffmpeg), usado como capa no painel"
+  },
+  "transcricao": "transcricao.txt",
+  "numeros_no_quadro": {
+    "1_turno": {
+      "Flávio": 56104503,
+      "Lula": 53879538,
+      "brancos": 2300798,
+      "nulos": 3674249,
+      "abstenções": 33000000,
+      "Cury": 3448569,
+      "Renan": 2675887,
+      "outros": 3192291,
+      "outros_candidatos": 9316747,
+      "soma": 158275835
+    },
+    "2_turno": {
+      "Flávio": 59818887,
+      "Lula": 64241786,
+      "brancos": 1430039,
+      "nulos": 2722289,
+      "abstenções": 30000000,
+      "reducoes": {
+        "brancos": 870759,
+        "nulos": 951960,
+        "abstenções": 3000000,
+        "soma": 4822719
+      },
+      "soma": 158213001
+    }
+  },
+  "arquivado_em_utc": "2026-10-29T05:22:34+00:00",
+  "metodo_arquivamento": "Arquivo recebido pelo WhatsApp e fornecido pelo autor do painel; copiado sem alteração (o SHA-256 de video.mp4 é igual ao do original)."
+}

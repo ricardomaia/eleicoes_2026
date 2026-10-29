@@ -19,6 +19,62 @@ const INV_RESULTADOS = {
 
 const INV_CASOS = [
   {
+    id: "video-whatsapp-vereador",
+    titulo: "Vídeo de vereador no WhatsApp: “só existe um caminho” para os votos de Lula",
+    registrado: "2026-10-29",
+    resultado: "falso",
+    resumo: "Num vídeo que circulou pelo WhatsApp, um vereador escreve num quadro os números dos dois turnos, supõe que nenhum eleitor de Flávio votou em Lula e conclui que, nesse caso, Lula só poderia ter crescido recebendo 100% dos brancos, dos nulos e das abstenções e 60% dos votos dos outros candidatos, o que ele considera impossível. Os números do quadro estão quase todos corretos. A conclusão não: a queda de brancos, nulos e abstenções é uma diferença entre os turnos, não um grupo de pessoas, e há muitos caminhos que fecham as contas sem nenhuma troca entre Lula e Flávio. O vídeo não demonstra que o resultado é impossível; mostra que o autor o considera improvável.",
+    publicacoes: [
+      { plataforma: "WhatsApp", autor: "Vereador Dr. Ranieri (nome na marca do vídeo; município não identificado)", url: null, publicado: null,
+        papel: "Vídeo encaminhado, recebido em 26/10/2026 às 16h24. A publicação original não foi localizada." },
+    ],
+    arquivo: {
+      pasta: "investigando/arquivo/whatsapp_2026-10-26_162443/",
+      video: "video.mp4", capa: "quadro_numeros.jpg",
+      itens: [["Vídeo (MP4, 720×1280, 3min52s)", "video.mp4"], ["Transcrição do áudio", "transcricao.txt"],
+        ["Metadados e números do quadro", "metadados.json"], ["Hashes SHA-256", "SHA256SUMS"]],
+      nota: "Arquivado em 29/10/2026 a partir do arquivo recebido pelo WhatsApp, sem alteração. Transcrição automática feita localmente (faster-whisper).",
+    },
+    contexto: [
+      "Foi este vídeo que motivou o estudo de transferência de votos apresentado nas outras abas deste painel.",
+      "O vereador apresenta a análise como feita “sem nenhum tipo de paixão”, com “aritmética e a lei da probabilidade”. Escreve num quadro os votos do 1º turno (Flávio 56.104.503, Lula 53.879.538, brancos 2.300.798, nulos 3.674.249, abstenções 33.000.000 e 9.316.747 votos dos outros candidatos) e do 2º turno (Flávio 59.818.887, Lula 64.241.786, brancos 1.430.039, nulos 2.722.289, abstenções 30.000.000). Depois pergunta: “Você acredita que algum eleitor do Flávio votou no Lula ou algum eleitor do Lula votou no Flávio numa eleição extremamente polarizada? Eu não acredito.” A partir dessa premissa, calcula o que Lula teria de receber dos outros grupos e termina: “Você acha factível isso? Eu não engulo essa.”",
+    ],
+    alegacoes: [
+      { texto: "A soma do 2º turno (158.213.001) é 62 mil votos menor que a do 1º (158.275.835), uma diferença que “cabe ao TSE explicar”.",
+        verificacao: "Os dois totais do quadro não são o eleitorado. As abstenções foram arredondadas para 33.000.000 e 30.000.000, quando os números oficiais são 33.469.667 e 30.509.428, e os votos do 2º turno são de uma apuração anterior à final (Lula 64.241.786 no quadro e 64.256.232 no resultado final). Com os números oficiais, os dois turnos somam exatamente o mesmo total: 158.745.502 eleitores aptos. Os 62.834 votos de diferença vêm só desses arredondamentos: faltam 469.667 eleitores na soma do 1º turno e 532.501 na do 2º. A conta votos + brancos + nulos + abstenções = eleitores aptos confere em cada uma das 499.248 seções, nos dois turnos.",
+        resultado: "falso" },
+      { texto: "Nenhum eleitor de Flávio votou em Lula, e nenhum eleitor de Lula votou em Flávio.",
+        verificacao: "O voto é secreto, e os resultados por seção não permitem contar quantos eleitores trocaram de candidato. O vídeo apresenta a premissa como crença (“Eu não acredito”), sem dado. As estimativas deste projeto, feitas comparando as seções, ficam próximas de zero; a auditoria metodológica mostra que os dados permitem afirmar que essa troca ficou entre 0% e cerca de 11%. A premissa, portanto, é compatível com os dados. O problema está no que o vídeo conclui a partir dela (alegação seguinte).",
+        resultado: "naoverificado" },
+      { graficos: ["ranieri_fluxos"], texto: "Sem essa troca, só existe um caminho: Lula teria de receber 100% dos brancos, 100% dos nulos, 100% dos 3 milhões de abstenções e 60% dos votos dos outros candidatos, o que não é factível.",
+        verificacao: [
+          "A conta do vídeo usa as diferenças entre os turnos como se fossem grupos de pessoas. Brancos e nulos caíram 1,82 milhão, e a abstenção caiu 2,96 milhões, mas essas são diferenças líquidas. No 1º turno, 5,98 milhões de pessoas votaram em branco ou nulo e 33,47 milhões não votaram. O que o vídeo chama de “100% dos brancos e nulos” corresponde a 30% dessas 5,98 milhões de pessoas, e os “100% das abstenções”, a 9% das 33,47 milhões. As diferenças líquidas também escondem movimentos nos dois sentidos: parte de quem votou no 1º turno deixou de votar no 2º, e por isso mais gente do que a diferença indica passou a votar.",
+          "Por isso existem muitos caminhos, e não um só, que fecham todas as contas sem troca entre Lula e Flávio. O gráfico abaixo compara o caminho do vídeo com a estimativa deste projeto feita a partir das 499 mil seções. Na estimativa, a troca entre Lula e Flávio fica perto de zero; Lula recebe 43% dos votos dos outros candidatos, 61% de quem votou em branco ou nulo e 10% de quem não votou no 1º turno; e uma pequena parte dos eleitores de cada um deixa de votar. A estimativa depende de hipóteses discutidas na aba “Para onde foram os votos” e na auditoria metodológica: é um exemplo de caminho compatível com os dados, não uma medida exata.",
+          "O que a aritmética de fato exige é bem menos do que o vídeo afirma: Lula precisou de pelo menos 1,06 milhão de votos vindos de quem não votou nele nem nos eliminados no 1º turno (1,84 milhão somando município por município). O vídeo não calcula nenhuma probabilidade; a frase “não é factível” é a opinião do autor.",
+        ],
+        resultado: "falso" },
+      { texto: "Os candidatos derrotados no 1º turno declararam apoio a Flávio, e o governo estava mal avaliado; por isso os eleitores deles não iriam para Lula.",
+        verificacao: "Os apoios declarados e a avaliação do governo são contexto político e não foram verificados. Mesmo que sejam verdadeiros, o apoio de um candidato derrotado não determina o voto dos seus eleitores. Nas estimativas deste projeto, os votos dos candidatos eliminados se dividiram entre Lula (43%) e Flávio (39%), e o restante votou em branco, nulo ou deixou de votar.",
+        resultado: "naoverificado" },
+    ],
+    analise: [
+      "O vídeo se apresenta como uma demonstração matemática, mas a conta do quadro mostra apenas que os números fecham: com os próprios números do vereador, os votos a mais de Lula e de Flávio somam exatamente os votos dos eliminados mais a queda de brancos, nulos e abstenções. A impossibilidade vem de duas escolhas do autor, e não da aritmética: tratar diferenças líquidas como grupos inteiros de pessoas e supor que, fora o que ele atribui a Lula, todos os eleitores repetiram o que fizeram no 1º turno.",
+      "No fim, o argumento se apoia em descrença: “Você acha factível isso? Eu não engulo essa.” Achar um resultado improvável não demonstra que ele é falso. Para isso seria preciso mostrar que nenhuma distribuição de votos compatível com os dados é plausível, e as estimativas feitas a partir das seções encontram distribuições compatíveis com os totais oficiais sem troca relevante entre Lula e Flávio.",
+      "A diferença de 62 mil votos que o vídeo atribui ao TSE vem dos arredondamentos feitos no próprio quadro.",
+    ],
+    falacias: [
+      { nome: "Equívoco", original: "Equivocation", n: 31, categoria: "Falácias de ambiguidade",
+        uso: "Chama de brancos e nulos “convertidos” e de “abstenções” as diferenças líquidas entre os turnos (870 mil, 952 mil e 3 milhões) e depois as trata como grupos inteiros de pessoas: “100% dos brancos, 100% dos nulos”. Os grupos de pessoas eram de 5,98 milhões (brancos e nulos) e 33,47 milhões (abstenções)." },
+      { nome: "Falso dilema", original: "False Dilemma", n: 1, categoria: "Falácias de distração",
+        uso: "Afirma que “só existe um caminho” para Lula chegar a 64 milhões de votos, quando a aritmética admite muitas distribuições diferentes, inclusive com troca zero entre Lula e Flávio." },
+      { nome: "Apelo à ignorância", original: "Argument From Ignorance", n: 2, categoria: "Falácias de distração",
+        uso: "Conclui que o resultado não é verdadeiro porque o autor não vê como ele poderia ter acontecido (“Você acha factível isso? Eu não engulo essa”). Não saber explicar um resultado não demonstra que ele não ocorreu." },
+      { nome: "Apelo à popularidade", original: "Appeal to Popularity", n: 9, categoria: "Apelos a motivos em vez de razões",
+        uso: "Estabelece a premissa pedindo a concordância de quem assiste (“Você acredita...? Eu não acredito. Concorda comigo?”), e não com dados." },
+    ],
+    respostas: [],
+  },
+  {
     id: "video-3-boletins-teixeira",
     titulo: "Vídeo “3 boletins mostram o roubo nas eleições” (Teixeira de Freitas, BA)",
     registrado: "2026-10-29",
@@ -283,6 +339,37 @@ function invBarrasPares(el, grupos, fmt = invCompacto) {
   svg.append("line").attr("x1", x(0)).attr("x2", x(0)).attr("y1", cab).attr("y2", H - 22).attr("stroke", C.linhaF);
 }
 
+/* para cada grupo, barras de 0 a 100% divididas entre Lula, Flávio e o restante;
+   grupos: [{rot, sub, barras: [{rot, partes: [lula, flavio, resto]}]}] */
+function invBarras100(el, grupos) {
+  const W = larg(el), estreito = W < 520, mE = estreito ? 76 : 250, bh = 16, gap = 4, cab = estreito ? 32 : 0;
+  const nb = grupos[0].barras.length, passo = cab + nb * bh + (nb - 1) * gap + 20, H = grupos.length * passo + 4;
+  const x = d3.scaleLinear().domain([0, 100]).range([mE, W - 8]);
+  const cores = [C.lula, C.dir, C.bn], nomes = ["Lula", "Flávio", "Branco, nulo ou não votou"];
+  const svg = d3.select(el).html("").append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("role", "img");
+  const dentro = (xx, y, txt, ancora) => svg.append("text").attr("x", xx).attr("y", y + 12).attr("text-anchor", ancora).attr("fill", "#fff")
+    .style("font-size", "11px").style("font-family", "var(--f-numero)").style("pointer-events", "none").text(txt);
+  grupos.forEach((g, i) => {
+    const y0 = i * passo + 4;
+    svg.append("text").attr("class", "rot-forte").attr("x", 4).attr("y", y0 + 12).text(g.rot);
+    svg.append("text").attr("class", "rot").attr("x", 4).attr("y", y0 + 26).text(g.sub);
+    g.barras.forEach((b, j) => {
+      const y = y0 + cab + j * (bh + gap);
+      svg.append("text").attr("class", "rot").attr("x", mE - 6).attr("y", y + 12).attr("text-anchor", "end").text(b.rot);
+      const dica = `<b>${esc(g.rot)}</b> · ${esc(b.rot)}<br>` + b.partes.map((v, k) => `${nomes[k]}: ${invP(v)}`).join("<br>");
+      let acum = 0;
+      b.partes.forEach((v, k) => {
+        if (v <= 0) return;
+        const xa = x(acum), xb = x(acum + v), w = Math.max(1, xb - xa - (acum + v < 100 ? 2 : 0));
+        const fim = acum === 0 && acum + v >= 100 ? null : acum === 0 ? "e" : acum + v >= 100 ? "d" : null;
+        invDica(svg.append("path").attr("d", fim ? invBarra(xa, y, w, bh, fim) : `M${xa},${y}h${w}v${bh}h${-w}Z`).attr("fill", cores[k]), dica);
+        if (k < 2 && w > 40) dentro(k === 0 ? xa + 5 : xa + w - 5, y, fNum(v, 0) + "%", k === 0 ? "start" : "end");
+        acum += v;
+      });
+    });
+  });
+}
+
 /* colunas agrupadas por categoria; series: [{nome, cor, valores}] */
 function invColunas(el, cats, series, { y0 = 0, y1, fmt, fmtEixo = fmt, rotY, ref, marcas, H = 260, rotular = () => false, dicaCat = c => c } = {}) {
   const W = larg(el), mE = 52, mT = rotY ? 28 : 14;
@@ -318,7 +405,31 @@ function invColunas(el, cats, series, { y0 = 0, y1, fmt, fmtEixo = fmt, rotY, re
   }
 }
 
+const INV_FLUXO_GRUPOS = [ // grupo no 1º turno: eleitores e divisão no 2º turno pelo caminho do vídeo (Lula, Flávio, resto)
+  { o: "a_1", rot: "Votou em Lula", n: 53879538, video: [100, 0, 0] },
+  { o: "b_1", rot: "Votou em Flávio", n: 56104503, video: [0, 100, 0] },
+  { o: "o_1", rot: "Votou em outros candidatos", n: 9316747, video: [60.1, 39.9, 0] },
+  { o: "bn_1", rot: "Votou em branco ou nulo", n: 5975047, video: [30.5, 0, 69.5] },
+  { o: "abst_1", rot: "Não votou", n: 33469667, video: [8.8, 0, 91.2] },
+];
+/* estimativa do painel (Modelo A, seções, 2026), lida de dados.js */
+function invFluxoModelo(o) {
+  const t = c => 100 * D.matrizes.find(m => m.ano === 2026 && m.nivel === "secao" && m.origens === "base" && m.origem === o && m.destino === c).taxa;
+  const l = t("a_2"), f = t("b_2");
+  return [l, f, 100 - l - f];
+}
+
 const INV_GRAFICOS = {
+  ranieri_fluxos: {
+    titulo: "Para onde foi cada grupo de eleitores do 1º turno: o caminho do vídeo e a estimativa do projeto",
+    como: "Cada grupo de eleitores do 1º turno tem duas barras, que mostram como ele votou no 2º: vermelho, em Lula; azul, em Flávio; cinza, em branco, nulo ou não votou. A barra de cima é o caminho do vídeo, refeito com os números oficiais; a de baixo, a estimativa deste projeto a partir das 499 mil seções (aba “Para onde foram os votos”). Nas duas, praticamente nenhum eleitor de Flávio vai para Lula. Os “100% dos brancos e nulos” do vídeo aparecem como 30% das pessoas que votaram em branco ou nulo, e os “100% das abstenções”, como 9% de quem não votou.",
+    legenda: () => [[C.lula, "Lula"], [C.dir, "Flávio"], [C.bn, "Branco, nulo ou não votou"]],
+    tabela: () => ({ cab: ["Grupo no 1º turno", "Eleitores", "Caminho", "Lula", "Flávio", "Branco, nulo ou não votou"],
+      linhas: INV_FLUXO_GRUPOS.flatMap(g => [["vídeo", g.video], ["estimativa", invFluxoModelo(g.o)]].map(([c, v], j) =>
+        [j ? "" : g.rot, j ? "" : fInt(g.n), c, invP(v[0]), invP(v[1]), invP(v[2])])) }),
+    desenhar: el => invBarras100(el, INV_FLUXO_GRUPOS.map(g => ({ rot: g.rot, sub: invCompacto(g.n) + " de eleitores",
+      barras: [{ rot: "vídeo", partes: g.video }, { rot: "estimativa", partes: invFluxoModelo(g.o) }] }))),
+  },
   teixeira_soma: {
     titulo: "Como 167 votos a mais em 3 seções viram 93 na cidade",
     como: "Cada barra é a diferença entre os votos de Lula e de Flávio. Barras para a esquerda: vantagem de Flávio; para a direita: vantagem de Lula. A vantagem da cidade é a soma das duas primeiras.",

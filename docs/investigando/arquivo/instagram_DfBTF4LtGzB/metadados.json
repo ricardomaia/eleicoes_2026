@@ -1,0 +1,46 @@
+{
+  "plataforma": "Instagram",
+  "url": "https://www.instagram.com/reels/DfBTF4LtGzB/",
+  "shortcode": "DfBTF4LtGzB",
+  "media_id": "4017576309398203585",
+  "autor": "vitorianewsparacatu",
+  "nome_exibido": "Apoio Vitória Fm 87,9 | Notícias, Humor e Opinião 🌎",
+  "verificado": false,
+  "coautores": [
+    "vitorianewsbrasil"
+  ],
+  "publicado_em_utc": "2026-10-28T01:54:35.000Z",
+  "curtidas_no_arquivamento": 225766,
+  "comentarios_no_arquivamento": 8550,
+  "reproducoes_no_arquivamento": 2287798,
+  "duracao_s": 174.35800170898438,
+  "arquivado_em_utc": "2026-10-29T16:56:08.650Z",
+  "legenda": "“TEMOS UMA FRAUDE!” PROFESSOR QUESTIONA APURAÇÃO ELEITORAL E LEVANTA SUSPEITAS SOBRE RESULTADO DE FLÁVIO BOLSONARO!\n\n\"Eleições não se ganha, se toma\"\n\nSiga @vitorianewsbrasil @vitorianewsparacatu\n\nQUASE 60 MILHÕES DE VOTOS! A TRANSPARÊNCIA ELEITORAL VOLTA AO CENTRO DO DEBATE!\n\nMarcelo Trindade, que se apresenta como professor de matemática e doutor na área, divulgou um vídeo questionando os gráficos da apuração presidencial de 2026.\n\nSegundo ele, uma análise envolvendo dados de 472 urnas teria identificado padrões que considera suspeitos e que poderiam indicar uma suposta interferência algorítmica desfavorável a Flávio Bolsonaro.\n\nO professor afirma ter certeza de que houve fraude e chega a estimar que Flávio poderia ter alcançado entre 60% e 65% dos votos sem a suposta interferência.\n\n⚠️ MAS EXISTEM PROVAS DESSA ACUSAÇÃO?\n\nAté o momento, não há comprovação independente de manipulação de votos, e a estimativa apresentada pelo professor não foi validada.\n\nEspecialistas ressaltam que mudanças nos gráficos parciais podem ocorrer conforme a ordem de chegada dos boletins de urna, sem representar alteração nos votos efetivamente registrados.\n\nO QUE DIZ A JUSTIÇA ELEITORAL?\n\nO resultado oficial aponta 51,79% dos votos válidos para Lula e 48,21% para Flávio Bolsonaro. Os testes de integridade divulgados pelo TSE não identificaram divergências nos equipamentos examinados.\n\n🇧🇷 QUASE 60 MILHÕES DE BRASILEIROS VOTARAM EM FLÁVIO BOLSONARO. TODOS MERECEM TRANSPARÊNCIA!\n\nQuestionar procedimentos eleitorais é legítimo. Análises técnicas podem e devem ser examinadas com seriedade, independentemente de quem tenha vencido.\n\nMas qualquer acusação de fraude exige evidências verificáveis.\n\n📖 “Examinai tudo. Retende o bem.” — 1 Tessalonicenses 5:21.\n\nA verdade não deve temer perguntas. E a justiça precisa caminhar ao lado da responsabilidade.\n\nNA SUA OPINIÃO, TODAS AS SUSPEITAS SOBRE A APURAÇÃO DEVERIAM SER EXAMINADAS PUBLICAMENTE, COM DADOS E MÉTODOS VERIFICÁVEIS?\n\nComente, compartilhe e siga @vitorianewsparacatu para acompanhar os principais acontecimentos da política brasileira!\n\n#eleicoes2026 #flaviobolsonaro #transparenciaeleitoral",
+  "musica": "Áudio original",
+  "video": {
+    "largura": 720,
+    "altura": 900,
+    "arquivo": "video.mp4",
+    "tipo": "video/mp4",
+    "bytes": 8164712,
+    "sha256": "4da5d31041cd1ff936e0cb480adce0de4acdf4e0df02b35eefa4fcde5f94d5e0"
+  },
+  "capa": {
+    "largura": 640,
+    "altura": 800,
+    "arquivo": "capa.jpg",
+    "tipo": "image/jpeg",
+    "bytes": 68431,
+    "sha256": "9c3abb957f370400659a6af9faa0181e9b96311d4b675721be8c8f295a78797d"
+  },
+  "transcricao": "transcricao.txt",
+  "legenda_arquivo": "legenda.txt",
+  "quadro_caderno": {
+    "arquivo": "quadro_caderno.jpg",
+    "origem": "quadro em 0:20 de video.mp4 (ffmpeg); mostra o caminho do caderno Jupyter, que inclui a pasta \"Eleições 2022\""
+  },
+  "texto_sobreposto": "“FOMOS ROUBADOS!” PROFESSOR QUESTIONA APURAÇÃO E LEVANTA SUSPEITAS SOBRE DERROTA DE FLÁVIO BOLSONARO!",
+  "pessoa_no_video": "Marcelo Trindade (como se apresenta no vídeo)",
+  "marca_dagua": "Vitória News",
+  "metodo": "API interna do Instagram (/api/v1/media/<id>/info/), consultada no Chrome; vídeo na maior resolução oferecida, sem recodificação"
+}

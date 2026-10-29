@@ -1,0 +1,37 @@
+{
+  "plataforma": "Instagram",
+  "url": "https://www.instagram.com/reels/DfDy8rEyVgW/",
+  "shortcode": "DfDy8rEyVgW",
+  "media_id": "4018279364289976342",
+  "autor": "soupedrolaterza",
+  "nome_exibido": "Pedro Laterza",
+  "verificado": false,
+  "coautores": [],
+  "publicado_em_utc": "2026-10-29T01:44:34.000Z",
+  "curtidas_no_arquivamento": 128724,
+  "comentarios_no_arquivamento": 2213,
+  "reproducoes_no_arquivamento": 1193352,
+  "duracao_s": 67.73300170898438,
+  "arquivado_em_utc": "2026-10-29T16:56:08.932Z",
+  "legenda": "Curta e siga @soupedrolaterza e aprender a usar IA para prosperar seus negócios.\n\n#eleição2026 #flaviobolsonaro #ia",
+  "musica": "Áudio original",
+  "video": {
+    "largura": 720,
+    "altura": 1280,
+    "arquivo": "video.mp4",
+    "tipo": "video/mp4",
+    "bytes": 10571328,
+    "sha256": "c65ecddae224e8d62cb721ca2d29030355002edd855b5b166427c0c96e020825"
+  },
+  "capa": {
+    "largura": 640,
+    "altura": 1136,
+    "arquivo": "capa.jpg",
+    "tipo": "image/jpeg",
+    "bytes": 48893,
+    "sha256": "bf25820351bb956cd9a1c5cd8281b56ffc2408cc81b034aac906b26fc6982470"
+  },
+  "transcricao": "transcricao.txt",
+  "legenda_arquivo": "legenda.txt",
+  "metodo": "API interna do Instagram (/api/v1/media/<id>/info/), consultada no Chrome; vídeo na maior resolução oferecida, sem recodificação"
+}

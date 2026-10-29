@@ -1,0 +1,18 @@
+Transcrição automática do áudio de video.mp4 (faster-whisper, modelo medium, português, processamento local em 29/10/2026).
+Pode conter erros de reconhecimento. Leituras prováveis: "mega cena" = Mega-Sena; "cara ao coroa" = cara ou coroa.
+
+[00:00.00 - 00:04.40] O Flávio ganhou apenas um voto nesta cidade do Rio de Janeiro.
+[00:04.40 - 00:10.40] No primeiro turno ele tinha 8.932 votos em Silva Jardim, uma cidade pequena do Rio de
+[00:10.40 - 00:11.40] Janeiro.
+[00:11.40 - 00:18.96] No segundo turno ele fez 8.933 votos, um aumento de 1 voto, enquanto o Lula no primeiro
+[00:18.96 - 00:28.52] turno tinha 4.450 e no segundo 5.434, com um aumento de 984 votos.
+[00:28.52 - 00:33.92] E não é que teve mais gente votando, pelo contrário, foram 104 eleitores a menos, ou
+[00:33.92 - 00:37.24] seja, quase 1000 votos se mexeram de lado.
+[00:37.24 - 00:41.60] E usando o modelo de cálculo Monte Carlo para calcular a possibilidade de isso ter
+[00:41.60 - 00:47.72] acontecido, a gente chega na seguinte questão, é mais fácil ganhar a mega cena 61 vezes
+[00:47.72 - 00:53.44] seguidas ou acertar o cara ao coroa 1.550 vezes numa jogada de moeda do que você
+[00:53.44 - 00:57.04] ganhar apenas 1 voto no seu segundo turno.
+[00:57.04 - 01:01.72] E para realizar esses cálculos eu utilizei os dados oficiais do TSE e Inteligência
+[01:01.72 - 01:02.72] Artificial.
+[01:02.72 - 01:06.04] Se você quer começar a utilizar a Inteligência Artificial no seu dia a dia, nos seus
+[01:06.04 - 01:07.64] negócios, já me segue aqui.

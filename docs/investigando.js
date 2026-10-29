@@ -19,6 +19,136 @@ const INV_RESULTADOS = {
 
 const INV_CASOS = [
   {
+    id: "reels-silva-jardim-1-voto",
+    titulo: "Reels “Flávio ganhou apenas 1 voto” em Silva Jardim (RJ)",
+    registrado: "2026-10-29",
+    resultado: "falso",
+    resumo: "Num vídeo com animações, um perfil que ensina a usar inteligência artificial em negócios afirma que, em Silva Jardim (RJ), Flávio teve só 1 voto a mais no 2º turno do que no 1º, enquanto Lula teve 984 a mais, com 104 eleitores a menos, e que uma simulação de Monte Carlo mostra que isso é mais difícil do que ganhar a Mega-Sena 61 vezes seguidas. Os números da cidade estão corretos. A probabilidade não: os 985 votos que os dois finalistas ganharam juntos são exatamente os votos dos candidatos eliminados mais a queda de brancos e nulos, menos os eleitores que deixaram de votar. E Flávio teve no máximo 1 voto a mais no 2º turno em 958 dos 5.571 municípios do país.",
+    publicacoes: [
+      { plataforma: "Instagram", autor: "Pedro Laterza (@soupedrolaterza)", url: "https://www.instagram.com/reels/DfDy8rEyVgW/",
+        publicado: "2026-10-29T01:44:34Z", papel: "Publicação analisada. No arquivamento: 1,19 milhão de reproduções, 128.724 curtidas e 2.213 comentários." },
+    ],
+    arquivo: {
+      pasta: "investigando/arquivo/instagram_DfDy8rEyVgW/",
+      video: "video.mp4", capa: "capa.jpg",
+      itens: [["Vídeo (MP4, 720×1280, 1min08s)", "video.mp4"], ["Transcrição do áudio", "transcricao.txt"], ["Legenda da publicação", "legenda.txt"],
+        ["Metadados", "metadados.json"], ["Hashes SHA-256", "SHA256SUMS"]],
+      nota: "Arquivado em 29/10/2026, com o vídeo na resolução original. Transcrição automática feita localmente (faster-whisper).",
+    },
+    contexto: [
+      "O vídeo tem narração e animações: cartazes com os votos de cada turno, uma moeda, bolas da Mega-Sena e um gráfico de pontos com o rótulo “simulações”. A legenda da publicação só convida a seguir o perfil para “aprender a usar IA para prosperar seus negócios”. No fim, o narrador diz que fez os cálculos com “os dados oficiais do TSE e Inteligência Artificial” e convida quem quer usar inteligência artificial “no seu dia a dia, nos seus negócios” a segui-lo.",
+      "O narrador diz que, em Silva Jardim, Flávio teve 8.932 votos no 1º turno e 8.933 no 2º, e Lula, 4.450 e 5.434; que houve 104 eleitores a menos; que, portanto, “quase 1000 votos se mexeram de lado”; e que, “usando o modelo de cálculo Monte Carlo”, é mais fácil ganhar a Mega-Sena 61 vezes seguidas ou acertar cara ou coroa 1.550 vezes do que “ganhar apenas 1 voto no seu segundo turno”.",
+    ],
+    alegacoes: [
+      { texto: "Em Silva Jardim (RJ), Flávio passou de 8.932 para 8.933 votos e Lula, de 4.450 para 5.434, com 104 eleitores a menos.",
+        verificacao: "Confere com os dados do TSE para as 61 seções do município. O comparecimento caiu de 14.909 para 14.805 eleitores, 104 a menos.",
+        resultado: "correto" },
+      { graficos: ["silvajardim_conta"], texto: "Como não houve mais gente votando, quase mil votos “se mexeram de lado”.",
+        verificacao: [
+          "Os números não exigem que algum eleitor tenha trocado Flávio por Lula. No 1º turno, 897 eleitores de Silva Jardim votaram nos candidatos eliminados (Augusto Cury, Ronaldo Caiado, Renan Santos e outros), e 630 votaram em branco ou nulo; no 2º turno, brancos e nulos foram 438, 192 a menos. Somando os votos dos eliminados e a queda de brancos e nulos, e descontando os 104 eleitores que deixaram de votar, chega-se a 985 votos, exatamente o que Lula e Flávio ganharam juntos (984 + 1).",
+          "A parte que foi para Lula é comum no estado. Em Silva Jardim, Lula ganhou 1,10 voto para cada voto dado aos eliminados no 1º turno; essa razão é a mediana dos 92 municípios do Rio de Janeiro, e Silva Jardim é o 43º da lista. O que distingue a cidade é Flávio ter ganhado poucos votos, e isso também aconteceu em municípios próximos: em Tanguá, Flávio teve 4 votos a menos que no 1º turno; em Araruama, 11 a mais; em Casimiro de Abreu, 92 a mais.",
+          "O “1 voto” é um saldo. Flávio teve mais votos que no 1º turno em 36 seções da cidade (161 a mais) e menos em 22 (160 a menos). O saldo combina eleitores dele que deixaram de votar ou mudaram de voto com eleitores que vieram dos candidatos eliminados.",
+        ],
+        resultado: "enganoso" },
+      { graficos: ["silvajardim_municipios"], texto: "Pelo modelo de Monte Carlo, Flávio ganhar só 1 voto é mais difícil do que ganhar a Mega-Sena 61 vezes seguidas ou acertar cara ou coroa 1.550 vezes.",
+        verificacao: [
+          "Acertar cara ou coroa 1.550 vezes seguidas tem chance de 1 em 2 elevado a 1.550, um número de 467 algarismos; ganhar a Mega-Sena 61 vezes seguidas dá um número de tamanho parecido. Uma simulação de Monte Carlo estima uma probabilidade contando em quantos sorteios o evento acontece. Com cerca de 1 milhão de sorteios, como no contador “simulações” do vídeo (que chega a 999.041), a menor probabilidade que se consegue medir fica perto de 1 em 1 milhão. Uma chance de 1 em um número de 467 algarismos não pode ter saído dessa simulação. O vídeo não diz que modelo foi simulado. O gráfico de pontos com um quarto de círculo que ilustra a simulação é o exemplo usado em aulas para estimar o número π com o método de Monte Carlo e não tem relação com votos.",
+          "Uma probabilidade desse tamanho só aparece se cada voto for tratado como um lançamento de moeda, independente dos outros. Eleitores de uma mesma cidade não votam assim, e os resultados mostram isso: Flávio teve no 2º turno no máximo 1 voto a mais que no 1º em 958 dos 5.571 municípios, e teve menos votos que no 1º turno em 938 deles. No Rio de Janeiro, isso aconteceu em 12 dos 92 municípios. O resultado que o vídeo diz ser mais raro que ganhar a Mega-Sena 61 vezes seguidas aconteceu em cerca de um de cada seis municípios do país.",
+        ],
+        resultado: "falso" },
+    ],
+    analise: [
+      "O vídeo escolhe, entre 5.571 municípios, um em que Flávio quase não ganhou votos, e calcula a chance desse resultado depois de já saber que ele aconteceu. Procurando entre milhares de municípios, sempre se encontra algum com um resultado incomum. A pergunta que importa é se resultados assim são raros no conjunto, e não são: há 958 municípios em que Flávio teve no 2º turno no máximo 1 voto a mais que no 1º, e em 938 deles teve menos votos.",
+      "A conta da cidade fecha sem troca de votos entre Lula e Flávio: os votos que os dois ganharam vêm dos candidatos eliminados e da queda de brancos e nulos. A probabilidade do vídeo vem de um modelo que não é mostrado e que trata cada eleitor como uma moeda. As animações da simulação, da moeda e da Mega-Sena e a menção a inteligência artificial dão aparência técnica a um cálculo que não é apresentado.",
+    ],
+    falacias: [
+      { nome: "Falácia da exclusão", original: "Fallacy of Exclusion", n: 20, categoria: "Falácias indutivas",
+        uso: "Deixa de fora os outros 957 municípios em que Flávio teve no 2º turno no máximo 1 voto a mais que no 1º, entre eles Tanguá, também no Rio de Janeiro, onde ele teve 4 votos a menos. Com esses municípios, o resultado de Silva Jardim deixa de parecer excepcional." },
+      { nome: "Falsa analogia", original: "False Analogy", n: 18, categoria: "Falácias indutivas",
+        uso: "Compara o voto dos eleitores a lançamentos de moeda e a sorteios da Mega-Sena, que são independentes entre si. Eleitores de uma mesma cidade votam de forma parecida, e por isso resultados como o de Silva Jardim se repetem em centenas de municípios." },
+      { nome: "Equívoco", original: "Equivocation", n: 31, categoria: "Falácias de ambiguidade",
+        uso: "Usa “ganhou apenas 1 voto” e “quase 1000 votos se mexeram de lado” para diferenças entre os totais dos dois turnos, como se fossem eleitores. O 1 voto a mais de Flávio é o saldo de 161 votos a mais em 36 seções e 160 a menos em 22." },
+      { nome: "Estilo em vez de substância", original: "Style Over Substance", n: 15, categoria: "Mudança de assunto",
+        uso: "Mostra animações de uma simulação, de bolas da Mega-Sena e de uma moeda, e cita inteligência artificial, mas não mostra o modelo nem o cálculo. O gráfico de pontos com o rótulo “simulações” é o exemplo usado em aulas para estimar o número π." },
+    ],
+    respostas: [],
+  },
+  {
+    id: "reels-professor-curva-apuracao",
+    titulo: "Reels “Fomos roubados!”: professor e a curva da apuração",
+    registrado: "2026-10-29",
+    resultado: "falso",
+    resumo: "Um perfil de notícias republicou, com o título “Professor questiona apuração e levanta suspeitas sobre derrota de Flávio Bolsonaro”, um vídeo em que um homem que se apresenta como professor de matemática mostra a curva da apuração, diz que um “algoritmo” penaliza Bolsonaro sempre que ele tende a subir e estima que, sem isso, Bolsonaro teria entre 60% e 65% dos votos. A análise mostrada é da eleição de 2022, e não da de 2026: usa as 472 mil seções e o placar de 49% a 51% daquele ano. O argumento também não se sustenta em nenhum dos dois anos: o resultado final é a soma dos votos de todas as seções e é o mesmo em qualquer ordem de chegada; a ordem muda apenas o formato da curva até o resultado final.",
+    publicacoes: [
+      { plataforma: "Instagram", autor: "Apoio Vitória Fm 87,9 (@vitorianewsparacatu), com @vitorianewsbrasil como coautor",
+        url: "https://www.instagram.com/reels/DfBTF4LtGzB/", publicado: "2026-10-28T01:54:35Z",
+        papel: "Publicação analisada. No arquivamento: 2,29 milhões de reproduções, 225.766 curtidas e 8.550 comentários." },
+      { plataforma: "Vídeo original", autor: "Marcelo Trindade (como se apresenta no vídeo)", url: null, publicado: null,
+        papel: "Autor da análise. Pela fala (“eu quero que essa live chegue [a] mil pessoas”), o trecho vem de uma transmissão ao vivo. A gravação original não foi localizada." },
+    ],
+    arquivo: {
+      pasta: "investigando/arquivo/instagram_DfBTF4LtGzB/",
+      video: "video.mp4", capa: "capa.jpg",
+      itens: [["Vídeo (MP4, 720×900, 2min54s)", "video.mp4"], ["Transcrição do áudio", "transcricao.txt"],
+        ["Quadro com o caminho do caderno Jupyter (pasta “Eleições 2022”)", "quadro_caderno.jpg"], ["Legenda da publicação", "legenda.txt"],
+        ["Metadados", "metadados.json"], ["Hashes SHA-256", "SHA256SUMS"]],
+      nota: "Arquivado em 29/10/2026, com o vídeo na resolução original. Transcrição automática feita localmente (faster-whisper).",
+    },
+    contexto: [
+      "A tela do vídeo é dividida. Em cima fica o título, em amarelo. Embaixo, à esquerda, um trecho ampliado de uma curva; à direita, o autor falando e a tela de um computador com um caderno Jupyter que desenha duas curvas, uma azul e uma vermelha, que começam afastadas, se aproximam e se cruzam uma vez perto do fim. Pela descrição do autor, cada ponto é a porcentagem de um candidato somando as urnas recebidas até ali, na ordem em que foram enviadas.",
+      "O autor diz que um candidato que perdeu com 49% para outro que ganhou com 51% não poderia ter “apenas uma inversão” na apuração; que baixou “essas mesmas 472 urnas” e simulou outras ordens de envio, e que todas tinham alternância; e que, como o envio é aleatório, não pode haver “tendência linear parcial”. Mostrando trechos da curva, diz que “o algoritmo” detecta quando Bolsonaro tende a subir e o “penaliza linearmente”, e que, recolocando os trechos de subida no lugar dos trechos de queda, Bolsonaro teria vencido “com 60 a 65% dos votos”. Termina: “tenho a certeza de que fomos roubados em 2022, tenho a certeza de que estamos sendo roubados novamente em 2026”.",
+      "A legenda da publicação apresenta o vídeo como questionamento dos gráficos da apuração de 2026 e diz que Flávio poderia ter alcançado entre 60% e 65%. Mais abaixo, a mesma legenda informa que não há comprovação independente de manipulação de votos e que os gráficos parciais mudam conforme a ordem de chegada dos boletins de urna.",
+    ],
+    alegacoes: [
+      { texto: "O vídeo questiona a apuração de 2026 e a derrota de Flávio Bolsonaro (título e legenda da publicação).",
+        verificacao: "A análise mostrada é da eleição de 2022. O autor fala em “472 urnas” baixadas do site oficial: a eleição de 2022 teve 472.075 seções, e a de 2026, 499.248. Descreve um candidato que perdeu com 49% para outro que ganhou com 51%: em 2022, Jair Bolsonaro teve 49,10% dos votos válidos e Lula, 50,90%; em 2026, Flávio teve 48,21% e Lula, 51,79%. O caminho do caderno Jupyter que aparece na tela inclui uma pasta chamada “Eleições 2022”. O autor se refere a “Bolsonaro” e conclui que “fomos roubados em 2022”; 2026 aparece só na última frase, sem nenhum dado. O título sobre a derrota de Flávio Bolsonaro e a legenda foram acrescentados por quem republicou o vídeo.",
+        resultado: "falso" },
+      { texto: "Numa disputa de 49% a 51%, só uma inversão na apuração é raríssima; nas outras ordens de envio simuladas, todas tinham alternância.",
+        verificacao: "Este projeto repetiu o teste com as seções de 2022, somadas em 200 ordens sorteadas ao acaso. A liderança troca de candidato só no começo, quando ainda há poucas urnas somadas: em nenhuma das 200 ordens houve troca depois da 4.141ª seção, menos de 1% do total, e daí em diante Lula fica à frente até o fim. Depois de somados 10% das seções, a porcentagem acumulada não se afasta mais de 0,25 ponto do resultado final. Em ordem aleatória, portanto, o esperado é não haver inversão depois do começo. A apuração real teve uma inversão tardia (em 2022, Lula passou à frente com cerca de dois terços das urnas apuradas) justamente porque as urnas não chegam em ordem aleatória (alegação seguinte).",
+        resultado: "falso" },
+      { graficos: ["professor_ordens"], texto: "O envio das urnas é aleatório; por isso, uma tendência de queda num trecho da curva só pode ser obra de um algoritmo que penaliza o candidato.",
+        verificacao: [
+          "As urnas não chegam à totalização em ordem aleatória. A ordem depende da hora em que cada seção encerra a votação, do tempo de apuração e transmissão e do lugar onde ela fica: seções com fila fecham mais tarde, e algumas regiões transmitem antes de outras. Como o voto também varia de um lugar para outro, a porcentagem acumulada de cada candidato muda aos poucos ao longo da apuração, com trechos longos de subida ou de queda.",
+          "O gráfico abaixo usa as seções de 2026, com os votos oficiais de cada uma, somadas em ordens diferentes. Na ordem em que as seções encerraram a votação, a porcentagem de Lula sobe quase em linha reta de 45,9% para 51,8%, e ele só passa à frente com metade das seções somadas. Na ordem dos estados (AC, AL, AM...), a curva sobe até 66% e depois desce. Em três ordens sorteadas, a curva fica em 51,8% quase desde o começo. As tendências aparecem só porque a ordem muda, e todas as curvas terminam no mesmo ponto: 51,79%.",
+          "O vídeo não apresenta nenhum dado sobre o “algoritmo”; ele é deduzido apenas do formato da curva. Os votos de cada seção são publicados pelo TSE, e, somando as 499.248 seções de 2026, os votos válidos e o comparecimento de cada município são iguais aos totais que o TSE divulgou.",
+        ],
+        resultado: "falso" },
+      { graficos: ["professor_zonas"], texto: "No trecho ampliado, Bolsonaro sobe e logo cai, “devolvendo” quase tudo o que subiu; esse padrão de subidas lentas e quedas rápidas indica um algoritmo que corrige a curva para baixo.",
+        verificacao: [
+          "Cada ponto da curva é a porcentagem de Bolsonaro nos votos somados até ali. Quando entra um novo grupo de seções, a curva se move de acordo com uma conta: a variação é o peso do grupo no total já somado multiplicado pela diferença entre a porcentagem de Bolsonaro no grupo e a porcentagem acumulada. Se o grupo deu a Bolsonaro mais que a média até ali, a curva sobe; se deu menos, desce. Três consequências dessa conta explicam o que o vídeo mostra:",
+          [
+            ["Cada queda é um grupo de seções que chegou junto", "Com cerca de 76 mil seções já somadas, como no ponto destacado no vídeo, uma seção sozinha pesa cerca de 1/76.000 do total e move a curva no máximo 0,0007 ponto. As quedas do trecho ampliado, de 0,1 a 0,15 ponto, exigem centenas de seções chegando juntas e votando de forma parecida, como as de uma zona eleitoral, que são apuradas e transmitidas na mesma região."],
+            ["A curva tem de devolver o que sobe", "O último ponto é o resultado final, que é o mesmo em qualquer ordem de soma. Toda subida acima desse valor tem de ser seguida de uma descida. Isso vale até em ordem sorteada: pela teoria da amostragem sem reposição, a porcentagem acumulada se aproxima do resultado final à medida que mais seções são somadas e chega exatamente a ele na última."],
+            ["As quedas são mais rápidas que as subidas", "Em 2022, nas 2.637 zonas eleitorais, as zonas em que Bolsonaro ficou abaixo da média nacional estavam, na mediana, 18,5 pontos abaixo dela; as zonas em que ficou acima estavam 10,8 pontos acima. Por seção somada, uma zona do primeiro grupo baixa a curva cerca de 1,7 vez mais depressa do que uma zona do segundo grupo a levanta. Por isso a curva tende a subir aos poucos e cair de uma vez."],
+          ],
+          "O gráfico abaixo usa as seções de 2022, sem nenhuma alteração nos votos. As zonas eleitorais foram somadas em ordem sorteada, cada uma com todas as suas seções em sequência, e o trecho de 70 mil a 80 mil seções foi ampliado como no vídeo. Aparecem as mesmas subidas seguidas de quedas: a zona 345 de São Paulo levanta a curva 0,07 ponto, e logo depois a zona 71 da Bahia a baixa 0,09. Este projeto repetiu o sorteio 100 vezes. Nesse trecho, a distância entre o ponto mais alto e o mais baixo da curva ficou entre 0,22 e 0,80 ponto (mediana de 0,40) e foi de pelo menos 0,3 ponto, a altura do eixo ampliado no vídeo, em 85 dos 100 sorteios. O gráfico mostra o sorteio com a distância mais próxima da mediana.",
+          "O vídeo chama de normais os trechos de subida e atribui ao algoritmo os de queda. Com essa regra, qualquer curva confirma a explicação. Para testá-la, seria preciso identificar as seções que entraram em cada queda e mostrar que os votos delas foram alterados. Os votos de cada seção são publicados pelo TSE, e o boletim de cada seção é afixado no local de votação; o vídeo não aponta nenhuma seção.",
+        ],
+        resultado: "falso" },
+      { texto: "Sem a “penalização”, Bolsonaro teria vencido com 60% a 65% dos votos.",
+        verificacao: "A porcentagem final é a soma dos votos de todas as seções e não depende da ordem em que elas são somadas: como mostra o gráfico anterior, qualquer ordem termina no mesmo resultado. Colocar os trechos de subida no lugar dos trechos de queda não corresponde a nenhuma ordem de envio; equivale a deixar de contar as seções em que Lula teve mais votos. Para Jair Bolsonaro ter 60% em 2022, seria preciso que 12,9 milhões de votos de Lula tivessem ido para ele, ou que 21,5 milhões de votos de Lula (36% do que ele teve) não fossem contados. Em 2026, para Flávio ter 60%, 14,6 milhões de votos teriam de passar de Lula para ele. O vídeo não mostra como chegou à estimativa.",
+        resultado: "falso" },
+    ],
+    analise: [
+      "O vídeo trata o formato da curva da apuração como prova, mas esse formato depende da ordem em que as urnas são somadas, e não dos votos. Somando os mesmos votos em ordens diferentes, obtêm-se curvas que sobem, que descem, que cruzam 50% uma vez ou nenhuma, e todas terminam no mesmo resultado. Por isso, nenhuma leitura da curva pode mostrar que votos foram alterados. Isso só pode ser verificado comparando os votos de cada seção com o total, e eles conferem.",
+      "O “algoritmo” que liga quando Bolsonaro tende a subir e desliga em seguida serve para explicar qualquer curva: toda subida é atribuída ao padrão normal, e toda queda, ao algoritmo. Não há formato de curva que contradiga essa explicação, e por isso ela não pode ser testada.",
+      "A publicação usa uma análise da eleição de 2022 com um título sobre a derrota de Flávio Bolsonaro em 2026. A legenda reconhece que não há comprovação e que os gráficos parciais mudam conforme a ordem de chegada dos boletins, mas o título e o início da legenda apresentam a acusação como notícia.",
+    ],
+    falacias: [
+      { nome: "Petição de princípio", original: "Begging the Question", n: 28, categoria: "Fuga ao assunto",
+        uso: "Supõe que existe um algoritmo (“o algoritmo detecta”, “o algoritmo é desligado”) para explicar os trechos de queda da curva e depois usa esses mesmos trechos como prova de que o algoritmo existe." },
+      { nome: "Intestabilidade", original: "Untestability", n: 48, categoria: "Falácias de explicação",
+        uso: "Um algoritmo que liga quando Bolsonaro tende a subir e desliga logo depois explica qualquer formato de curva. Nenhum resultado de apuração poderia contradizer essa explicação." },
+      { nome: "Efeito conjunto", original: "Joint Effect", n: 24, categoria: "Falácias causais",
+        uso: "Atribui as tendências da curva a um algoritmo. A causa das tendências é a localização das seções, que determina ao mesmo tempo quando elas chegam à totalização e como votaram." },
+      { nome: "Apelo à autoridade", original: "Appeal to Authority", n: 12, categoria: "Mudança de assunto",
+        uso: "Apoia a conclusão no doutorado e nos anos de trabalho do autor com matemática e ciência de dados (“estou com a certeza absoluta”), e não num cálculo apresentado." },
+      { nome: "Linguagem tendenciosa", original: "Prejudicial Language", n: 8, categoria: "Apelos a motivos em vez de razões",
+        uso: "“Golpe” e “fomos roubados” são ditos antes de qualquer demonstração; a republicação põe “FOMOS ROUBADOS!” no título." },
+    ],
+    respostas: [],
+  },
+  {
     id: "video-whatsapp-vereador",
     titulo: "Vídeo de vereador no WhatsApp: “só existe um caminho” para os votos de Lula",
     registrado: "2026-10-29",
@@ -268,6 +398,26 @@ const INV_UNANIMES = [[2018, "Haddad", "J. Bolsonaro", 14958, 1298], [2022, "Lul
 const INV_DIG1 = { benford: [30.1, 17.6, 12.5, 9.7, 7.9, 6.7, 5.8, 5.1, 4.6],
   lula: [60.81, 9.29, 0.94, 1.69, 2.81, 4.26, 5.60, 6.85, 7.75], flavio: [61.88, 7.21, 2.81, 3.44, 3.86, 4.35, 4.87, 5.45, 6.13] };
 const INV_DIGU = { lula: [10.03, 9.95, 9.98, 9.98, 10.0, 9.99, 10.0, 10.0, 9.98, 10.08], flavio: [10.02, 9.98, 9.99, 10.11, 9.98, 10.02, 10.03, 10.0, 9.99, 9.89] };
+/* % de Lula nos votos válidos acumulados (BWeb do 2º turno, 499.205 seções) quando 0,5%, 1,5%, ..., 98,5% e 100% das
+   seções foram somadas, em cada ordem de soma; os sorteios usam numpy default_rng(2026) */
+const INV_ORDENS_X = Array.from({ length: 99 }, (_, i) => i + .5).concat(100);
+const INV_ORDENS = {
+  encerramento: [45.9, 45.97, 46.21, 46.46, 46.73, 46.91, 47.18, 47.34, 47.52, 47.66, 47.79, 47.9, 48.01, 48.11, 48.22, 48.34, 48.4, 48.5, 48.57, 48.65, 48.73, 48.79, 48.85, 48.91, 48.97, 49.02, 49.07, 49.1, 49.16, 49.21, 49.27, 49.34, 49.4, 49.45, 49.48, 49.53, 49.58, 49.61, 49.65, 49.69, 49.73, 49.75, 49.78, 49.81, 49.85, 49.88, 49.91, 49.94, 49.98, 50.01, 50.04, 50.07, 50.1, 50.12, 50.16, 50.18, 50.21, 50.24, 50.28, 50.31, 50.33, 50.35, 50.38, 50.4, 50.43, 50.46, 50.49, 50.51, 50.54, 50.57, 50.59, 50.62, 50.65, 50.67, 50.7, 50.73, 50.76, 50.79, 50.82, 50.85, 50.89, 50.92, 50.95, 50.98, 51.02, 51.05, 51.09, 51.13, 51.18, 51.22, 51.27, 51.31, 51.36, 51.41, 51.46, 51.52, 51.58, 51.65, 51.72, 51.79],
+  estados: [38.09, 53.17, 55.62, 54.83, 56.76, 59.58, 61.07, 62.08, 63.34, 64.58, 65.54, 65.75, 66.09, 65.7, 66.23, 66.53, 65.6, 64.4, 63.38, 62.25, 61.3, 60.23, 59.74, 60.17, 60.51, 60.77, 60.67, 60.26, 59.92, 59.65, 59.32, 59.04, 58.85, 58.5, 58.32, 58.11, 57.85, 57.4, 56.83, 56.36, 56.34, 56.35, 56.35, 56.23, 56.47, 56.65, 57.1, 57.37, 57.64, 57.81, 58.1, 58.41, 58.38, 57.99, 57.59, 57.21, 56.85, 56.5, 56.27, 56.05, 55.91, 55.71, 55.53, 55.46, 55.43, 55.45, 55.58, 55.36, 55.1, 54.86, 54.59, 54.53, 54.44, 54.23, 53.88, 53.57, 53.23, 53.2, 53.26, 53.1, 52.95, 52.84, 52.8, 52.73, 52.63, 52.47, 52.33, 52.23, 52.07, 51.94, 51.89, 51.79, 51.8, 51.77, 51.79, 51.89, 51.98, 51.94, 51.85, 51.79],
+  sorteios: [
+    [51.5, 51.62, 51.51, 51.47, 51.48, 51.44, 51.51, 51.6, 51.64, 51.62, 51.59, 51.58, 51.63, 51.62, 51.62, 51.61, 51.63, 51.65, 51.65, 51.69, 51.68, 51.7, 51.73, 51.74, 51.75, 51.74, 51.74, 51.74, 51.74, 51.75, 51.74, 51.75, 51.75, 51.76, 51.74, 51.73, 51.74, 51.73, 51.74, 51.74, 51.75, 51.75, 51.75, 51.74, 51.75, 51.76, 51.76, 51.76, 51.76, 51.75, 51.75, 51.75, 51.74, 51.74, 51.74, 51.73, 51.73, 51.73, 51.73, 51.74, 51.75, 51.75, 51.76, 51.76, 51.76, 51.76, 51.76, 51.76, 51.76, 51.76, 51.76, 51.76, 51.76, 51.76, 51.76, 51.76, 51.76, 51.76, 51.76, 51.76, 51.77, 51.77, 51.77, 51.77, 51.77, 51.77, 51.77, 51.78, 51.78, 51.78, 51.78, 51.79, 51.78, 51.79, 51.79, 51.79, 51.79, 51.78, 51.78, 51.79],
+    [51.92, 51.81, 51.97, 51.85, 51.77, 51.74, 51.72, 51.74, 51.7, 51.73, 51.77, 51.78, 51.8, 51.8, 51.82, 51.82, 51.79, 51.79, 51.81, 51.78, 51.77, 51.77, 51.77, 51.77, 51.78, 51.78, 51.77, 51.79, 51.77, 51.77, 51.77, 51.78, 51.78, 51.79, 51.8, 51.81, 51.8, 51.8, 51.79, 51.79, 51.79, 51.78, 51.78, 51.77, 51.78, 51.79, 51.79, 51.79, 51.79, 51.8, 51.8, 51.79, 51.79, 51.79, 51.79, 51.79, 51.79, 51.79, 51.78, 51.77, 51.77, 51.77, 51.77, 51.77, 51.77, 51.77, 51.77, 51.77, 51.77, 51.77, 51.78, 51.78, 51.78, 51.79, 51.79, 51.79, 51.79, 51.79, 51.8, 51.79, 51.79, 51.79, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.77, 51.78, 51.78, 51.78, 51.77, 51.78, 51.78, 51.78, 51.78, 51.79],
+    [51.55, 51.99, 51.92, 51.84, 51.86, 51.89, 51.92, 51.92, 51.89, 51.88, 51.87, 51.84, 51.86, 51.87, 51.84, 51.82, 51.84, 51.82, 51.81, 51.8, 51.79, 51.8, 51.8, 51.8, 51.82, 51.82, 51.82, 51.82, 51.81, 51.81, 51.79, 51.8, 51.79, 51.78, 51.79, 51.79, 51.78, 51.77, 51.77, 51.75, 51.76, 51.76, 51.76, 51.76, 51.75, 51.76, 51.76, 51.76, 51.77, 51.77, 51.77, 51.77, 51.77, 51.77, 51.77, 51.77, 51.77, 51.77, 51.77, 51.77, 51.78, 51.78, 51.78, 51.79, 51.79, 51.8, 51.8, 51.79, 51.79, 51.79, 51.79, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.78, 51.79, 51.79, 51.79],
+  ],
+};
+/* variação dos votos de Flávio do 1º para o 2º turno, por município (votacao_secao, 5.571 municípios) */
+const INV_FLAVIO_MUN = [["menos de −5%", 314], ["−5% a −2%", 335], ["−2% a 0%", 289], ["0% a 2%", 435], ["2% a 5%", 997],
+  ["5% a 8%", 1694], ["8% a 12%", 1199], ["12% ou mais", 308]];
+/* % de Bolsonaro nos votos válidos acumulados (seções de 2022, 2º turno) com as 2.637 zonas eleitorais somadas em ordem
+   sorteada (numpy default_rng(34), o sorteio de amplitude mais próxima da mediana entre 100), cada zona com todas as suas seções
+   em sequência; de 70.000 a 80.000 seções somadas, a cada 20 seções. Zonas: início, fim, UF, zona, seções, % de Bolsonaro, variação */
+const INV_ZONAS_Y = [48.846, 48.846, 48.846, 48.847, 48.848, 48.847, 48.846, 48.842, 48.841, 48.839, 48.838, 48.838, 48.837, 48.836, 48.833, 48.833, 48.831, 48.831, 48.832, 48.833, 48.835, 48.836, 48.839, 48.843, 48.848, 48.855, 48.859, 48.863, 48.867, 48.864, 48.862, 48.859, 48.856, 48.854, 48.85, 48.845, 48.841, 48.836, 48.834, 48.831, 48.825, 48.821, 48.816, 48.811, 48.806, 48.801, 48.797, 48.799, 48.804, 48.809, 48.813, 48.817, 48.819, 48.822, 48.823, 48.824, 48.824, 48.826, 48.824, 48.825, 48.829, 48.834, 48.841, 48.847, 48.853, 48.857, 48.86, 48.864, 48.866, 48.866, 48.868, 48.868, 48.869, 48.869, 48.87, 48.871, 48.871, 48.869, 48.865, 48.863, 48.861, 48.858, 48.856, 48.853, 48.85, 48.847, 48.843, 48.84, 48.838, 48.834, 48.832, 48.826, 48.82, 48.812, 48.804, 48.798, 48.791, 48.784, 48.775, 48.767, 48.761, 48.755, 48.749, 48.742, 48.736, 48.729, 48.728, 48.727, 48.727, 48.726, 48.725, 48.725, 48.724, 48.723, 48.721, 48.72, 48.716, 48.711, 48.709, 48.706, 48.705, 48.702, 48.697, 48.693, 48.689, 48.683, 48.677, 48.67, 48.665, 48.659, 48.654, 48.65, 48.646, 48.651, 48.653, 48.658, 48.663, 48.669, 48.673, 48.676, 48.678, 48.681, 48.684, 48.687, 48.697, 48.707, 48.718, 48.728, 48.74, 48.75, 48.752, 48.753, 48.755, 48.755, 48.757, 48.758, 48.758, 48.759, 48.76, 48.761, 48.76, 48.76, 48.76, 48.759, 48.756, 48.749, 48.745, 48.741, 48.735, 48.729, 48.723, 48.717, 48.712, 48.707, 48.702, 48.697, 48.691, 48.686, 48.685, 48.685, 48.685, 48.685, 48.685, 48.685, 48.687, 48.693, 48.698, 48.702, 48.705, 48.706, 48.708, 48.71, 48.712, 48.714, 48.717, 48.719, 48.72, 48.723, 48.725, 48.726, 48.722, 48.717, 48.71, 48.703, 48.697, 48.692, 48.687, 48.683, 48.679, 48.676, 48.673, 48.673, 48.675, 48.676, 48.678, 48.68, 48.682, 48.684, 48.687, 48.689, 48.691, 48.694, 48.697, 48.7, 48.703, 48.706, 48.702, 48.697, 48.693, 48.689, 48.685, 48.681, 48.672, 48.665, 48.66, 48.654, 48.646, 48.64, 48.633, 48.627, 48.619, 48.612, 48.606, 48.607, 48.614, 48.619, 48.623, 48.626, 48.629, 48.63, 48.631, 48.632, 48.633, 48.634, 48.635, 48.635, 48.636, 48.637, 48.637, 48.638, 48.639, 48.639, 48.64, 48.641, 48.64, 48.632, 48.627, 48.624, 48.619, 48.613, 48.606, 48.6, 48.594, 48.589, 48.584, 48.589, 48.596, 48.599, 48.605, 48.612, 48.618, 48.623, 48.629, 48.635, 48.639, 48.642, 48.646, 48.65, 48.652, 48.656, 48.662, 48.669, 48.677, 48.679, 48.681, 48.683, 48.685, 48.687, 48.688, 48.69, 48.691, 48.693, 48.696, 48.696, 48.698, 48.7, 48.7, 48.703, 48.705, 48.706, 48.706, 48.706, 48.705, 48.699, 48.692, 48.685, 48.677, 48.67, 48.663, 48.66, 48.661, 48.663, 48.664, 48.665, 48.666, 48.666, 48.663, 48.659, 48.656, 48.65, 48.644, 48.638, 48.637, 48.638, 48.64, 48.642, 48.645, 48.647, 48.649, 48.652, 48.656, 48.658, 48.661, 48.663, 48.668, 48.673, 48.678, 48.682, 48.686, 48.691, 48.697, 48.703, 48.71, 48.715, 48.72, 48.725, 48.73, 48.734, 48.728, 48.723, 48.716, 48.709, 48.702, 48.695, 48.687, 48.681, 48.675, 48.669, 48.664, 48.659, 48.652, 48.648, 48.647, 48.646, 48.645, 48.643, 48.642, 48.64, 48.639, 48.638, 48.637, 48.636, 48.635, 48.633, 48.632, 48.631, 48.63, 48.629, 48.628, 48.626, 48.624, 48.623, 48.622, 48.62, 48.618, 48.615, 48.615, 48.612, 48.61, 48.606, 48.604, 48.603, 48.602, 48.603, 48.605, 48.607, 48.608, 48.61, 48.612, 48.61, 48.608, 48.604, 48.6, 48.597, 48.594, 48.591, 48.588, 48.585, 48.582, 48.58, 48.577, 48.575, 48.571, 48.568, 48.566, 48.567, 48.57, 48.57, 48.567, 48.564, 48.56, 48.556, 48.554, 48.551, 48.549, 48.546, 48.543, 48.541, 48.541, 48.541, 48.541, 48.541, 48.542, 48.543, 48.545, 48.546, 48.547, 48.55, 48.553, 48.556, 48.558, 48.558, 48.558, 48.558, 48.559, 48.56, 48.561, 48.561, 48.562, 48.561, 48.557, 48.552, 48.547, 48.543, 48.539, 48.533, 48.527, 48.519, 48.514, 48.506, 48.5, 48.495, 48.49, 48.488, 48.487, 48.482, 48.48, 48.479, 48.477, 48.477, 48.478, 48.477, 48.477, 48.477, 48.477, 48.48, 48.481, 48.484, 48.489, 48.494, 48.501, 48.508, 48.513, 48.519, 48.525, 48.528, 48.535, 48.541, 48.545, 48.54, 48.535];
+const INV_ZONAS_SEG = [[69989, 70282, "MG", 132, 293, 45.7, -0.013], [70282, 70423, "RS", 53, 141, 50.8, 0.003], [70423, 70558, "SC", 45, 135, 63.9, 0.032], [70558, 70724, "AL", 10, 166, 36.1, -0.027], [70724, 70922, "MG", 101, 198, 30.1, -0.044], [70922, 71184, "SP", 306, 262, 56.1, 0.028], [71184, 71292, "SP", 130, 108, 70.2, 0.031], [71292, 71362, "RS", 133, 70, 59.6, 0.01], [71362, 71530, "AL", 55, 168, 51.1, 0.005], [71530, 71810, "CE", 95, 280, 40.4, -0.041], [71810, 71882, "PB", 52, 72, 19.9, -0.027], [71882, 72109, "BA", 59, 227, 19.8, -0.077], [72109, 72283, "SP", 382, 174, 46.2, -0.006], [72283, 72347, "TO", 22, 64, 31.9, -0.011], [72347, 72415, "MG", 3, 68, 39.5, -0.006], [72415, 72640, "CE", 9, 225, 29.1, -0.057], [72640, 72856, "SP", 49, 216, 63.5, 0.039], [72856, 72987, "SC", 32, 131, 82.5, 0.068], [72987, 73152, "ES", 30, 165, 51.9, 0.006], [73152, 73278, "MG", 190, 126, 47.8, -0.001], [73278, 73552, "BA", 171, 274, 31.9, -0.073], [73552, 73675, "MG", 267, 123, 49.2, 0.001], [73675, 73755, "RO", 15, 80, 68.7, 0.019], [73755, 73988, "GO", 40, 233, 54.9, 0.022], [73988, 74125, "BA", 193, 137, 20.1, -0.041], [74125, 74209, "AM", 12, 84, 34.8, -0.013], [74209, 74499, "RJ", 110, 290, 57.3, 0.033], [74499, 74616, "AL", 5, 117, 33.1, -0.023], [74616, 74847, "MA", 18, 231, 20.6, -0.079], [74847, 74951, "SP", 312, 104, 65.6, 0.025], [74951, 75277, "RJ", 162, 326, 51.5, 0.014], [75277, 75483, "PI", 11, 206, 23.4, -0.058], [75483, 75677, "RJ", 147, 194, 68.2, 0.055], [75677, 75841, "RO", 1, 164, 70.5, 0.038], [75841, 76237, "RN", 50, 396, 53.7, 0.029], [76237, 76372, "CE", 18, 135, 12.5, -0.047], [76372, 76494, "PR", 12, 122, 53.5, 0.008], [76494, 76627, "AL", 47, 133, 29.8, -0.031], [76627, 76872, "RJ", 218, 245, 56.1, 0.028], [76872, 77140, "SP", 345, 268, 65.8, 0.069], [77140, 77415, "BA", 71, 275, 22.4, -0.086], [77415, 77880, "SP", 359, 465, 43.8, -0.03], [77880, 77962, "MG", 201, 82, 39.9, -0.008], [77962, 78169, "MG", 218, 207, 49.6, 0.002], [78169, 78486, "PE", 4, 317, 38.5, -0.046], [78486, 78535, "SP", 232, 49, 56.7, 0.005], [78535, 78739, "MG", 244, 204, 33.2, -0.03], [78739, 78926, "MG", 246, 187, 50.9, 0.006], [78926, 79194, "MG", 35, 268, 51.3, 0.012], [79194, 79285, "MG", 120, 91, 24.6, -0.021], [79285, 79404, "MA", 106, 119, 14.6, -0.039], [79404, 79503, "RN", 8, 99, 34.5, -0.017], [79503, 79671, "PR", 38, 168, 45.2, -0.005], [79671, 79774, "GO", 31, 103, 60.1, 0.015], [79774, 79956, "RS", 118, 182, 70.5, 0.054], [79956, 80092, "MA", 49, 136, 25.5, -0.031]];
 
 const invCompacto = v => Math.abs(v) >= 1e6 ? fNum(v / 1e6, 2) + " mi" : Math.abs(v) >= 1e4 ? fNum(v / 1e3, 0) + " mil" : fInt(v);
 const invP = (v, d = 1) => fNum(v, d) + "%";
@@ -405,6 +555,35 @@ function invColunas(el, cats, series, { y0 = 0, y1, fmt, fmtEixo = fmt, rotY, re
   }
 }
 
+/* linhas sobre um eixo horizontal de x0 a x1 (por padrão, 0 a 100%); series: [{nome, cor, valores, fina}]. Ao passar
+   o mouse, uma linha vertical mostra o valor de todas as séries naquele ponto. extra(svg, x, y) desenha marcações. */
+function invLinhas(el, xs, series, { y0, y1, x0 = 0, x1 = 100, fmtX = t => t + "%", fmtY = t => t + "%", ref, rotX, rotY, fmtDica, extra, H = 280 } = {}) {
+  const W = larg(el), mE = 52, mD = 10, mT = rotY ? 26 : 12, mB = 40;
+  const x = d3.scaleLinear().domain([x0, x1]).range([mE, W - mD]), y = d3.scaleLinear().domain([y0, y1]).range([H - mB, mT]);
+  const svg = d3.select(el).html("").append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("role", "img");
+  svg.append("g").attr("class", "eixo").attr("transform", `translate(${mE},0)`).call(d3.axisLeft(y).ticks(6).tickSize(-(W - mE - mD)).tickFormat(fmtY))
+    .call(g => g.select(".domain").remove()).call(g => g.selectAll(".tick line").attr("stroke", C.linha));
+  svg.append("g").attr("class", "eixo").attr("transform", `translate(0,${H - mB})`).call(d3.axisBottom(x).ticks(W < 520 ? 4 : 10).tickFormat(fmtX))
+    .call(g => g.select(".domain").attr("stroke", C.linhaF));
+  if (extra) extra(svg, x, y);
+  if (rotY) svg.append("text").attr("class", "rot").attr("x", mE).attr("y", 9).text(rotY);
+  if (rotX) svg.append("text").attr("class", "rot").attr("x", W - mD).attr("y", H - 4).attr("text-anchor", "end").text(rotX);
+  if (ref) {
+    svg.append("line").attr("x1", mE).attr("x2", W - mD).attr("y1", y(ref.v)).attr("y2", y(ref.v)).attr("stroke", C.tinta2).attr("stroke-dasharray", "4 4");
+    svg.append("text").attr("class", "rot").attr("x", W - mD - 4).attr("y", y(ref.v) + 14).attr("text-anchor", "end").text(ref.rot);
+  }
+  series.forEach(s => svg.append("path").attr("d", d3.line()(xs.map((v, i) => [x(v), y(s.valores[i])]))).attr("fill", "none")
+    .attr("stroke", s.cor).attr("stroke-width", s.fina ? 1.5 : 2.5).attr("stroke-linejoin", "round"));
+  const guia = svg.append("line").attr("y1", mT).attr("y2", H - mB).attr("stroke", C.linhaF).style("display", "none");
+  svg.append("rect").attr("x", mE).attr("y", mT).attr("width", W - mE - mD).attr("height", H - mT - mB).attr("fill", "transparent")
+    .on("mousemove", ev => {
+      const i = d3.minIndex(xs, v => Math.abs(x(v) - d3.pointer(ev)[0]));
+      guia.attr("x1", x(xs[i])).attr("x2", x(xs[i])).style("display", null);
+      mostrarDica(fmtDica(i), ev);
+    })
+    .on("mouseleave", () => { guia.style("display", "none"); esconderDica(); });
+}
+
 const INV_FLUXO_GRUPOS = [ // grupo no 1º turno: eleitores e divisão no 2º turno pelo caminho do vídeo (Lula, Flávio, resto)
   { o: "a_1", rot: "Votou em Lula", n: 53879538, video: [100, 0, 0] },
   { o: "b_1", rot: "Votou em Flávio", n: 56104503, video: [0, 100, 0] },
@@ -420,6 +599,74 @@ function invFluxoModelo(o) {
 }
 
 const INV_GRAFICOS = {
+  silvajardim_conta: {
+    titulo: "Silva Jardim: de onde vêm os 985 votos que Lula e Flávio ganharam juntos",
+    como: "As três primeiras barras mostram de onde podem vir votos novos para os finalistas no 2º turno: os votos dados no 1º turno aos candidatos eliminados, a diminuição de brancos e nulos e, com sinal negativo, a diminuição do número de eleitores que votaram. A soma das três (quarta barra) é igual ao que Lula e Flávio ganharam juntos (duas últimas barras). A conta fecha sem que nenhum eleitor precise ter trocado Flávio por Lula. São saldos entre os turnos: não dizem quantas pessoas fizeram cada movimento.",
+    tabela: () => ({ cab: ["Parcela", "1º turno", "2º turno", "Diferença"], linhas: [
+      ["Votos dos candidatos eliminados", "897", "—", "+897"], ["Brancos e nulos", "630", "438", "+192 (queda)"],
+      ["Eleitores que votaram", "14.909", "14.805", "−104"], ["Soma das três parcelas", "", "", "985"],
+      ["Lula", "4.450", "5.434", "+984"], ["Flávio", "8.932", "8.933", "+1"]] }),
+    desenhar: el => invBarrasH(el, [
+      { rot: "Votos dos eliminados", sub: "no 1º turno", v: 897, cor: C.outros, txt: "+897" },
+      { rot: "Queda de brancos e nulos", sub: "de 630 para 438", v: 192, cor: C.bn, txt: "+192" },
+      { rot: "Eleitores a menos", sub: "de 14.909 para 14.805", v: -104, cor: C.abst, txt: "−104" },
+      { rot: "Soma", sub: "897 + 192 − 104", v: 985, cor: C.tinta2, txt: "985" },
+      { rot: "Votos a mais de Lula", sub: "de 4.450 para 5.434", v: 984, cor: C.lula, txt: "+984" },
+      { rot: "Votos a mais de Flávio", sub: "de 8.932 para 8.933", v: 1, cor: C.dir, txt: "+1" },
+    ]),
+  },
+  silvajardim_municipios: {
+    titulo: "Variação dos votos de Flávio do 1º para o 2º turno nos 5.571 municípios",
+    como: "Cada coluna conta os municípios em que os votos de Flávio variaram na faixa indicada. Em 938 municípios Flávio teve menos votos no 2º turno do que no 1º (as três primeiras colunas). Silva Jardim, com 0,01% a mais, está na faixa de 0% a 2%, junto com outros 434 municípios.",
+    tabela: () => ({ cab: ["Variação dos votos de Flávio", "Municípios"], linhas: INV_FLAVIO_MUN.map(([f, n]) => [f, fInt(n)]) }),
+    desenhar: el => invColunas(el, INV_FLAVIO_MUN.map(f => f[0]), [{ nome: "Municípios", cor: C.dir, valores: INV_FLAVIO_MUN.map(f => f[1]) }],
+      { y1: 1800, fmt: fInt, rotY: "municípios", rotular: () => true, dicaCat: c => `Votos de Flávio: ${c}` }),
+  },
+  professor_ordens: {
+    titulo: "Os mesmos votos de 2026 somados em ordens diferentes",
+    como: "Cada linha mostra a porcentagem de Lula nos votos válidos somados até aquele ponto, à medida que as seções são incluídas. O eixo horizontal é a porcentagem das seções já somadas. Os votos de cada seção são os oficiais em todas as linhas; só muda a ordem da soma. Na ordem em que as seções encerraram a votação, Lula começa atrás e sobe quase em linha reta; na ordem dos estados, a curva sobe e depois desce; nas ordens sorteadas, fica em 51,8% quase desde o início. Todas terminam em 51,79%. A linha tracejada marca 50%.",
+    legenda: () => [[C.roxo, "Ordem de encerramento das seções"], [C.outros, "Ordem dos estados (AC, AL, AM...)"], [C.tinta3, "Três ordens sorteadas"]],
+    tabela: () => ({ cab: ["Seções somadas", "Ordem de encerramento", "Ordem dos estados", "Sorteio 1", "Sorteio 2", "Sorteio 3"],
+      linhas: INV_ORDENS_X.map((x, i) => [x, i]).filter(([x]) => x % 10 === .5 || x === 100).map(([x, i]) =>
+        [invP(x), invP(INV_ORDENS.encerramento[i], 2), invP(INV_ORDENS.estados[i], 2), ...INV_ORDENS.sorteios.map(s => invP(s[i], 2))]) }),
+    desenhar: el => invLinhas(el, INV_ORDENS_X, [
+      ...INV_ORDENS.sorteios.map((v, k) => ({ nome: `Sorteio ${k + 1}`, cor: C.tinta3, valores: v, fina: true })),
+      { nome: "Ordem dos estados", cor: C.outros, valores: INV_ORDENS.estados },
+      { nome: "Ordem de encerramento", cor: C.roxo, valores: INV_ORDENS.encerramento }],
+      { y0: 36, y1: 68, ref: { v: 50, rot: "50%" }, rotY: "Lula (% dos válidos já somados)", rotX: "seções já somadas →",
+        fmtDica: i => `<b>${invP(INV_ORDENS_X[i])} das seções somadas</b><br>Lula na ordem de encerramento: ${invP(INV_ORDENS.encerramento[i], 2)}<br>` +
+          `Na ordem dos estados: ${invP(INV_ORDENS.estados[i], 2)}<br>Nos sorteios: ${INV_ORDENS.sorteios.map(s => invP(s[i], 2)).join(" · ")}` }),
+  },
+  professor_zonas: {
+    titulo: "Subidas e quedas sem nenhum voto alterado: seções de 2022 somadas por zona eleitoral",
+    como: "A linha é a porcentagem de Bolsonaro nos votos válidos somados até cada ponto, com as seções de 2022 somadas zona eleitoral por zona eleitoral, em ordem sorteada. Cada zona entra inteira, com todas as suas seções em sequência, como acontece quando uma região apura e transmite junto. O trecho vai de 70 mil a 80 mil seções somadas, com o eixo vertical ampliado como no vídeo. A faixa de baixo mostra cada zona que entrou: vermelha se Lula teve mais votos nela, azul se Bolsonaro teve. As quedas maiores coincidem com zonas vermelhas e as subidas maiores com zonas azuis. A linha tracejada marca a zona 345 de São Paulo, que levanta a curva 0,07 ponto, seguida da zona 71 da Bahia, que a derruba 0,09.",
+    legenda: () => [[C.dir, "Linha: % de Bolsonaro somada até o ponto"], [C.lula, "Faixa: zona onde Lula teve mais votos"], [C.dir, "Faixa: zona onde Bolsonaro teve mais votos"]],
+    tabela: () => ({ cab: ["Seções somadas", "Zona", "Seções da zona", "Bolsonaro na zona", "Variação da curva (ponto)"],
+      linhas: INV_ZONAS_SEG.map(([a, b, uf, z, n, p, dv]) => [`${fInt(a + 1)} a ${fInt(b)}`, `${z} (${uf})`, fInt(n), invP(p), fSin(dv, 3)]) }),
+    desenhar: el => {
+      const xs = INV_ZONAS_Y.map((_, i) => 70000 + 20 * i), estreito = larg(el) < 520;
+      invLinhas(el, xs, [{ nome: "Bolsonaro", cor: C.dir, valores: INV_ZONAS_Y }], {
+        x0: 70000, x1: 80000, y0: 48.3, y1: 49, fmtX: t => fNum(t / 1000, 0) + " mil", fmtY: t => fNum(t, 1) + "%",
+        rotY: "Bolsonaro (% dos válidos já somados)", rotX: "seções já somadas →",
+        extra: (svg, x, y) => {
+          const yb = y(48.3) - 12;
+          INV_ZONAS_SEG.forEach(([a, b, , , , p]) => {
+            const xa = x(Math.max(a, 70000)), xb = x(Math.min(b, 80000));
+            svg.append("rect").attr("x", xa).attr("y", yb).attr("width", Math.max(1, xb - xa - 1)).attr("height", 8).attr("fill", p < 50 ? C.lula : C.dir);
+          });
+          const xm = x(77140);
+          svg.append("line").attr("x1", xm).attr("x2", xm).attr("y1", y(49)).attr("y2", yb - 2).attr("stroke", C.tinta2).attr("stroke-dasharray", "3 3");
+          [estreito ? "SP 345: +0,07" : "zona 345 de SP: +0,07 ponto (268 seções)", estreito ? "BA 71: −0,09" : "em seguida, zona 71 da BA: −0,09 ponto (275 seções)"]
+            .forEach((t, k) => svg.append("text").attr("class", "rot").attr("x", xm - 6).attr("y", y(49) + 12 + 14 * k).attr("text-anchor", "end").text(t));
+        },
+        fmtDica: i => {
+          const s = xs[i], z = INV_ZONAS_SEG.find(r => s > r[0] && s <= r[1]);
+          return `<b>${fInt(s)} seções somadas</b><br>Bolsonaro: ${invP(INV_ZONAS_Y[i], 3)}` +
+            (z ? `<br>Entrando: zona ${z[3]} de ${z[2]} (${fInt(z[4])} seções, Bolsonaro ${invP(z[5])})` : "");
+        },
+      });
+    },
+  },
   ranieri_fluxos: {
     titulo: "Para onde foi cada grupo de eleitores do 1º turno: o caminho do vídeo e a estimativa do projeto",
     como: "Cada grupo de eleitores do 1º turno tem duas barras, que mostram como ele votou no 2º: vermelho, em Lula; azul, em Flávio; cinza, em branco, nulo ou não votou. A barra de cima é o caminho do vídeo, refeito com os números oficiais; a de baixo, a estimativa deste projeto a partir das 499 mil seções (aba “Para onde foram os votos”). Nas duas, praticamente nenhum eleitor de Flávio vai para Lula. Os “100% dos brancos e nulos” do vídeo aparecem como 30% das pessoas que votaram em branco ou nulo, e os “100% das abstenções”, como 9% de quem não votou.",

@@ -1,0 +1,34 @@
+Transcrição automática do áudio de video.mp4 (faster-whisper, modelo medium, português, processamento local em 29/10/2026).
+Pode conter erros de reconhecimento. O vídeo começa no meio de uma frase. "472 urnas" corresponde, pelo contexto, às 472 mil seções da eleição de 2022.
+
+[00:00.00 - 00:05.76] não ganhou as eleições, repito mais uma vez, eu sou o professor Marcelo Trindade, eu fiz o meu
+[00:05.76 - 00:10.72] doutorado em matemática em 2017, eu estou com a certeza absoluta que nós temos uma fraude,
+[00:10.72 - 00:15.12] vejam vocês que estão chegando agora aqui, vejam que curiosidade, você que está chegando agora
+[00:15.12 - 00:20.60] preste muita atenção no que eu vou falar agora, um candidato que perdeu com 49% para outro que
+[00:20.60 - 00:28.28] ganhou com 51%, como pode ter apenas uma inversão? Esse evento já é probabilisticamente raro,
+[00:28.48 - 00:35.84] raríssimo, quando o professor Marcelo pegou essas mesmas 472 urnas, eu baixei todas elas do site
+[00:35.84 - 00:41.68] oficial e simulei outras ordens de envio, não alterei nenhum dado, apenas simulei outras ordens
+[00:41.68 - 00:47.76] de envio, todas elas tinham alternações, alternância aqui, como é de se esperar quando
+[00:47.76 - 00:53.28] a disputa é muito apertada, tamanho do buraco que nós estamos metidos, esta região aqui onde
+[00:53.28 - 01:03.72] está claro o golpe, digam para mim se é possível termos padrões como esses que eu
+[01:03.72 - 01:08.60] vos apresento, o candidato Bolsonaro pega nesse ponto aqui, está ali tentando subir,
+[01:08.60 - 01:14.76] dá uma caída, sobe, cai, sobe, cai, sobe, isso se chama aqui nessa zona aqui, padrão aleatório
+[01:14.76 - 01:20.40] de envio de dados, ele tanto cai quanto ele sobe, porém a tendência, a tendência daqui
+[01:20.60 - 01:27.04] é visivelmente uma tendência de subida, o algoritmo então sabendo disso, aciona algum
+[01:27.04 - 01:32.80] comando em algum lugar que faz o candidato ser penalizado linearmente, o meu ponto é que não
+[01:32.80 - 01:37.40] pode ter tendência linear parcial dentro de uma apuração de votos que o envio é aleatório,
+[01:38.36 - 01:43.64] o algoritmo detecta e começa a cair, olha o que acontece nos próximos instantes,
+[01:43.64 - 01:49.40] aqui o algoritmo é desligado, ele começa a subir, ele cai, ele sobe, ele cai, ele sobe,
+[01:49.40 - 01:54.56] porém a tendência daqui até aqui é uma tendência de subida, o algoritmo mais uma vez
+[01:54.56 - 02:00.32] percebe e começa a fazer com que o candidato caia, mais uma vez tendência de subida,
+[02:00.32 - 02:05.52] penalização, tendência de subida, penalização, eu quero que vocês digam pra mim qual é a
+[02:05.52 - 02:11.76] probabilidade matemática de tempos em tempos padrãozinho aqui o candidato ser somente
+[02:11.76 - 02:17.44] penalizado, se isso aqui não tivesse acontecido era como se vocês pudessem pegar esta parte
+[02:17.64 - 02:23.52] aqui, esta parte aqui e plugar ela nesta parte aqui, pega esta parte aqui e pluga nesta parte aqui,
+[02:23.52 - 02:28.20] pega esta parte aqui e pluga nesta parte aqui e a gente tirando isso aqui eu estimo que o
+[02:28.20 - 02:35.04] Bolsonaro teria ganhado as eleições com 60 a 65% dos votos, repito de 60 a 65% dos votos,
+[02:35.04 - 02:40.16] eu quero que essa live chegue mil pessoas, nós fomos roubados, nós fomos roubados,
+[02:40.16 - 02:44.36] eu professor Marcelo Trindade trabalho na área de ciência de dados, na área de inteligência
+[02:44.36 - 02:47.40] de computação a mais de 10 anos e a mais de 20 anos somente com matemática,
+[02:47.40 - 02:52.04] tenho a certeza de que fomos roubados em 2022, tenho a certeza de que estamos
+[02:52.04 - 02:54.32] sendo roubados novamente em 2026.
